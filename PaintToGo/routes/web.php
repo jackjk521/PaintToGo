@@ -27,7 +27,11 @@ use App\Http\Controllers\EmployeeController;
 */
 
 //View for pages
-Route::get('/', [ViewController:: class, 'loginform']);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Route::get('/', [ViewController:: class, 'loginform']);
 
 Route::get('/dashboard', [ViewController:: class, 'dashboard'])->name('dashboard');
 Route::get('/products', [ViewController:: class, 'products'])->name('products');

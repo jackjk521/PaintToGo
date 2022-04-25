@@ -17,11 +17,14 @@ class UserController extends Controller
 
         $user = new User;
 
-        $user->name = $req->input('username');
-        $user->email = $req->input('email');
+        $user->firstName = $req->input('firstname');
+        $user->lasttName = $req->input('lastname');
+        $user->email_add = $req->input('email');
         $user->password = Hash::make($req->input('password'));
+        $user->user_contact = $req->input('user_contact');
 
-        $emailV = User::where('email', '=', $user->email)->first();
+
+        $emailV = User::where('email_add', '=', $user->email_add)->first();
 
         if($emailV === null){
             $user->save();
@@ -44,10 +47,10 @@ class UserController extends Controller
 
         $user = new User;
 
-        $user->email = $req->input('email');
+        $user->email_add = $req->input('email');
         $user->password = $req->input('password');
 
-        $userV = User::where('email', '=', $user->email)->first();
+        $userV = User::where('email_add', '=', $user->email_add)->first();
         $passV = User::where('password', '=', $user->password)->first();
         
         if($userV && Hash::check($user->password, $userV->password)){ 

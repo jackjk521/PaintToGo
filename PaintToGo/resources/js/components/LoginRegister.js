@@ -7,9 +7,11 @@ const LoginRegister = () => {
   const navigate = useNavigate();
 
   const [Info, setInfo] = useState({
-    username:'',
+    firstname:'',
+    lastname:'',
     email:'',
-    password:''
+    password:'',
+    user_contact:''
   });
 
   const handleInput = (e) =>{
@@ -30,9 +32,11 @@ const LoginRegister = () => {
     {
       console.log(res.data.message);
        setInfo({
-            userпame: '',
-            email: '',
-            password: '',
+          firstname:'',
+          lastname:'',
+          email:'',
+          password:'',
+          user_contact:''
         });
     }
   }
@@ -68,9 +72,11 @@ const LoginRegister = () => {
               
               <form className="LRForm" onSubmit = {signUp}>
                 <h1 className="header1">Create Account</h1>
-                <input className ="inputBox" name = 'username' type="text"  onChange={handleInput} value={Info.username || ""} placeholder="NAME" />
+                <input className ="inputBox" name = 'firstname' type="text"  onChange={handleInput} value={Info.firstname || ""} placeholder="FIRST NAME" />
+                <input className ="inputBox" name = 'lastname' type="text"  onChange={handleInput} value={Info.lastname || ""} placeholder="LAST NAME" />
                 <input className ="inputBox" name = 'email' type="email" onChange={handleInput} value={Info.email || ""}   placeholder="EMAIL" />
                 <input className ="inputBox"  name = 'password' type="password" onChange={handleInput} value={Info.password || ""}  placeholder="PASSWORD" />
+                <input className ="inputBox" name = 'user_contact' type="text" onChange={handleInput} value={Info.user_contact || ""}   placeholder="CONTACT NUMBER" />
                 <button className="loginRegbuttons" type="submit"> REGISTER </button>
               </form>
             
