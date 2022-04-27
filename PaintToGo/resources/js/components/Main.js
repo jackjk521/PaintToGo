@@ -10,9 +10,6 @@ function Main() {
                 <div>
                     <Routes>
                         <Route path="/" element = {<LoginRegister/>}/> 
-                        {/* <Route path="/account" element = {<Account/>}/> 
-                        <Route path="/dashboard" element = {<Dashboard/>}/> 
-                        <Route path = "/history" element = {<History />} /> */}
                     </Routes>
                 </div>
             </BrowserRouter>
