@@ -1,142 +1,74 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use DB;
-use Session;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades \DB;
+use Redirect, Response, File;
+use Illuminate\Support\Facades \Hash;
+use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
-class LoginController extends Controller
+
+class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(){
-        
-    }
-    public function valid(Request $request)
+    
+    public function register(Request $req)
     {
-        //
-        $empID = $request->input('empID');
-        $pass = $request->input('password');
 
-        $validate = DB::table('employee')->select('employeeID', 'password')->where('employeeID', $empID)->where('password',$pass)->first();
+        $user = new User;
 
-            if($validate){
-                $queryLevel = DB::table('employee')->select('employeeLevelID', 'branchID')->where('employeeID', $empID)->first();
+        $user->firstName = $req->input('firstname');
+        $user->lasttName = $req->input('lastname');
+        $user->email_add = $req->input('email');
+        $user->password = Hash::make($req->input('password'));
+        $user->user_contact = $req->input('user_contact');
 
-                $queryLName =  DB::table('employee_level')->select('levelName')->where('employeeLevelID',  $queryLevel->employeeLevelID)->first();
 
-               
+        $emailV = User::where('email_add', '=', $user->email_add)->first();
 
-                    
-                    Session::put('empID', $empID);
-                    Session::put('empLevelID', $queryLevel->employeeLevelID);
-                    Session::put('branchID', $queryLevel->branchID);
-                    Session::put('levelName',  $queryLName->levelName);
-                    return redirect()->route('dashboard');
-               
-                   
-                       
-           }else{
-            return back()->with('status','Account Does Not Exist');
-           }
-       
+        if($emailV === null){
+            $user->save();
+            return response()->json([
+                'validator' => $emailV,
+                'status' => 200,
+                'message' => 'User Saved Successfully',
+            ]);
+
+        }else{
+            return response()->json([  // doesnt display tho
+                'status' => 400,
+                'message' => 'Error',
+            ]);
+        }
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function login(Request $req){
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request){
+        $user = new User;
+
+        $user->email_add = $req->input('email');
+        $user->password = $req->input('password');
+
+        $userV = User::where('email_add', '=', $user->email_add)->first();
+        $passV = User::where('password', '=', $user->password)->first();
         
-         
-        
-        $this->validate($request, [
-            'fname' =>'required|max:255',
-            'lname' =>'required|max:255',
-            'number' =>'required|Numeric',
-            'password' =>'required|confirmed',
-            'password_confirmation' =>'required',
-            'branch' =>'required',
-        ]);
-         
-        DB::table('employee')->insert([
-            'employeeLevelID'=>3,
-            'firstName'=> $request->fname,
-            'lastName'=> $request->lname,
-            'contactNumber'=> $request->number,
-            'password'=>$request->password,
-            'branchID'=>$request->branch,
-        ]);
+        if($userV && Hash::check($user->password, $userV->password)){ 
             
-       
+            return response()->json([
+                'user found' => $userV,
+                'id' => $userV->id,
+                'status' => 200,
+                'message' => 'User Login Successfully',
+            ]);
+        }
+        else{
+             return response()->json([
+                'status' => 400,
+                'message' => 'Not found: Either email or password is invalid',
+            ]);
+        }
 
-        return redirect()->route('admin');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function logout(){
-        Session::flush();
-        return redirect('login');
+        
     }
 }

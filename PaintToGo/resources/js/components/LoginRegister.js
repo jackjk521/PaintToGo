@@ -1,5 +1,5 @@
 import React , {useState} from "react";
-import "../css/LoginRegister.css";
+import "../../css/LoginRegister.css";
 import {BrowserRouter, Routes, Route, Link, useNavigate, withRouter} from 'react-router-dom';   
 
 const LoginRegister = () => {
