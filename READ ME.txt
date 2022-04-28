@@ -1,0 +1,31 @@
+
+No migrations, must import painttogo.sql manually at phpmadmin
+
+Step1
+git clone https://github.com/jackjk521/PaintToGo.git
+cd PaintToGo/Saribase-master
+mv .env.example .env
+composer install
+php artisan key:generate
+php artisan migrate
+npm install
+npm run watch
+
+Step2
+composer require laravel/ui
+php artisan ui react
+npm install
+
+
+
+Side notes: 
+composer require laravel/ui
+npm run dev
+php artisan serve
+
+installing dependencies
+
+composer install 
+npm install
+
+
