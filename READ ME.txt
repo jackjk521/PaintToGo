@@ -3,7 +3,7 @@ No migrations, must import painttogo.sql manually at phpmadmin
 
 Step1
 git clone https://github.com/jackjk521/PaintToGo.git
-cd PaintToGo/Saribase-master
+cd PaintToGo/PaintToGo
 mv .env.example .env
 composer install
 php artisan key:generate
