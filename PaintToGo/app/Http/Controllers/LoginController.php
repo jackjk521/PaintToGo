@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 
-class UserController extends Controller
+class LoginController extends Controller
 {
     
     public function register(Request $req)
@@ -20,7 +20,7 @@ class UserController extends Controller
         $user->firstName = $req->input('firstname');
         $user->lasttName = $req->input('lastname');
         $user->email_add = $req->input('email');
-        $user->password = Hash::make($req->input('password'));
+        $user->password = $req->input('password');
         $user->user_contact = $req->input('user_contact');
 
 
@@ -53,7 +53,7 @@ class UserController extends Controller
         $userV = User::where('email_add', '=', $user->email_add)->first();
         $passV = User::where('password', '=', $user->password)->first();
         
-        if($userV && Hash::check($user->password, $userV->password)){ 
+        if($userV && ($user->password === $userV->password)){ 
             
             return response()->json([
                 'user found' => $userV,
