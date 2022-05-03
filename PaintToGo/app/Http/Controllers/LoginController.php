@@ -18,7 +18,7 @@ class LoginController extends Controller
         $user = new User;
 
         $user->firstName = $req->input('firstname');
-        $user->lasttName = $req->input('lastname');
+        $user->lastName = $req->input('lastname');
         $user->email_add = $req->input('email');
         $user->password = $req->input('password');
         $user->user_contact = $req->input('user_contact');

@@ -26,19 +26,27 @@ const LoginRegister = () => {
   const signUp = async (e) =>{
     e.preventDefault();
 
-    const res = await axios.post('http://127.0.0.1:8000/api/signUp', Info);
-
-    if(res.data.status === 200)
-    {
-      console.log(res.data.message);
-       setInfo({
-          firstname:'',
-          lastname:'',
-          email:'',
-          password:'',
-          user_contact:''
-        });
+    try{
+      const res = await axios.post('http://127.0.0.1:8000/api/signUp', Info);
+      if(res.data.status === 200)
+      {
+        console.log(res.data.message);
+         setInfo({
+            firstname:'',
+            lastname:'',
+            email:'',
+            password:'',
+            user_contact:''
+          });
+      }
+      else{
+            console.log(res);
+      }
     }
+    catch(err){
+            console.log(err);
+    }
+   
   }
 
   const login = async (e) =>{

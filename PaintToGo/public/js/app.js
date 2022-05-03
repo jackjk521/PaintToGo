@@ -5408,10 +5408,11 @@ var LoginRegister = function LoginRegister() {
           switch (_context.prev = _context.next) {
             case 0:
               e.preventDefault();
-              _context.next = 3;
+              _context.prev = 1;
+              _context.next = 4;
               return axios.post('http://127.0.0.1:8000/api/signUp', Info);
 
-            case 3:
+            case 4:
               res = _context.sent;
 
               if (res.data.status === 200) {
@@ -5423,14 +5424,24 @@ var LoginRegister = function LoginRegister() {
                   password: '',
                   user_contact: ''
                 });
+              } else {
+                console.log(res);
               }
 
-            case 5:
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](1);
+              console.log(_context.t0);
+
+            case 11:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, null, [[1, 8]]);
     }));
 
     return function signUp(_x) {
