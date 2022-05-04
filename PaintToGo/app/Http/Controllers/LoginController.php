@@ -58,6 +58,7 @@ class LoginController extends Controller
             return response()->json([
                 'user found' => $userV,
                 'id' => $userV->id,
+                'user_level' => $userV->level_name,
                 'status' => 200,
                 'message' => 'User Login Successfully',
             ]);
