@@ -53,20 +53,21 @@ const LoginRegister = () => {
     e.preventDefault();
 
     try{
-      const res = await axios.post('http://127.0.0.1:8000/api/login', Info);
-      
-      if(res.data.status === 200)
-      {
-        console.log(res.data.message);
-         setInfo({
-              email: '',
-              password: '',
-          });
-        if(res.data.status === 200) {
-          navigate('/dashboard');
-        }
-      }
-      console.log(res);
+      const res = await axios.post('http://127.0.0.1:8000/api/login', Info)
+        if(res.data.status === 200)
+        {
+            setInfo({
+                email: '',
+                password: '',
+            });
+
+            console.log(res.data.message);
+            console.log(res.data.user_level); // for testing only
+
+            sessionStorage.setItem('level_name', res.data.user_level);
+
+            navigate("/dashboard");
+        }      
     }
     catch(err){
       console.log(err);
