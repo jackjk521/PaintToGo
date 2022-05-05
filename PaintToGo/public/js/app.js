@@ -5337,15 +5337,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Admin)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
+
 function Admin() {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+
+  function logOut() {
+    sessionStorage.clear();
+    navigate('/');
+  }
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
       children: "Admin page"
-    }), " "]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      onClick: logOut,
+      children: " LogOut "
+    })]
   });
 }
 
@@ -5362,16 +5374,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Customer)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 function Customer() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+
+  function logOut() {
+    sessionStorage.clear();
+    navigate('/');
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
       children: "Customer page"
-    }), " "]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+      onClick: logOut,
+      children: " LogOut "
+    })]
   });
 }
 
@@ -5713,17 +5735,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _LoginRegister__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoginRegister */ "./resources/js/components/LoginRegister.js");
-/* harmony import */ var _Customer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Customer */ "./resources/js/components/Customer.js");
-/* harmony import */ var _Admin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Admin */ "./resources/js/components/Admin.js");
-/* harmony import */ var _Manager__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Manager */ "./resources/js/components/Manager.js");
-/* harmony import */ var _Dashboard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Dashboard */ "./resources/js/components/Dashboard.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
+/* harmony import */ var _Dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Dashboard */ "./resources/js/components/Dashboard.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -5733,18 +5749,17 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Main() {
-  var level_name = sessionStorage.getItem('level_name');
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "container",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Routes, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.BrowserRouter, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
             path: "/",
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_LoginRegister__WEBPACK_IMPORTED_MODULE_2__["default"], {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_LoginRegister__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
             path: "/dashboard",
-            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Dashboard__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+            element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Dashboard__WEBPACK_IMPORTED_MODULE_3__["default"], {})
           })]
         })
       })
@@ -5755,7 +5770,7 @@ function Main() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Main);
 
 if (document.getElementById('main')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(Main, {}), document.getElementById('main'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Main, {}), document.getElementById('main'));
 }
 
 /***/ }),
@@ -5771,16 +5786,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Manager)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 function Manager() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
+
+  function logOut() {
+    sessionStorage.clear();
+    navigate('/');
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
       children: "Manager page"
-    }), " "]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
+      onClick: logOut,
+      children: " LogOut "
+    })]
   });
 }
 
@@ -10830,7 +10855,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n* {\r\n    box-sizing: border-box;\r\n  }\r\n  \r\n  div.body {\r\n    background: #f6f5f7;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    flex-direction: column;\r\n    font-family: \"Montserrat\", sans-serif;\r\n    height: 100vh;\r\n    width: 100%;\r\n    margin: -20px 0 50px;\r\n    padding-left: 200px;\r\n    padding-right: 200px;\r\n\r\n  }\r\n  \r\n  h1.header1 {\r\n    font-weight: bold;\r\n    margin: 0;\r\n  }\r\n\r\n  \r\n  button.loginRegbuttons {\r\n    border-radius: 20px;\r\n    border: 1px solid #18608a;\r\n    background-color: #18608a;\r\n    color: #ffffff;\r\n    font-size: 12px;\r\n    font-weight: bold;\r\n    padding: 12px 45px;\r\n    letter-spacing: 1px;\r\n    text-transform: uppercase;\r\n    transition: transform 80ms ease-in;\r\n  }\r\n  \r\n  button.loginRegbuttons:active {\r\n    transform: scale(0.95);\r\n  }\r\n  \r\n  button.loginRegbuttons:focus {\r\n    outline: none;\r\n  }\r\n  \r\n  button.ghost {\r\n    background-color: transparent;\r\n    border-color: #ffffff;\r\n  }\r\n  \r\n  form.LRForm {\r\n    background-color: #ffffff;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: column;\r\n    padding: 0 50px;\r\n    height: 100%;\r\n    text-align: center;\r\n  }\r\n  \r\n  input.inputBox {\r\n    background-color: #eee;\r\n    border: none;\r\n    padding: 12px 15px;\r\n    margin: 8px 0;\r\n    width: 100%;\r\n  }\r\n  \r\n  .container {\r\n    background-color: #fff;\r\n    border-radius: 10px;\r\n    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);\r\n    position: relative;\r\n    overflow: hidden;\r\n    width: 100%;\r\n    max-width: 100%;\r\n    min-height: 480px;\r\n    max-height: 100%;\r\n    /* margin-left: 250px; */\r\n    /* margin-right: 250px; */\r\n  }\r\n  \r\n  .form-container {\r\n    position: absolute;\r\n    top: 0;\r\n    height: 100%;\r\n    transition: all 0.6s ease-in-out;\r\n  }\r\n  \r\n  .sign-in-container {\r\n    left: 0;\r\n    width: 50%;\r\n    z-index: 2;\r\n  }\r\n  \r\n  .container.right-panel-active .sign-in-container { /* same is necessary after the first .attribute*/\r\n    transform: translateX(100%);\r\n  }\r\n  \r\n  .sign-up-container {\r\n    left: 0;\r\n    width: 50%;\r\n    opacity: 0;\r\n    z-index: 1;\r\n  }\r\n  \r\n  .container.right-panel-active .sign-up-container {\r\n    transform: translateX(100%);\r\n    opacity: 1;\r\n    z-index: 5;\r\n    -webkit-animation: show 0.6s;\r\n            animation: show 0.6s;\r\n  }\r\n  \r\n  @-webkit-keyframes show {\r\n    0%,\r\n    49.99% {\r\n      opacity: 0;\r\n      z-index: 1;\r\n    }\r\n  \r\n    50%,\r\n    100% {\r\n      opacity: 1;\r\n      z-index: 5;\r\n    }\r\n  }\r\n  \r\n  @keyframes show {\r\n    0%,\r\n    49.99% {\r\n      opacity: 0;\r\n      z-index: 1;\r\n    }\r\n  \r\n    50%,\r\n    100% {\r\n      opacity: 1;\r\n      z-index: 5;\r\n    }\r\n  }\r\n  \r\n  .overlay-container {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 50%;\r\n    width: 50%;\r\n    height: 100%;\r\n    overflow: hidden;\r\n    transition: transform 0.6s ease-in-out;\r\n    z-index: 100;\r\n  }\r\n  \r\n  .container.right-panel-active .overlay-container {\r\n    transform: translateX(-100%);\r\n  }\r\n  \r\n  .overlay {\r\n    background: #222529;\r\n    background: linear-gradient(to right, #222529, #222529);\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    background-position: 0 0;\r\n    color: #ffffff;\r\n    position: relative;\r\n    left: -100%;\r\n    height: 100%;\r\n    width: 200%;\r\n    transform: translateX(0);\r\n    transition: transform 0.6s ease-in-out;\r\n  }\r\n  \r\n  .container.right-panel-active .overlay {\r\n    transform: translateX(50%);\r\n  }\r\n  \r\n  .overlay-panel {\r\n    position: absolute;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: column;\r\n    padding: 0 40px;\r\n    text-align: center;\r\n    top: 0;\r\n    height: 100%;\r\n    width: 50%;\r\n    transform: translateX(0);\r\n    transition: transform 0.6s ease-in-out;\r\n  }\r\n  \r\n  .overlay-left {\r\n    transform: translateX(-20%);\r\n  }\r\n  \r\n  .container.right-panel-active .overlay-left {\r\n    transform: translateX(0);\r\n  }\r\n  \r\n  .overlay-right {\r\n    right: 0;\r\n    transform: translateX(0);\r\n  }\r\n  \r\n  .container.right-panel-active .overlay-right {\r\n    transform: translateX(20%);\r\n  }", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n* {\r\n    box-sizing: border-box;\r\n  }\r\n  \r\n  div.body {\r\n    background: #f6f5f7;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    flex-direction: column;\r\n    font-family: \"Montserrat\", sans-serif;\r\n    height: 100vh;\r\n    width: 100%;\r\n    margin: -20px 0 50px;\r\n    padding-left: 200px;\r\n    padding-right: 200px;\r\n\r\n  }\r\n  \r\n  h1.header1 {\r\n    font-weight: bold;\r\n    margin: 0;\r\n  }\r\n\r\n  \r\n  button.loginRegbuttons {\r\n    border-radius: 20px;\r\n    border: 1px solid #18608a;\r\n    background-color: #18608a;\r\n    color: #ffffff;\r\n    font-size: 12px;\r\n    font-weight: bold;\r\n    padding: 12px 45px;\r\n    letter-spacing: 1px;\r\n    text-transform: uppercase;\r\n    transition: transform 80ms ease-in;\r\n  }\r\n  \r\n  button.loginRegbuttons:active {\r\n    transform: scale(0.95);\r\n  }\r\n  \r\n  button.loginRegbuttons:focus {\r\n    outline: none;\r\n  }\r\n  \r\n  button.ghost {\r\n    background-color: transparent;\r\n    border-color: #ffffff;\r\n  }\r\n  \r\n  form.LRForm {\r\n    background-color: #ffffff;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: column;\r\n    padding: 0 50px;\r\n    height: 100%;\r\n    text-align: center;\r\n  }\r\n  \r\n  input.inputBox {\r\n    background-color: #eee;\r\n    border: none;\r\n    padding: 12px 15px;\r\n    margin: 8px 0;\r\n    width: 360px; /*editted here*/\r\n  }\r\n  \r\n  .container {\r\n    background-color: #fff;\r\n    border-radius: 10px;\r\n    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);\r\n    position: relative;\r\n    overflow: hidden;\r\n    width: 100%;\r\n    max-width: 100%;\r\n    min-height: 800px;\r\n    max-height: 100%;\r\n  }\r\n  \r\n  .form-container {\r\n    position: absolute;\r\n    top: 0;\r\n    height: 100%;\r\n    transition: all 0.6s ease-in-out;\r\n  }\r\n  \r\n  .sign-in-container {\r\n    left: 0;\r\n    width: 50%;\r\n    z-index: 2;\r\n  }\r\n  \r\n  .container.right-panel-active .sign-in-container { /* same is necessary after the first .attribute*/\r\n    transform: translateX(100%);\r\n  }\r\n  \r\n  .sign-up-container {\r\n    left: 0;\r\n    width: 50%;\r\n    opacity: 0;\r\n    z-index: 1;\r\n  }\r\n  \r\n  .container.right-panel-active .sign-up-container {\r\n    transform: translateX(100%);\r\n    opacity: 1;\r\n    z-index: 5;\r\n    -webkit-animation: show 0.6s;\r\n            animation: show 0.6s;\r\n  }\r\n  \r\n  @-webkit-keyframes show {\r\n    0%,\r\n    49.99% {\r\n      opacity: 0;\r\n      z-index: 1;\r\n    }\r\n  \r\n    50%,\r\n    100% {\r\n      opacity: 1;\r\n      z-index: 5;\r\n    }\r\n  }\r\n  \r\n  @keyframes show {\r\n    0%,\r\n    49.99% {\r\n      opacity: 0;\r\n      z-index: 1;\r\n    }\r\n  \r\n    50%,\r\n    100% {\r\n      opacity: 1;\r\n      z-index: 5;\r\n    }\r\n  }\r\n  \r\n  .overlay-container {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 50%;\r\n    width: 50%;\r\n    height: 100%;\r\n    overflow: hidden;\r\n    transition: transform 0.6s ease-in-out;\r\n    z-index: 100;\r\n  }\r\n  \r\n  .container.right-panel-active .overlay-container {\r\n    transform: translateX(-100%);\r\n  }\r\n  \r\n  .overlay {\r\n    background: #222529;\r\n    background: linear-gradient(to right, #222529, #222529);\r\n    background-repeat: no-repeat;\r\n    background-size: cover;\r\n    background-position: 0 0;\r\n    color: #ffffff;\r\n    position: relative;\r\n    left: -100%;\r\n    height: 100%;\r\n    width: 200%;\r\n    transform: translateX(0);\r\n    transition: transform 0.6s ease-in-out;\r\n  }\r\n  \r\n  .container.right-panel-active .overlay {\r\n    transform: translateX(50%);\r\n  }\r\n  \r\n  .overlay-panel {\r\n    position: absolute;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    flex-direction: column;\r\n    padding: 0 40px;\r\n    text-align: center;\r\n    top: 0;\r\n    height: 100%;\r\n    width: 50%;\r\n    transform: translateX(0);\r\n    transition: transform 0.6s ease-in-out;\r\n  }\r\n  \r\n  .overlay-left {\r\n    transform: translateX(-20%);\r\n  }\r\n  \r\n  .container.right-panel-active .overlay-left {\r\n    transform: translateX(0);\r\n  }\r\n  \r\n  .overlay-right {\r\n    right: 0;\r\n    transform: translateX(0);\r\n  }\r\n  \r\n  .container.right-panel-active .overlay-right {\r\n    transform: translateX(20%);\r\n  }", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -16,6 +16,7 @@ export default function Dashboard() {
             {level_name == "Manager" && <Manager />}
             {level_name == "Customer" && <Customer />}
     
+     
         </div>
     );
 }
