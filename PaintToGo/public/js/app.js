@@ -5388,6 +5388,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Customer() {
+  var user_id = sessionStorage.getItem('user_id');
+  var branch_id = sessionStorage.getItem('branch_id');
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
 
   function logOut() {
@@ -5396,8 +5398,8 @@ function Customer() {
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
-      children: "Customer page"
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
+      children: ["Customer page ", user_id, " ", branch_id, " "]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
       onClick: logOut,
       children: " LogOut "
@@ -5799,6 +5801,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Manager() {
+  var user_id = sessionStorage.getItem('user_id');
+  var branch_id = sessionStorage.getItem('branch_id');
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_1__.useNavigate)();
 
   function logOut() {
@@ -5807,8 +5811,8 @@ function Manager() {
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", {
-      children: "Manager page"
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h1", {
+      children: ["Manager page ", user_id, " ", branch_id]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", {
       onClick: logOut,
       children: " LogOut "
