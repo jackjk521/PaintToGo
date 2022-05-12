@@ -5344,6 +5344,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Admin() {
+  var user_id = sessionStorage.getItem('user_id');
+  var branch_id = sessionStorage.getItem('branch_id'); // const fetchTList = async () => {
+  //     const res = await fetch('http://127.0.0.1:8000/api/TList');
+  //     return res.json();
+  // }
+  // const[data, status] = useQuery('TList', fetchTList);
+  // console.log(data);
+
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
 
   function logOut() {
@@ -5352,8 +5360,8 @@ function Admin() {
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-      children: "Admin page"
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h1", {
+      children: ["Admin page ", user_id, " ", branch_id, " "]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
       onClick: logOut,
       children: " LogOut "
@@ -5411,12 +5419,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Dashboard)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _Customer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Customer */ "./resources/js/components/Customer.js");
-/* harmony import */ var _Admin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Admin */ "./resources/js/components/Admin.js");
-/* harmony import */ var _Manager__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Manager */ "./resources/js/components/Manager.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
+/* harmony import */ var _Customer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Customer */ "./resources/js/components/Customer.js");
+/* harmony import */ var _Admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Admin */ "./resources/js/components/Admin.js");
+/* harmony import */ var _Manager__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Manager */ "./resources/js/components/Manager.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
@@ -5425,9 +5431,9 @@ __webpack_require__.r(__webpack_exports__);
 
 function Dashboard() {
   var level_name = sessionStorage.getItem('level_name');
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "container",
-    children: [level_name == "Admin" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Admin__WEBPACK_IMPORTED_MODULE_3__["default"], {}), level_name == "Manager" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Manager__WEBPACK_IMPORTED_MODULE_4__["default"], {}), level_name == "Customer" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Customer__WEBPACK_IMPORTED_MODULE_2__["default"], {})]
+    children: [level_name == "Admin" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Admin__WEBPACK_IMPORTED_MODULE_2__["default"], {}), level_name == "Manager" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Manager__WEBPACK_IMPORTED_MODULE_3__["default"], {}), level_name == "Customer" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Customer__WEBPACK_IMPORTED_MODULE_1__["default"], {})]
   });
 }
 
@@ -5577,10 +5583,11 @@ var LoginRegister = function LoginRegister() {
                   email: '',
                   password: ''
                 });
+                console.log(res);
                 console.log(res.data.message);
-                console.log(res.data.user_level); // for testing only
-
                 sessionStorage.setItem('level_name', res.data.user_level);
+                sessionStorage.setItem('user_id', res.data.user_id);
+                sessionStorage.setItem('branch_id', res.data.branch_id);
                 navigate("/dashboard");
               }
 

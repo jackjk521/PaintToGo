@@ -61,10 +61,12 @@ const LoginRegister = () => {
                 password: '',
             });
 
+            console.log(res);
             console.log(res.data.message);
-            console.log(res.data.user_level); // for testing only
 
             sessionStorage.setItem('level_name', res.data.user_level);
+            sessionStorage.setItem('user_id', res.data.user_id);
+            sessionStorage.setItem('branch_id', res.data.branch_id);
 
             navigate("/dashboard");
         }      

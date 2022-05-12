@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Customer from './Customer'
 import Admin from './Admin'
 import Manager from './Manager'

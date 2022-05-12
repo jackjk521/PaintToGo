@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades \DB;
+use Illuminate\Support\Facades\DB;
 use Redirect, Response, File;
 use Illuminate\Support\Facades \Hash;
 use App\Models\User;
@@ -52,16 +52,18 @@ class LoginController extends Controller
 
         $userV = User::where('email_add', '=', $user->email_add)->first();
         $passV = User::where('password', '=', $user->password)->first();
+        $branchV = DB::table('branch')->where('branch.user_id', '=', $userV->user_id)->first();
         
         if($userV && ($user->password === $userV->password)){ 
-            
             return response()->json([
                 'user found' => $userV,
-                'id' => $userV->id,
+                'user_id' => $userV->user_id,
+                'branch_id' => $branchV->branch_id,
                 'user_level' => $userV->level_name,
                 'status' => 200,
                 'message' => 'User Login Successfully',
             ]);
+          
         }
         else{
              return response()->json([

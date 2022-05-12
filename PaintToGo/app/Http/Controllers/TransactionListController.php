@@ -9,12 +9,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 
-class UserController extends Controller
+class TransactionListController extends Controller
 {
     
     public function displayTL(Request $req)
     {
-
         $status = "Approved";
 
         $TL = DB::table('requestlist')
@@ -27,7 +26,7 @@ class UserController extends Controller
 
 
             if ($TL) {
-                return $this->$TL; //sorted by date in display in front end
+               return $TL;
             } else {
                 return "Error no tables are found";
             }
