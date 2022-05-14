@@ -11,7 +11,7 @@ export default function Customer(){
     }
 
     return ( <div> 
-        <h1>Customer page {user_id} {branch_id} </h1> 
+        <h1>Customer page {user_id} </h1> 
         <button onClick = {logOut}> LogOut </button> 
         </div>
     )

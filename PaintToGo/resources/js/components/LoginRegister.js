@@ -1,5 +1,6 @@
 import React , {useState} from "react";
 import "../../css/LoginRegister.css";
+import api from "../api/api";
 import {BrowserRouter, Routes, Route, Link, useNavigate, withRouter} from 'react-router-dom';   
 
 const LoginRegister = () => {
@@ -27,7 +28,7 @@ const LoginRegister = () => {
     e.preventDefault();
 
     try{
-      const res = await axios.post('http://127.0.0.1:8000/api/signUp', Info);
+      const res = await api.signUp(Info);
       if(res.data.status === 200)
       {
         console.log(res.data.message);
@@ -53,7 +54,7 @@ const LoginRegister = () => {
     e.preventDefault();
 
     try{
-      const res = await axios.post('http://127.0.0.1:8000/api/login', Info)
+      const res = await api.login(Info);
         if(res.data.status === 200)
         {
             setInfo({
