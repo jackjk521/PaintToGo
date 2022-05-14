@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Redirect, Response, File;
-use Illuminate\Support\Facades \Hash;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
@@ -53,25 +53,32 @@ class LoginController extends Controller
         $userV = User::where('email_add', '=', $user->email_add)->first();
         $passV = User::where('password', '=', $user->password)->first();
         $branchV = DB::table('branch')->where('branch.user_id', '=', $userV->user_id)->first();
-        
-        if($userV && ($user->password === $userV->password)){ 
-            return response()->json([
-                'user found' => $userV,
-                'user_id' => $userV->user_id,
-                'branch_id' => $branchV->branch_id,
-                'user_level' => $userV->level_name,
-                'status' => 200,
-                'message' => 'User Login Successfully',
-            ]);
-          
-        }
-        else{
-             return response()->json([
-                'status' => 400,
-                'message' => 'Not found: Either email or password is invalid',
-            ]);
-        }
 
+        if($userV && ($user->password === $userV->password)){ 
+            if ($userV->level_name === "Admin" || $userV->level_name === "Manager") {
+                return response()->json([
+                    'user found' => $userV,
+                    'user_id' => $userV->user_id,
+                    'branch_id' => $branchV->branch_id,
+                    'user_level' => $userV->level_name,
+                    'status' => 200,
+                    'message' => 'User Login Successfully',
+                ]);
+            } else {
+                return response()->json([
+                    'user found' => $userV,
+                    'user_id' => $userV->user_id,
+                    'user_level' => $userV->level_name,
+                    'status' => 200,
+                    'message' => 'User Login Successfully',
+                ]);
+            }
+        } else {
+            return response()->json([
+               'status' => 400,
+               'message' => 'Not found: Either email or password is invalid',
+           ]);
+       }
         
     }
 }
