@@ -9,7 +9,10 @@ export default {
     },
     login: (Info) => {
         return axios.post(`${BASE_API_URL}/login`, Info);
-    }
+    },
 
     // Queries for Products 
+    fetchProducts: () => {
+        return axios.get(`${BASE_API_URL}/products`);
+    }
 }
