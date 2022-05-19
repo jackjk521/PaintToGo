@@ -9,7 +9,25 @@ export default {
     },
     login: (Info) => {
         return axios.post(`${BASE_API_URL}/login`, Info);
-    }
+    },
 
-    // Queries for Products 
+    // Queries for TransactionLists
+    approvedR: () => {
+        return axios.get(`${BASE_API_URL}/aRList`);
+    },
+    approvedO: () => {
+        return axios.get(`${BASE_API_URL}/aOList`);
+    },
+    approvedC: () => {
+        return axios.get(`${BASE_API_URL}/aCList`);
+    },
+    nullR: () => {
+        return axios.get(`${BASE_API_URL}/nRList`);
+    },
+    nullO: () => {
+        return axios.get(`${BASE_API_URL}/nOList`);
+    },
+    nullC: () => {
+        return axios.get(`${BASE_API_URL}/nCList`);
+    },
 }
