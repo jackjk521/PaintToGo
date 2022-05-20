@@ -7,27 +7,32 @@ export default function Admin(){
     const branch_id = sessionStorage.getItem('branch_id');
 
     const [ approvedR , setApprovedRList ] = useState([]);
+    const [ approvedO , setApprovedOList ] = useState([]);
+    const [ approvedC , setApprovedCList ] = useState([]);
+
+    const [ nullR , setNullRList ] = useState([]);
+    const [ nullO , setNullOList ] = useState([]);
+    const [ nullC , setNullCList ] = useState([]);
+
+    
+
 
 
     useEffect(() => {
        fetchApprovedList();
        fetchNullList();
-    },[resR]);
+    },[]);
 
         
     // Fetching Approved Status from request, orders and consultations table
     const fetchApprovedList = async (e) => {
         try{
             const resR = await api.approvedR();
-            setApprovedRList(resR.data);
-            console.log(approvedR);
+            setApprovedRList(resR.data.approvedRequests);          
             const resO = await api.approvedO();
+            setApprovedOList(resO.data.approvedOrders);
             const resC = await api.approvedC();
-           
-          
-                // console.log(resR);
-                // console.log(resO);
-                // console.log(resC);
+            setApprovedCList(resC.data.approvedConsultations);
             }
         catch (err){
             console.log(err);
@@ -39,12 +44,11 @@ export default function Admin(){
     const fetchNullList = async (e) => {
         try{
             const resNR = await api.nullR();
+            setNullRList(resNR.data.nullRequests);    
             const resNO = await api.nullO();
+            setNullOList(resNO.data.nullOrders);   
             const resNC = await api.nullC();
-                // setApprovedList(res.data.data);
-                // console.log(resNR);
-                // console.log(resNO);
-                // console.log(resNC);
+            setNullCList(resNC.data.nullConsultations);   
             }
         catch (err){
             console.log(err);
@@ -59,10 +63,8 @@ export default function Admin(){
         navigate('/');
     }
 
-    
-
-    const renderATList = () => {
-        if (!approvedR) {
+    const renderAList = (query, approvedList) => {
+        if (!query) {
             return (
                 <tr>
                     <td colSpan="4">
@@ -71,7 +73,7 @@ export default function Admin(){
                 </tr>
             );
         };
-        if (approvedR.length === 0) {
+        if (query.length === 0) {
             return (
                 <tr>
                     <td colSpan="4">
@@ -80,21 +82,81 @@ export default function Admin(){
                 </tr>
             );
         };
-
-
+        
         // For the actions, simply add another <td> with buttons or links towards an action
+            if (approvedList === 1){
+                return query.map((a) => {
+                    return (
+                            <tr key={a.request_id} className="table-contents-odd" >
+                                <td>{a.request_id}</td>
+                                <td>{a.branch_add}</td>
+                                <td>{a.lastName}</td>
+                            </tr> //edit here and test from here
 
-        return approvedR.map((a) => {
-            return (
-                    <tr key={a.request_id} className="table-contents-odd" >
-                        <td>{a.request_id}</td>
-                        <td>{a.branch_add}</td>
-                        <td>{a.lastName}</td>
-                    </tr> //edit here and test from here
-                    
+                    );
+                });
+            }
+            else if(approvedList === 2){
+                return query.map((a) => {
+                    return (
+                            <tr key={a.order_id} className="table-contents-odd" >
+                                <td>{a.order_id}</td>
+                                <td>{a.branch_add}</td>
+                                <td>{a.lastName}</td>
+                            </tr> //edit here and test from here
 
-            );
-        });
+                    );
+                });
+            }
+            else if (approvedList === 3){
+                return query.map((a) => {
+                    return (
+                            <tr key={a.consultation_id} className="table-contents-odd" >
+                                <td>{a.consultation_id}</td>
+                                <td>{a.lastName}</td>
+                            </tr> //edit here and test from here
+
+                    );
+                });
+            }
+            if (approvedList === 4){
+                return query.map((a) => {
+                    return (
+                            <tr key={a.request_id} className="table-contents-odd" >
+                                <td>{a.request_id}</td>
+                                <td>{a.branch_add}</td>
+                                <td>{a.lastName}</td>
+                            </tr> //edit here and test from here
+
+                    );
+                });
+            }
+            else if(approvedList === 5){
+                return query.map((a) => {
+                    return (
+                            <tr key={a.order_id} className="table-contents-odd" >
+                                <td>{a.order_id}</td>
+                                <td>{a.branch_add}</td>
+                                <td>{a.lastName}</td>
+                            </tr> //edit here and test from here
+
+                    );
+                });
+            }
+            else if (approvedList === 6){
+                return query.map((a) => {
+                    return (
+                            <tr key={a.consultation_id} className="table-contents-odd" >
+                                <td>{a.consultation_id}</td>
+                                <td>{a.lastName}</td>
+                            </tr> //edit here and test from here
+
+                    );
+                });
+            }
+
+            
+       
     }
 
     return ( 
@@ -104,34 +166,97 @@ export default function Admin(){
             <button onClick = {logOut}> LogOut </button>
 
             <div>
+                <h1> APPROVED statuses </h1>
                 <table className="table">
                     <thead className="table-header">
                         <tr>
-                            <th>Product ID</th>
-                            <th>Brand ID</th>
-                            <th>Utility ID</th>
-                            <th>Product Name</th>
-                            <th>Price</th>
-                            <th>Retail Price</th>
-                            <th>Unit Sold At</th>
-                            <th>Actions</th>
+                            <th>Request ID</th>
+                            <th>Brand Address</th>
+                            <th>Lastname</th>
                         </tr>
                     </thead>
                     <tbody className="table-contents">
-                        {renderATList()}
+                        {renderAList(approvedR, 1)}
+                    </tbody>
+                </table>
+
+                <br></br>
+
+                <table className="table">
+                    <thead className="table-header">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Brand Address</th>
+                            <th>Lastname</th>
+                        </tr>
+                    </thead>
+                    <tbody className="table-contents">
+                        {renderAList(approvedO, 2)}
+                    </tbody>
+                </table>
+
+                <br></br>
+
+                <table className="table">
+                    <thead className="table-header">
+                        <tr>
+                            <th>Consultation ID</th>
+                            <th>Branch Add</th>
+                            <th>Lastname</th>
+                        </tr>
+                    </thead>
+                    <tbody className="table-contents">
+                        {renderAList(approvedC, 3)}
                     </tbody>
                 </table>
             </div>
-            
-            {/* {status === 'error' && (
-                <div> Error fetching data </div>
-            )}
-            {status === 'success' && (
-                <div> 
-                    success
-                </div>
-            )} */}
-        
+
+            <div>
+                <h1> NULL statuses </h1>
+                <table className="table">
+                    <thead className="table-header">
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Brand Address</th>
+                            <th>Lastname</th>
+                        </tr>
+                    </thead>
+                    <tbody className="table-contents">
+                        {renderAList(nullR, 4)}
+                    </tbody>
+                </table>
+
+                <br></br>
+
+                <table className="table">
+                    <thead className="table-header">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Brand Address</th>
+                            <th>Lastname</th>
+                        </tr>
+                    </thead>
+                    <tbody className="table-contents">
+                        {renderAList(nullO, 5)}
+                    </tbody>
+                </table>
+
+                <br></br>
+
+                <table className="table">
+                    <thead className="table-header">
+                        <tr>
+                            <th>Consultation ID</th>
+                            <th>Branch Add</th>
+                            <th>Lastname</th>
+                        </tr>
+                    </thead>
+                    <tbody className="table-contents">
+                        {renderAList(nullC, 6)}
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     )
 }
