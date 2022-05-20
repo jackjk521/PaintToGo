@@ -17,6 +17,7 @@ use App\Http\Controllers\TransactionListController;
 Route::post('/signUp', [LoginController::class, 'register']); // route for registration form
 Route::post('/login', [LoginController::class, 'login']); // route for login form
 
+Route::post('/profile',[TransactionListController::class, 'approvedR']);
 
 Route::get('/aRList', [TransactionListController::class, 'approvedR']);  
 Route::get('/aOList', [TransactionListController::class, 'approvedO']);  

@@ -22,9 +22,8 @@ export default function Customer(){
             <h1>Customer page {user_id}</h1> 
             <button onClick = {logOut}> LogOut </button>
             <div>
-            <Profile />
-            {/* <button onClick={prof}>Profile</button> */}
-            {/* <Link to={'/profile'} className="my-2 border-0 btn btn-primary btn-sm float-end text-dark bg-light py-3">Profile</Link> */}
+            
+            <Link to={'/profile'} className="my-2 border-0 btn btn-primary btn-sm float-end text-dark bg-light py-3">Profile</Link>
             </div>
         </div>
         

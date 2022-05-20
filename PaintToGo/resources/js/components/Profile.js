@@ -1,6 +1,6 @@
 import {useNavigate} from "react-router-dom"
 
-export default function Customer(){
+export default function Profile(){
     const user_id = sessionStorage.getItem('user_id');
     const branch_id = sessionStorage.getItem('branch_id');
 
