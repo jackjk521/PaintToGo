@@ -47,6 +47,11 @@ class TransactionListController extends Controller
                     ->get();
 
         if( $approvedList ){
+            return response()->json([
+ 
+                'approvedOrders' => $approvedList
+
+            ]);
             return $approvedList;
         }  
         else{
@@ -63,6 +68,11 @@ class TransactionListController extends Controller
                     ->get();
 
         if( $approvedList ){
+            return response()->json([
+ 
+                'approvedConsultations' => $approvedList
+
+            ]);
             return $approvedList;
         }  
         else{
@@ -82,6 +92,11 @@ class TransactionListController extends Controller
                     ->get();
 
         if( $nullList ){
+            return response()->json([
+ 
+                'nullRequests' => $nullList
+
+            ]);
             return $nullList;
         }  
         else{
@@ -98,6 +113,11 @@ class TransactionListController extends Controller
                     ->get();
 
         if( $nullList ){
+            return response()->json([
+ 
+                'nullOrders' => $nullList
+
+            ]);
             return $nullList;
         }  
         else{
@@ -114,6 +134,11 @@ class TransactionListController extends Controller
                     ->get();
 
         if( $nullList ){
+            return response()->json([
+ 
+                'nullConsultations' => $nullList
+
+            ]);
             return $nullList;
         }  
         else{
