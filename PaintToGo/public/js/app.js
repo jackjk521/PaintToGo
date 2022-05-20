@@ -5421,11 +5421,12 @@ function Admin() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     fetchApprovedList();
     fetchNullList();
-  }, []); // Fetching Approved Status from request, orders and consultations table
+  }, [resR]); // Fetching Approved Status from request, orders and consultations table
 
   var fetchApprovedList = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(e) {
-      var resR, resO, resC;
+      var _resR, resO, resC;
+
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -5435,8 +5436,8 @@ function Admin() {
               return _api_api__WEBPACK_IMPORTED_MODULE_2__["default"].approvedR();
 
             case 3:
-              resR = _context.sent;
-              setApprovedRList(resR.data);
+              _resR = _context.sent;
+              setApprovedRList(_resR.data);
               console.log(approvedR);
               _context.next = 8;
               return _api_api__WEBPACK_IMPORTED_MODULE_2__["default"].approvedO();
@@ -5533,11 +5534,11 @@ function Admin() {
 
     ;
 
-    if (approved.length === 0) {
+    if (approvedR.length === 0) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tr", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
           colSpan: "4",
-          children: "There are no products available"
+          children: "There are no requests available"
         })
       });
     }
@@ -5548,7 +5549,7 @@ function Admin() {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
         className: "table-contents-odd",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
-          children: approvedRequests.request_id
+          children: a.request_id
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
           children: a.branch_add
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {

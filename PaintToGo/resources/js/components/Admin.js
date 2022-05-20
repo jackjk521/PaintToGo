@@ -12,7 +12,7 @@ export default function Admin(){
     useEffect(() => {
        fetchApprovedList();
        fetchNullList();
-    },[]);
+    },[resR]);
 
         
     // Fetching Approved Status from request, orders and consultations table
