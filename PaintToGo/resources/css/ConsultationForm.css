@@ -1,0 +1,29 @@
+.consultation-form-body {
+    width: 50%;
+    margin: 20px auto;
+    border-width: 1px;
+    border-color: black;
+    display: block;
+    padding: 15px;
+}
+
+.desc-input {
+    margin: 15px;
+}
+
+.desc-input input {
+    width: 100%;
+}
+
+.desc-input textarea {
+    width: 100%;
+    resize: none;
+    border: 1px solid black;
+}
+
+.book-consultation-btn {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+
