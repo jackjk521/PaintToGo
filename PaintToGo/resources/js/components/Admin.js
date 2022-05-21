@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 import {useNavigate} from "react-router-dom"
+import { renderAList } from "../operations/Functions";
 
 export default function Admin(){
     const user_id = sessionStorage.getItem('user_id');
@@ -63,102 +64,6 @@ export default function Admin(){
         navigate('/');
     }
 
-    const renderAList = (query, approvedList) => {
-        if (!query) {
-            return (
-                <tr>
-                    <td colSpan="4">
-                        Loading products...
-                    </td>
-                </tr>
-            );
-        };
-        if (query.length === 0) {
-            return (
-                <tr>
-                    <td colSpan="4">
-                        There are no requests available
-                    </td>
-                </tr>
-            );
-        };
-        
-        // For the actions, simply add another <td> with buttons or links towards an action
-            if (approvedList === 1){
-                return query.map((a) => {
-                    return (
-                            <tr key={a.request_id} className="table-contents-odd" >
-                                <td>{a.request_id}</td>
-                                <td>{a.branch_add}</td>
-                                <td>{a.lastName}</td>
-                            </tr> //edit here and test from here
-
-                    );
-                });
-            }
-            else if(approvedList === 2){
-                return query.map((a) => {
-                    return (
-                            <tr key={a.order_id} className="table-contents-odd" >
-                                <td>{a.order_id}</td>
-                                <td>{a.branch_add}</td>
-                                <td>{a.lastName}</td>
-                            </tr> //edit here and test from here
-
-                    );
-                });
-            }
-            else if (approvedList === 3){
-                return query.map((a) => {
-                    return (
-                            <tr key={a.consultation_id} className="table-contents-odd" >
-                                <td>{a.consultation_id}</td>
-                                <td>{a.lastName}</td>
-                            </tr> //edit here and test from here
-
-                    );
-                });
-            }
-            if (approvedList === 4){
-                return query.map((a) => {
-                    return (
-                            <tr key={a.request_id} className="table-contents-odd" >
-                                <td>{a.request_id}</td>
-                                <td>{a.branch_add}</td>
-                                <td>{a.lastName}</td>
-                            </tr> //edit here and test from here
-
-                    );
-                });
-            }
-            else if(approvedList === 5){
-                return query.map((a) => {
-                    return (
-                            <tr key={a.order_id} className="table-contents-odd" >
-                                <td>{a.order_id}</td>
-                                <td>{a.branch_add}</td>
-                                <td>{a.lastName}</td>
-                            </tr> //edit here and test from here
-
-                    );
-                });
-            }
-            else if (approvedList === 6){
-                return query.map((a) => {
-                    return (
-                            <tr key={a.consultation_id} className="table-contents-odd" >
-                                <td>{a.consultation_id}</td>
-                                <td>{a.lastName}</td>
-                            </tr> //edit here and test from here
-
-                    );
-                });
-            }
-
-            
-       
-    }
-
     return ( 
         <div> 
             <h1>Admin page {user_id} {branch_id} </h1> 
@@ -173,6 +78,7 @@ export default function Admin(){
                             <th>Request ID</th>
                             <th>Brand Address</th>
                             <th>Lastname</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody className="table-contents">
@@ -188,6 +94,7 @@ export default function Admin(){
                             <th>Order ID</th>
                             <th>Brand Address</th>
                             <th>Lastname</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody className="table-contents">
@@ -203,6 +110,7 @@ export default function Admin(){
                             <th>Consultation ID</th>
                             <th>Branch Add</th>
                             <th>Lastname</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody className="table-contents">
@@ -219,6 +127,7 @@ export default function Admin(){
                             <th>Request ID</th>
                             <th>Brand Address</th>
                             <th>Lastname</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody className="table-contents">
@@ -234,6 +143,7 @@ export default function Admin(){
                             <th>Order ID</th>
                             <th>Brand Address</th>
                             <th>Lastname</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody className="table-contents">
@@ -249,6 +159,7 @@ export default function Admin(){
                             <th>Consultation ID</th>
                             <th>Branch Add</th>
                             <th>Lastname</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody className="table-contents">
