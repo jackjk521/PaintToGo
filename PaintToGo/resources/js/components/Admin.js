@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 import {useNavigate} from "react-router-dom"
+import SideAd from './SidebarAdmin'
 
 export default function Admin(){
     const user_id = sessionStorage.getItem('user_id');
@@ -161,6 +162,7 @@ export default function Admin(){
 
     return ( 
         <div> 
+            <SideAd/>
             <h1>Admin page {user_id} {branch_id} </h1> 
 
             <button onClick = {logOut}> LogOut </button>

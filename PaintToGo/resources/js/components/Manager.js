@@ -1,4 +1,5 @@
 import {useNavigate} from "react-router-dom"
+import SideMan from './SidebarManager'
 
 export default function Manager(){
     const user_id = sessionStorage.getItem('user_id');
@@ -9,9 +10,11 @@ export default function Manager(){
         navigate('/');
     }
 
-    return ( <div> 
-        <h1>Manager page {user_id} {branch_id}</h1> 
-        <button onClick = {logOut}> LogOut </button> 
+    return (
+        <div>
+            <SideMan/>
+                <h1>Manager page {user_id} {branch_id}</h1>
+                <button onClick = {logOut}> LogOut </button>
         </div>
     )
 }
