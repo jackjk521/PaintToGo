@@ -154,29 +154,45 @@ class TransactionListController extends Controller
     {
         $key = $req->input('row_key');
 
-        // $query = DB::table('requestList')
-        //         ->where('requestlist.request_id', $key)
-        //         ->join('request','request.request_id', '=', 'requestlist.request_id')
-        //         ->join('product','product.product_id', '=', 'requestlist.product_id')
-        //         ->get();
-        return response()->json([
-                'key' -> $key,
-        ]);
+        $query = DB::table('requestList')
+                ->where('requestlist.request_id', $key)
+                ->join('request','request.request_id', '=', 'requestlist.request_id')
+                ->join('product','product.product_id', '=', 'requestlist.product_id')
+                ->get();
+        // return response()->json([
+        //         'key' -> $key,
+        // ]);
 
 
-        // if($query){
-        //     return response()->json([
+        if($query){
+            return response()->json([
  
-        //         'viewRequest' => $query,
-        //         'key' => $key
+                'viewRequest' => $query,
+                'key' => $key
 
-        //     ]);
-        //     return $query;
-        // }  
-        // else{
-        //     return "Can't retrieve data";
-        // }
+            ]);
+            return $query;
+        }  
+        else{
+            return "Can't retrieve data";
+        }
 
+    }
+
+    // approve button for request, order and consultation
+
+    public function approveRBtn(Request $req){
+
+        $req_id = ''; // to get request id
+
+        $upStatus = DB :: table("request")
+                    ->where('request_id',$req_id)
+                    ->update(['status' => 'Approved']);
+        if($upStatus){
+            return response()->json([
+                'message' => "Sucessfully Approved Request"
+            ]);
+        }
     }
    
 }

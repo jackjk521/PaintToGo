@@ -6,43 +6,27 @@ export const renderAList = (query, approvedList) => {
     // if and else if as each has a unique id that is saved in each row
     // and i cant find a way how to get the id for each without doing this
 
-
     const [requestList, setRequestList] = useState([]);
-
-    const [rowInfo, setRowInfo] = useState({
-                row_key:'',
-            });
 
     const approveBtn = () => {
             console.log("approve btn pressed");
     }
 
-    const handleInput = (e) =>{
-        const {name, value} = e.target;
-        
-        setRowInfo(prevState =>({
-            ...prevState,
-            [name] : value
-        }))
+    const viewBtn  = async (e) =>{;
 
-        viewBtn();
-    }
-
-    const viewBtn  = async (e) =>{
         try{
-            const res = await api.viewRList(rowInfo);
+            const res = await api.viewRList({params : {row_key : e.target.value}});
             setRequestList(res.data.viewRequest);    
-            console.log(res.data);
+            console.log(requestList); 
 
-            if(res.data.status === 200)
+            if(res.status === 200)
             {
-                // setRowInfo({
-                //     row_key:'',
-                // });
-                console.log(rowInfo.row_key);
+                console.log(res.data);
+
+                console.log("successful");
             }
             else{
-                    console.log(res);
+                console.log(res);
             }
         }
         catch (err){
@@ -79,7 +63,9 @@ export const renderAList = (query, approvedList) => {
                             <td>{a.request_id}</td>
                             <td>{a.branch_add}</td>
                             <td>{a.lastName}</td>
-                            <td><button name = 'row_key' onClick = {handleInput} value = {a.request_id}> View  </button> </td> 
+                            <td>
+                            <button name = 'row_key' type="text" onClick={viewBtn} value = {a.request_id}> View  </button>
+                            </td> 
                         </tr> //edit here and test from here
 
                 );

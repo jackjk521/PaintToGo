@@ -5307,8 +5307,8 @@ var BASE_API_URL = 'http://127.0.0.1:8000/api';
     return axios.get("".concat(BASE_API_URL, "/nCList"));
   },
   //view requests, orders, consultations
-  viewRList: function viewRList(rowInfo) {
-    return axios.get("".concat(BASE_API_URL, "/viewRList"), rowInfo);
+  viewRList: function viewRList(params) {
+    return axios.get("".concat(BASE_API_URL, "/viewRList"), params);
   }
 });
 
@@ -5641,8 +5641,7 @@ function Admin() {
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-          className: "table-contents",
-          children: (0,_operations_Functions__WEBPACK_IMPORTED_MODULE_3__.renderAList)(approvedR, 1)
+          className: "table-contents"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
         className: "table",
@@ -5660,8 +5659,7 @@ function Admin() {
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-          className: "table-contents",
-          children: (0,_operations_Functions__WEBPACK_IMPORTED_MODULE_3__.renderAList)(approvedO, 2)
+          className: "table-contents"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
         className: "table",
@@ -5679,8 +5677,7 @@ function Admin() {
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-          className: "table-contents",
-          children: (0,_operations_Functions__WEBPACK_IMPORTED_MODULE_3__.renderAList)(approvedC, 3)
+          className: "table-contents"
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -6225,12 +6222,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6256,25 +6247,8 @@ var renderAList = function renderAList(query, approvedList) {
       requestList = _useState2[0],
       setRequestList = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
-    row_key: ''
-  }),
-      _useState4 = _slicedToArray(_useState3, 2),
-      rowInfo = _useState4[0],
-      setRowInfo = _useState4[1];
-
   var approveBtn = function approveBtn() {
     console.log("approve btn pressed");
-  };
-
-  var handleInput = function handleInput(e) {
-    var _e$target = e.target,
-        name = _e$target.name,
-        value = _e$target.value;
-    setRowInfo(function (prevState) {
-      return _objectSpread(_objectSpread({}, prevState), {}, _defineProperty({}, name, value));
-    });
-    viewBtn();
   };
 
   var viewBtn = /*#__PURE__*/function () {
@@ -6284,38 +6258,41 @@ var renderAList = function renderAList(query, approvedList) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.prev = 0;
-              _context.next = 3;
-              return _api_api__WEBPACK_IMPORTED_MODULE_2__["default"].viewRList(rowInfo);
+              ;
+              _context.prev = 1;
+              _context.next = 4;
+              return _api_api__WEBPACK_IMPORTED_MODULE_2__["default"].viewRList({
+                params: {
+                  row_key: e.target.value
+                }
+              });
 
-            case 3:
+            case 4:
               res = _context.sent;
               setRequestList(res.data.viewRequest);
-              console.log(res.data);
+              console.log(requestList);
 
-              if (res.data.status === 200) {
-                // setRowInfo({
-                //     row_key:'',
-                // });
-                console.log(rowInfo.row_key);
+              if (res.status === 200) {
+                console.log(res.data);
+                console.log("successful");
               } else {
                 console.log(res);
               }
 
-              _context.next = 12;
+              _context.next = 13;
               break;
 
-            case 9:
-              _context.prev = 9;
-              _context.t0 = _context["catch"](0);
+            case 10:
+              _context.prev = 10;
+              _context.t0 = _context["catch"](1);
               console.log(_context.t0);
 
-            case 12:
+            case 13:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 9]]);
+      }, _callee, null, [[1, 10]]);
     }));
 
     return function viewBtn(_x) {
@@ -6356,13 +6333,14 @@ var renderAList = function renderAList(query, approvedList) {
           children: a.branch_add
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
           children: a.lastName
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("td", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             name: "row_key",
-            onClick: handleInput,
+            type: "text",
+            onClick: viewBtn,
             value: a.request_id,
             children: " View  "
-          }), " "]
+          })
         })]
       }, a.request_id) //edit here and test from here
       ;

@@ -130,7 +130,7 @@ export default function Admin(){
                         </tr>
                     </thead>
                     <tbody className="table-contents">
-                        {renderAList(approvedR, 1)}
+                   
                     </tbody>
                 </table>
 
@@ -146,7 +146,7 @@ export default function Admin(){
                         </tr>
                     </thead>
                     <tbody className="table-contents">
-                        {renderAList(approvedO, 2)}
+                       
                     </tbody>
                 </table>
 
@@ -162,7 +162,7 @@ export default function Admin(){
                         </tr>
                     </thead>
                     <tbody className="table-contents">
-                        {renderAList(approvedC, 3)}
+                    
                     </tbody>
                 </table>
             </div>

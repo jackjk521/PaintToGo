@@ -32,7 +32,7 @@ export default {
     },
 
     //view requests, orders, consultations
-    viewRList: (rowInfo) => {
-        return axios.get(`${BASE_API_URL}/viewRList`, rowInfo);
+    viewRList: (params) => {
+        return axios.get(`${BASE_API_URL}/viewRList`, params);
     },
 }
