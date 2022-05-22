@@ -1,5 +1,6 @@
 import React , {useState} from "react";
-import "./LoginRegister.css";
+import "../../css/LoginRegister.css";
+import api from "../api/api";
 import {BrowserRouter, Routes, Route, Link, useNavigate, withRouter} from 'react-router-dom';   
 
 const LoginRegister = () => {
@@ -26,39 +27,50 @@ const LoginRegister = () => {
   const signUp = async (e) =>{
     e.preventDefault();
 
-    const res = await axios.post('http://127.0.0.1:8000/api/signUp', Info);
-
-    if(res.data.status === 200)
-    {
-      console.log(res.data.message);
-       setInfo({
-          firstname:'',
-          lastname:'',
-          email:'',
-          password:'',
-          user_contact:''
-        });
+    try{
+      const res = await api.signUp(Info);
+      if(res.data.status === 200)
+      {
+        console.log(res.data.message);
+         setInfo({
+            firstname:'',
+            lastname:'',
+            email:'',
+            password:'',
+            user_contact:''
+          });
+      }
+      else{
+            console.log(res);
+      }
     }
+    catch(err){
+            console.log(err);
+    }
+   
   }
 
   const login = async (e) =>{
     e.preventDefault();
 
     try{
-      const res = await axios.post('http://127.0.0.1:8000/api/login', Info);
-      
-      if(res.data.status === 200)
-      {
-        console.log(res.data.message);
-         setInfo({
-              email: '',
-              password: '',
-          });
-        if(res.data.status === 200) {
-          navigate('/dashboard');
-        }
-      }
-      console.log(res);
+      const res = await api.login(Info);
+        if(res.data.status === 200)
+        {
+            setInfo({
+                email: '',
+                password: '',
+            });
+
+            console.log(res);
+            console.log(res.data.message);
+
+            sessionStorage.setItem('level_name', res.data.user_level);
+            sessionStorage.setItem('user_id', res.data.user_id);
+            sessionStorage.setItem('branch_id', res.data.branch_id);
+
+            navigate("/dashboard");
+        }      
     }
     catch(err){
       console.log(err);

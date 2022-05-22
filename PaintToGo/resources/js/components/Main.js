@@ -6,8 +6,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 import ConsultationForm from './ConsultationForm';
 import OrderPage from './OrderPage';
 import RequestPage from './RequestPage';
+import { BrowserRouter, Routes, Route, useNavigate, Router} from 'react-router-dom'
+import LoginRegister from './LoginRegister'
+import Dashboard from './Dashboard'
+
 
 function Main() {
+   
     return (
         <div className="container">
             <BrowserRouter>
@@ -18,16 +23,19 @@ function Main() {
                 </div>
                 <div>
                     <Routes>
-                        <Route path="/" element = {<ConsultationForm/>}/> 
+
                         <Route path="/consult" element = {<ConsultationForm/>}/> 
                         <Route path="/order" element = {<OrderPage/>} /> 
                         <Route path="/request" element = {<RequestPage/>}/>
+                        <Route path="/" element = {<LoginRegister/>}/> 
+                        <Route path="/dashboard" element = {<Dashboard/>}/>
                     </Routes>
                 </div>
 
             </BrowserRouter>
-            
+    
         </div>
+
     );
 }
 
