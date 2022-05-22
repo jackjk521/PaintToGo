@@ -6,7 +6,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.js';
 import ConsultationForm from './ConsultationForm';
 import OrderPage from './OrderPage';
 import RequestPage from './RequestPage';
-import { BrowserRouter, Routes, Route, useNavigate, Router} from 'react-router-dom'
 import LoginRegister from './LoginRegister'
 import Dashboard from './Dashboard'
 
@@ -17,6 +16,7 @@ function Main() {
         <div className="container">
             <BrowserRouter>
                 <div className = "Header">
+                    <span className='Menu'> <Link to="/"> Home </Link></span>
                     <span className='Menu'> <Link to="/consult"> Consultation </Link></span>
                     <span className='Menu'> <Link to="/order"> Orders </Link></span>
                     <span className='Menu'> <Link to ="/request"> Requests </Link></span>

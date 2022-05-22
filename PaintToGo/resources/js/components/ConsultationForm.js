@@ -4,6 +4,7 @@ import Axios from 'axios';
 import MessageQueue, { useMessageQueue } from "./MessageQueue";
 
 const ConsultationForm = () => {
+    const user_id = sessionStorage.getItem('user_id');
     const [desc, setDesc] = useState('');
     const { addMessage, removeMessage, messages } = useMessageQueue();
 
@@ -18,7 +19,7 @@ const ConsultationForm = () => {
 
     const submitConsultation = () => {
         const consultations = {
-            user_id : 1,
+            user_id : user_id,
             consult_description : desc,
             status : 3,
         }

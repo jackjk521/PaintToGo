@@ -23,6 +23,7 @@ const Icon = styled.img`
 `;
 
 const OrderCart = (props) => {
+    const user_id = sessionStorage.getItem('user_id');
     const {setRenderComponent, cart, setCart, addItem, removeItem} = props;
     const { addMessage, removeMessage, messages } = useMessageQueue();
     const[branches, setBranches] = useState([]);
@@ -50,7 +51,7 @@ const OrderCart = (props) => {
             const branch = branches.filter(b => b.branch_name.includes(selectedBranch));
             const branch_id = branch[0].branch_id;
             const newOrders = {
-                user_id : '1',
+                user_id : user_id,
                 branch_id : branch_id,
                 status : 3
             }

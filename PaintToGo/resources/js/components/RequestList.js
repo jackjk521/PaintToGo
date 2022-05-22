@@ -21,11 +21,13 @@ const Icon = styled.img`
 `;
 
 const RequestList = (props) => {
+    const user_id = sessionStorage.getItem('user_id');
+    const branch_id = sessionStorage.getItem('branch_id');
     const { setRenderComponent, requestlist, setRequestlist, addItem, removeItem} = props;
     const { addMessage, removeMessage, messages } = useMessageQueue();
     const[requestItem, setrequestItem] = useState({
-        user_id : '1',
-        branch_id : '1',
+        user_id : user_id,
+        branch_id : branch_id,
         status : 3,
     });
 
