@@ -1,13 +1,57 @@
+import React, { useEffect, useState } from "react"
+import api from "../api/api";
+
 export const renderAList = (query, approvedList) => { 
     // approvedList is an int that corresponds to the 
     // if and else if as each has a unique id that is saved in each row
     // and i cant find a way how to get the id for each without doing this
 
 
+    const [requestList, setRequestList] = useState([]);
+
+    const [rowInfo, setRowInfo] = useState({
+                row_key:'',
+            });
+
     const approveBtn = () => {
             console.log("approve btn pressed");
     }
 
+    const handleInput = (e) =>{
+        const {name, value} = e.target;
+        
+        setRowInfo(prevState =>({
+            ...prevState,
+            [name] : value
+        }))
+
+        viewBtn();
+    }
+
+    const viewBtn  = async (e) =>{
+        try{
+            const res = await api.viewRList(rowInfo);
+            setRequestList(res.data.viewRequest);    
+            console.log(res.data);
+
+            if(res.data.status === 200)
+            {
+                // setRowInfo({
+                //     row_key:'',
+                // });
+                console.log(rowInfo.row_key);
+            }
+            else{
+                    console.log(res);
+            }
+        }
+        catch (err){
+            console.log(err);
+        }
+    }
+
+
+    // query options 
     if (!query) {
         return (
             <tr>
@@ -35,6 +79,7 @@ export const renderAList = (query, approvedList) => {
                             <td>{a.request_id}</td>
                             <td>{a.branch_add}</td>
                             <td>{a.lastName}</td>
+                            <td><button name = 'row_key' onClick = {handleInput} value = {a.request_id}> View  </button> </td> 
                         </tr> //edit here and test from here
 
                 );
@@ -57,7 +102,7 @@ export const renderAList = (query, approvedList) => {
                 return (
                         <tr key={a.consultation_id} className="table-contents-odd" >
                             <td>{a.consultation_id}</td>
-                            <td>{a.lastName}</td>
+                            <td>{a.lastName}</td>    
                         </tr> //edit here and test from here
 
                 );

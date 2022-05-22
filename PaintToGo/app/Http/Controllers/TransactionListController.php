@@ -145,5 +145,38 @@ class TransactionListController extends Controller
             return "No null transactions";
         }
     }
+
+
+
+    // view contents of a request, order or consultations
+
+    public function viewRList(Request $req)
+    {
+        $key = $req->input('row_key');
+
+        // $query = DB::table('requestList')
+        //         ->where('requestlist.request_id', $key)
+        //         ->join('request','request.request_id', '=', 'requestlist.request_id')
+        //         ->join('product','product.product_id', '=', 'requestlist.product_id')
+        //         ->get();
+        return response()->json([
+                'key' -> $key,
+        ]);
+
+
+        // if($query){
+        //     return response()->json([
+ 
+        //         'viewRequest' => $query,
+        //         'key' => $key
+
+        //     ]);
+        //     return $query;
+        // }  
+        // else{
+        //     return "Can't retrieve data";
+        // }
+
+    }
    
 }
