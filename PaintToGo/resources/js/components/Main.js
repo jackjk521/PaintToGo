@@ -9,7 +9,7 @@ import Profile from './Profile';
 function Main() {
    
     return (
-        <div className="container">
+        <div>
             <BrowserRouter>
                 <div>
                     <Routes>

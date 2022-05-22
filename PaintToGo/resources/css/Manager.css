@@ -1,0 +1,14 @@
+.page {
+    background: #825da7;
+    height: 100vh;
+    width: 100%;
+  }
+
+nav {
+  background-color: bisque;
+}
+
+.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+}

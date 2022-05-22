@@ -1,0 +1,15 @@
+.page {
+    background: rgb(185, 123, 123);
+    height: 100%;
+    width: 100%;
+  }
+
+nav {
+  background-color: bisque;
+}
+
+.content {
+  margin-top: 64px;
+  margin-left: 200px;
+  padding: 20px;
+}

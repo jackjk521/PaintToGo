@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react"
 import api from "../api/api";
 import {useNavigate} from "react-router-dom"
 import SideAd from './SidebarAdmin'
+import "../../css/Admin.css";
+import {BsFillPersonFill} from 'react-icons/bs';
+import { NavLink } from "react-router-dom";
 
 export default function Admin(){
     const user_id = sessionStorage.getItem('user_id');
@@ -161,8 +164,19 @@ export default function Admin(){
     }
 
     return ( 
-        <div> 
+        <div className="page">
+            <nav class="navbar fixed-top navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">
+                    Color City Paint Store
+                </a>
+                <NavLink className="nav-link" to="/profile">
+                    <h4 class="text-light"><BsFillPersonFill/></h4>
+                </NavLink>
+            </nav>
+            
             <SideAd/>
+            
+            <div className="content">
             <h1>Admin page {user_id} {branch_id} </h1> 
 
             <button onClick = {logOut}> LogOut </button>
@@ -257,6 +271,7 @@ export default function Admin(){
                         {renderAList(nullC, 6)}
                     </tbody>
                 </table>
+            </div>
             </div>
 
         </div>
