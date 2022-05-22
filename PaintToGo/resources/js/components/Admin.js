@@ -16,9 +16,6 @@ export default function Admin(){
     const [ nullC , setNullCList ] = useState([]);
 
     
-
-
-
     useEffect(() => {
        fetchApprovedList();
        fetchNullList();
@@ -30,6 +27,7 @@ export default function Admin(){
         try{
             const resR = await api.approvedR();
             setApprovedRList(resR.data.approvedRequests);          
+            console.log(resR.data);
             const resO = await api.approvedO();
             setApprovedOList(resO.data.approvedOrders);
             const resC = await api.approvedC();
@@ -115,6 +113,56 @@ export default function Admin(){
                     </thead>
                     <tbody className="table-contents">
                         {renderAList(approvedC, 3)}
+                    </tbody>
+                </table>
+            </div>
+
+            <br></br>
+
+            <div>
+                <h1> View details here  </h1>
+                <table className="table">
+                    <thead className="table-header">
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Brand Address</th>
+                            <th>Lastname</th>
+                        </tr>
+                    </thead>
+                    <tbody className="table-contents">
+                   
+                    </tbody>
+                </table>
+
+                <br></br>
+
+                <table className="table">
+                    <thead className="table-header">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Brand Address</th>
+                            <th>Lastname</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody className="table-contents">
+                       
+                    </tbody>
+                </table>
+
+                <br></br>
+
+                <table className="table">
+                    <thead className="table-header">
+                        <tr>
+                            <th>Consultation ID</th>
+                            <th>Branch Add</th>
+                            <th>Lastname</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody className="table-contents">
+                    
                     </tbody>
                 </table>
             </div>

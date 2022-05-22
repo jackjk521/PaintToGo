@@ -34,6 +34,7 @@ Route::get('/nRList', [TransactionListController::class, 'nullR']);
 Route::get('/nOList', [TransactionListController::class, 'nullO']);  
 Route::get('/nCList', [TransactionListController::class, 'nullC']);  
 
+Route::get('/viewRList', [TransactionListController::class, 'viewRList']);  
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

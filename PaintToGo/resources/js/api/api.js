@@ -30,4 +30,9 @@ export default {
     nullC: () => {
         return axios.get(`${BASE_API_URL}/nCList`);
     },
+
+    //view requests, orders, consultations
+    viewRList: (params) => {
+        return axios.get(`${BASE_API_URL}/viewRList`, params);
+    },
 }
