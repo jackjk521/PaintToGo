@@ -11,7 +11,7 @@ Cotinue here:
 - Create a database locally named `PaintToGo` (utf8_general_ci is the default, no other changes required)
 - Download composer https://getcomposer.org/download/
 - Pull or download project from GitHub.
-- Open your console change to your project root directory (cd) and run `mv .env.example .env` )
+- Open your console change to your project root directory (cd) and run `mv .env.example .env`
 - Open the console and cd your project root directory
 - Run `composer install`
 - Run `php artisan key:generate` 
