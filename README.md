@@ -4,6 +4,7 @@
 - Download XAMPP: https://www.apachefriends.org/download.html
 - Install XAMPP, open as administrator and install services: Apache and MySQL
 - After installing the two services, start them through their respective `Start` button 
+- Click the MySQL `Admin` button to open up PHPMyAdmin. This is where you can create your database.
  
 cmder will be refered as console (this can be your usual windows terminal, Windows Powershell, terminal within Visual Studio Code, or Gitbash console)
 
