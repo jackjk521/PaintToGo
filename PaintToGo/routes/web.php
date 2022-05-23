@@ -20,6 +20,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/order', function () {
+    return view('welcome');
+});
+
+Route::get('/consult', function () {
+    return view('welcome');
+});
+
+Route::get('/request', function () {
+    return view('welcome');
+});
 Route::get('/dashboard', function () {
     return view('welcome');
 });

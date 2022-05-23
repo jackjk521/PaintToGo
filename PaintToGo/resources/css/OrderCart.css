@@ -1,0 +1,17 @@
+.orderCartBody {
+    width: 50%;
+    margin: 20px auto;
+    border-width: 1px;
+    border-color: black;
+    display: block;
+    padding: 15px;
+}
+
+.dropdown {
+    display: inline;
+    margin-left: 5px;
+}
+
+.dropdown button {
+    width: 250px;
+}

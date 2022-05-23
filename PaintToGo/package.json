@@ -12,6 +12,10 @@
     "devDependencies": {
         "@babel/preset-react": "^7.13.13",
         "@popperjs/core": "^2.10.2",
+        "@tailwindcss/postcss7-compat": "^2.0.2",
+        "@types/bootstrap": "^5.1.11",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
         "tailwindcss": "^2.0.1-compat",
         "autoprefixer": "^9.8.8",
         "axios": "^0.21.4",
@@ -25,10 +29,12 @@
         "react-dom": "^17.0.2",
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.32.11",
-        "sass-loader": "^11.0.1",
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
+        "sass-loader": "^11.0.1"
     },
     "dependencies": {
-        "react-router-dom": "^6.0.2"
+        "mdb-react-ui-kit": "^3.0.0",
+        "react-bootstrap": "^2.3.1",
+        "react-router-dom": "^6.0.2",
+        "styled-components": "^5.3.5"
     }
 }
