@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 import {useNavigate} from "react-router-dom"
-import { renderAList } from "../operations/Functions";
+import { renderAList } from "../operations/renderAList";
+import NullRequestTable from "./NullRequestTable";
+import NullOrderTable from "./NullOrdersTable";
+import NullConsultationTable from "./NullConsultationTable";
 
 export default function Admin(){
     const user_id = sessionStorage.getItem('user_id');
@@ -11,14 +14,8 @@ export default function Admin(){
     const [ approvedO , setApprovedOList ] = useState([]);
     const [ approvedC , setApprovedCList ] = useState([]);
 
-    const [ nullR , setNullRList ] = useState([]);
-    const [ nullO , setNullOList ] = useState([]);
-    const [ nullC , setNullCList ] = useState([]);
-
-    
     useEffect(() => {
        fetchApprovedList();
-       fetchNullList();
     },[]);
 
         
@@ -27,7 +24,6 @@ export default function Admin(){
         try{
             const resR = await api.approvedR();
             setApprovedRList(resR.data.approvedRequests);          
-            console.log(resR.data);
             const resO = await api.approvedO();
             setApprovedOList(resO.data.approvedOrders);
             const resC = await api.approvedC();
@@ -37,24 +33,6 @@ export default function Admin(){
             console.log(err);
         }
     }
-
-    // Fetching Null Status from request, orders and consultations table
-
-    const fetchNullList = async (e) => {
-        try{
-            const resNR = await api.nullR();
-            setNullRList(resNR.data.nullRequests);    
-            const resNO = await api.nullO();
-            setNullOList(resNO.data.nullOrders);   
-            const resNC = await api.nullC();
-            setNullCList(resNC.data.nullConsultations);   
-            }
-        catch (err){
-            console.log(err);
-        }
-    }
-
-
 
     const navigate = useNavigate();
     function logOut() {
@@ -169,52 +147,12 @@ export default function Admin(){
 
             <div>
                 <h1> NULL statuses </h1>
-                <table className="table">
-                    <thead className="table-header">
-                        <tr>
-                            <th>Request ID</th>
-                            <th>Brand Address</th>
-                            <th>Lastname</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody className="table-contents">
-                        {renderAList(nullR, 4)}
-                    </tbody>
-                </table>
-
-                <br></br>
-
-                <table className="table">
-                    <thead className="table-header">
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Brand Address</th>
-                            <th>Lastname</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody className="table-contents">
-                        {renderAList(nullO, 5)}
-                    </tbody>
-                </table>
-
-                <br></br>
-
-                <table className="table">
-                    <thead className="table-header">
-                        <tr>
-                            <th>Consultation ID</th>
-                            <th>Branch Add</th>
-                            <th>Lastname</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody className="table-contents">
-                        {renderAList(nullC, 6)}
-                    </tbody>
-                </table>
+                    {NullRequestTable()}
+                    {NullOrderTable()}
+                    {NullConsultationTable()}
             </div>
+
+            
 
         </div>
     )

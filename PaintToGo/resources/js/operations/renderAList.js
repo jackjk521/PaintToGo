@@ -2,23 +2,16 @@ import React, { useEffect, useState } from "react"
 import api from "../api/api";
 
 export const renderAList = (query, approvedList) => { 
-    // approvedList is an int that corresponds to the 
-    // if and else if as each has a unique id that is saved in each row
-    // and i cant find a way how to get the id for each without doing this
 
     const [requestList, setRequestList] = useState([]);
+    const [orderList, setOrderList] = useState([]);
 
-    const approveBtn = () => {
-            console.log("approve btn pressed");
-    }
-
-    const viewBtn  = async (e) =>{;
-
+   
+    const fetchRData = async(e) => {
         try{
             const res = await api.viewRList({params : {row_key : e.target.value}});
-            setRequestList(res.data.viewRequest);    
-            console.log(requestList); 
-
+            setRequestList(res.data.viewRequest);  
+         
             if(res.status === 200)
             {
                 console.log(res.data);
@@ -27,13 +20,34 @@ export const renderAList = (query, approvedList) => {
             }
             else{
                 console.log(res);
-            }
+            }  
         }
-        catch (err){
-            console.log(err);
+        catch(err){
+            return (err);
         }
+
     }
 
+    const fetchOData = async(e) => {
+        try{
+            const res = await api.viewOList({params : {row_key : e.target.value}});
+            setOrderList(res.data.viewOrders);  
+         
+            if(res.status === 200)
+            {
+                console.log(res.data);
+
+                console.log("successful");
+            }
+            else{
+                console.log(res);
+            }  
+        }
+        catch(err){
+            return (err);
+        }
+
+    }
 
     // query options 
     if (!query) {
@@ -64,10 +78,10 @@ export const renderAList = (query, approvedList) => {
                             <td>{a.branch_add}</td>
                             <td>{a.lastName}</td>
                             <td>
-                            <button name = 'row_key' type="text" onClick={viewBtn} value = {a.request_id}> View  </button>
+                            <button name = 'row_key' type="text" onClick= {fetchRData} value = {a.request_id}> View  </button>
                             </td> 
+                            
                         </tr> //edit here and test from here
-
                 );
             });
         }
@@ -78,6 +92,9 @@ export const renderAList = (query, approvedList) => {
                             <td>{a.order_id}</td>
                             <td>{a.branch_add}</td>
                             <td>{a.lastName}</td>
+                            <td>
+                            <button name = 'row_key' type="text" onClick= {fetchOData} value = {a.order_id}> View  </button>
+                            </td>
                         </tr> //edit here and test from here
 
                 );
@@ -93,42 +110,6 @@ export const renderAList = (query, approvedList) => {
 
                 );
             });
-        }
-        if (approvedList === 4){  // null status lists starts here
-            return query.map((a) => {
-                return (
-                        <tr key={a.request_id} className="table-contents-odd" >
-                            <td>{a.request_id}</td>
-                            <td>{a.branch_add}</td>
-                            <td><button onClick = {approveBtn}> Approve</button> </td> 
-                        </tr> //add the approve function here 
 
-                );
-            });
-        }
-        else if(approvedList === 5){
-            return query.map((a) => {
-                return (
-                        <tr key={a.order_id} className="table-contents-odd" >
-                            <td>{a.order_id}</td>
-                            <td>{a.branch_add}</td>
-                            <td>{a.lastName}</td>
-                            <td><button onClick = {approveBtn}> Approve</button> </td>
-                        </tr> //edit here and test from here
-
-                );
-            });
-        }
-        else if (approvedList === 6){
-            return query.map((a) => {
-                return (
-                        <tr key={a.consultation_id} className="table-contents-odd" >
-                            <td>{a.consultation_id}</td>
-                            <td>{a.lastName}</td>
-                            <td><button onClick = {approveBtn}> Approve</button> </td>
-                        </tr> //edit here and test from here
-
-                );
-            });
         }
 }
