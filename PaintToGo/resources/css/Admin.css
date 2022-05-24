@@ -1,0 +1,30 @@
+.table {
+	width: 90%;
+    margin: auto;
+	border: 1px solid;
+}
+
+.table td {
+    border: none;
+}
+
+/* .table-header {
+    color: white;
+	width:100%;
+	background:#000;
+} */
+
+.table-header th {
+    padding: 10px;
+    background-color: #222529;
+    color: white;
+}
+
+.table-contents-odd {
+    text-align: left;
+    background-color: lightgrey;
+}
+
+.table-contents-even {
+    text-align: left;
+}

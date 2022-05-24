@@ -35,7 +35,8 @@ Route::get('/nOList', [TransactionListController::class, 'nullO']);
 Route::get('/nCList', [TransactionListController::class, 'nullC']);  
 
 Route::get('/viewRList', [TransactionListController::class, 'viewRList']);  
-Route::get('/viewOList', [TransactionListController::class, 'viewOList']);  
+Route::get('/viewOList', [TransactionListController::class, 'viewOList']);
+Route::get('/viewCList', [TransactionListController::class, 'viewCList']);    
 
 
 Route::get('/approveRBtn', [TransactionListController::class, 'approveRBtn']);  

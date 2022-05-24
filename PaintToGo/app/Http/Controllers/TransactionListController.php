@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades \DB;
+use Illuminate\Support\Facades\DB;
 use Redirect, Response, File;
-use Illuminate\Support\Facades \Hash;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
@@ -189,6 +189,30 @@ class TransactionListController extends Controller
             return response()->json([
  
                 'viewOrders' => $query,
+                'key' => $key
+
+            ]);
+            return $query;
+        }  
+        else{
+            return "Can't retrieve data";
+        }
+
+    }
+
+    public function viewCList(Request $req)
+    {
+        $key = $req->input('row_key');
+
+        $query = DB::table('consultations')
+                ->where('consultations.consultation_id', $key)
+                ->join('users','users.user_id', '=', 'consultations.user_id')
+                ->get();
+
+        if($query){
+            return response()->json([
+ 
+                'viewConsultations' => $query,
                 'key' => $key
 
             ]);

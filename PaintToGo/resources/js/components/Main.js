@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import ConsultationForm from './ConsultationForm';
@@ -28,11 +28,10 @@ function Main() {
                 </div>
                 <div>
                     <Routes>
-
-                        <Route path="/consult" element = {<ConsultationForm/>}/> 
-                        <Route path="/order" element = {<OrderPage/>} /> 
+                        <Route path="/consult" element = {<ConsultationForm/>}/>
+                        <Route path="/order" element = {<OrderPage/>} />
                         <Route path="/request" element = {<RequestPage/>}/>
-                        <Route path="/" element = {<LoginRegister/>}/> 
+                        <Route path="/" element = {<LoginRegister/>}/>
                         <Route path="/dashboard" element = {<Dashboard/>}/>
 
                         <Route path="/adminNullTables" element = {<AdminNullTablesPage/>}/>
@@ -49,6 +48,4 @@ function Main() {
 
 export default Main;
 
-if (document.getElementById('main')) {
-    ReactDOM.render(<Main />, document.getElementById('main'));
-}
+ReactDOM.render(<Main />, document.getElementById('main'));

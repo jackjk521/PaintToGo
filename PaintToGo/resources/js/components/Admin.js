@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
-import {useNavigate} from "react-router-dom"
+import "../../css/Admin.css";
+import { useNavigate } from "react-router-dom"
 import { renderAList } from "../operations/renderAList";
 import NullRequestTable from "./NullRequestTable";
 import NullOrderTable from "./NullOrderTable";
 import NullConsultationTable from "./NullConsultationTable";
+import DisplayModal from "./DisplayModal";
 
 export default function Admin(){
     const user_id = sessionStorage.getItem('user_id');
@@ -13,6 +15,9 @@ export default function Admin(){
     const [ approvedR , setApprovedRList ] = useState([]);
     const [ approvedO , setApprovedOList ] = useState([]);
     const [ approvedC , setApprovedCList ] = useState([]);
+
+    const [ openModal, setOpenModal ] = useState(false);
+
 
     useEffect(() => {
        fetchApprovedList();
@@ -30,7 +35,7 @@ export default function Admin(){
             setApprovedCList(resC.data.approvedConsultations);
             }
         catch (err){
-            console.log(err);
+            //console.log(err);
         }
     }
 
@@ -38,6 +43,10 @@ export default function Admin(){
     function logOut() {
         sessionStorage.clear();
         navigate('/');
+    }
+
+    const open = () => {
+        setOpenModal(true);
     }
 
     return ( 
@@ -84,7 +93,6 @@ export default function Admin(){
                     <thead className="table-header">
                         <tr>
                             <th>Consultation ID</th>
-                            <th>Branch Add</th>
                             <th>Lastname</th>
                             <th>Action</th>
                         </tr>
