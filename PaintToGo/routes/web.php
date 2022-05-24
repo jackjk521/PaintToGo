@@ -23,3 +23,7 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('welcome');
 });
+
+Route::get('/profile', function () {
+    return view('welcome');
+});

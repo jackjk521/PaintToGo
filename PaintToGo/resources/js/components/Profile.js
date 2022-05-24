@@ -1,6 +1,6 @@
-import {Link, useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
-export default function Customer(){
+export default function Profile(){
     const user_id = sessionStorage.getItem('user_id');
     const branch_id = sessionStorage.getItem('branch_id');
 
@@ -11,9 +11,8 @@ export default function Customer(){
     }
 
     return ( <div> 
-        <h1>Customer page {user_id}</h1> 
-        <button onClick = {logOut}> LogOut </button>
-        <Link to="/profile">Profile</Link>
+        <h1>User Profile {user_id}</h1> 
+        <button onClick = {logOut}> LogOut </button> 
         </div>
     )
 }

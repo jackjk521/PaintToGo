@@ -34,6 +34,7 @@ Route::get('/approveRBtn', [TransactionListController::class, 'approveRBtn']);
 Route::get('/approveOBtn', [TransactionListController::class, 'approveOBtn']);  
 Route::get('/approveCBtn', [TransactionListController::class, 'approveCBtn']);  
 
+Route::post('/profile', [LoginController::class, 'profile']);
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
