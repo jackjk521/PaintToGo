@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 
-export default function NullOrderTable () {
+const NullOrderTable = () => {
+
+    const branch_id = sessionStorage.getItem('branch_id');
     const [ nullList , setNullList ] = useState([]);
     
     useEffect(() => {
@@ -38,7 +40,6 @@ export default function NullOrderTable () {
             return (err);
         }
     }
-
     
     const renderList = () =>{
         
@@ -55,26 +56,29 @@ export default function NullOrderTable () {
             return (
                 <tr>
                     <td colSpan="4">
-                        There are no requests available
+                        There are no orders available
                     </td>
                 </tr>
             );
         };
 
         return nullList.map((a) => {
-            
-           return (<tr key={a.order_id} className="table-contents-odd" >
-            
-           <td>{a.order_id}</td>
-           <td>{a.branch_add}</td>
-           <td>{a.lastName}</td>
-           <td>
-           <button name = 'rowKey' onClick= {approveBtn} value = {a.order_id}> Approve </button>
-           </td> 
 
-           </tr> ) 
-
-        })
+            if(a.branch_id == branch_id){
+                return (<tr key={a.order_id} className="table-contents-odd" >
+                        
+                    <td>{a.order_id}</td>
+                    <td>{a.branch_add}</td>
+                    <td>{a.lastName}</td>
+                    <td>
+                    <button name = 'rowKey' onClick= {approveBtn} value = {a.order_id}> Approve </button>
+                    </td> 
+        
+                    </tr> ) 
+        
+                }
+            })
+           
 }
 
     return (
@@ -86,7 +90,8 @@ export default function NullOrderTable () {
                             <th>Order ID</th>
                             <th>Brand Address</th>
                             <th>Lastname</th>
-                            <th>Action</th>
+                            <th>Approve</th>
+                            <th>View</th>
                         </tr>
                     </thead>
                     <tbody className="table-contents">
@@ -97,3 +102,4 @@ export default function NullOrderTable () {
         
     );
 }
+export default NullOrderTable;

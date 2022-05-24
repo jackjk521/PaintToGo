@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 
-export default function NullRequestTable () {
+const NullRequestTable = () => {
     const [ nullList , setNullList ] = useState([]);
     
     useEffect(() => {
@@ -86,7 +86,8 @@ export default function NullRequestTable () {
                             <th>Request ID</th>
                             <th>Brand Address</th>
                             <th>Lastname</th>
-                            <th>Action</th>
+                            <th>Approve</th>
+                            <th>View</th>
                         </tr>
                     </thead>
                     <tbody className="table-contents">
@@ -97,3 +98,5 @@ export default function NullRequestTable () {
         
     );
 }
+
+export default NullRequestTable;
