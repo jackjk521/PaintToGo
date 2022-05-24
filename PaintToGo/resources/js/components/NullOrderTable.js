@@ -4,6 +4,7 @@ import api from "../api/api";
 const NullOrderTable = () => {
 
     const branch_id = sessionStorage.getItem('branch_id');
+    const user_level = sessionStorage.getItem('level_name');
     const [ nullList , setNullList ] = useState([]);
     
     useEffect(() => {
@@ -61,6 +62,7 @@ const NullOrderTable = () => {
                 </tr>
             );
         };
+<<<<<<< HEAD
 
         return nullList.map((a) => {
 
@@ -79,6 +81,33 @@ const NullOrderTable = () => {
                 }
             })
            
+=======
+           
+        return nullList.map((a, index) => {
+            if(a.branch_id == branch_id || user_level === "Admin"){
+                return (<tr key={a.order_id} className={index % 2 !== 0 ? "table-contents-even" : "table-contents-odd"} >
+                            <td>{a.order_id}</td>
+                            <td>{a.branch_add}</td>
+                            <td>{a.lastName}</td>
+                            <td>
+                                <button name = 'rowKey' onClick= {approveBtn} style={{marginRight:"10px"}} value = {a.order_id}> Approve </button>
+                                
+                            </td> 
+                            <td>
+                                <button name = 'row_key' type="text" onClick={fetchOData} value = {a.order_id}>View</button>
+                                <DisplayModal 
+                                    openModal={openModal} 
+                                    TableHeader={<TableHeader />} 
+                                    header="View Order" 
+                                    handleClose={handleClose} 
+                                    Details={<Details />}  
+                                />
+                            </td>
+                        </tr> 
+                )
+            }
+        })
+>>>>>>> ac0e4bd85c8b0ee9524eafd13b33b914891e6c3d
 }
 
     return (

@@ -61,6 +61,7 @@ const NullConsultationTable = () =>{
             );
         };
 
+<<<<<<< HEAD
         return nullList.map((a) => {
             
            return (<tr key={a.consultation_id} className="table-contents-odd" >
@@ -73,6 +74,28 @@ const NullConsultationTable = () =>{
 
            </tr> ) 
 
+=======
+        return nullList.map((a, index) => { 
+           return (<tr key={a.consultation_id} className={index % 2 !== 0 ? "table-contents-even" : "table-contents-odd"} >
+                        <td>{a.consultation_id}</td>
+                        <td>{a.lastName}</td>
+                        <td>
+                            <button name = 'rowKey' onClick= {approveBtn} style={{marginRight:"10px"}} value = {a.consultation_id}> Approve </button>
+                            
+                        </td> 
+                        <td>
+                            <button name = 'row_key' type="text" onClick={fetchCData} value = {a.consultation_id}>View</button>
+                            <DisplayModal 
+                                openModal={openModal} 
+                                TableHeader={<TableHeader />} 
+                                header="View Order" 
+                                handleClose={handleClose} 
+                                Details={<Details />}  
+                            />
+                        </td>
+                    </tr> 
+                ) 
+>>>>>>> ac0e4bd85c8b0ee9524eafd13b33b914891e6c3d
         })
 }
 
