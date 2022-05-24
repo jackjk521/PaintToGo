@@ -38,6 +38,9 @@ export default {
     viewOList: (params) => {
         return axios.get(`${BASE_API_URL}/viewOList`, params);
     },
+    viewCList: (params) => {
+        return axios.get(`${BASE_API_URL}/viewCList`, params);
+    },
 
 
 

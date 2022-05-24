@@ -200,6 +200,30 @@ class TransactionListController extends Controller
 
     }
 
+    public function viewCList(Request $req)
+    {
+        $key = $req->input('row_key');
+
+        $query = DB::table('consultations')
+                ->where('consultations.consultation_id', $key)
+                ->join('users','users.user_id', '=', 'consultations.user_id')
+                ->get();
+
+        if($query){
+            return response()->json([
+ 
+                'viewConsultations' => $query,
+                'key' => $key
+
+            ]);
+            return $query;
+        }  
+        else{
+            return "Can't retrieve data";
+        }
+
+    }
+
     // approve button for request, order and consultation
 
     public function approveRBtn(Request $req){

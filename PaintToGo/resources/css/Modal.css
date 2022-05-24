@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+    background-color: #222529;
+}
+
+.header button {
+    margin-left: auto;
+    margin-bottom: auto;
+}
+
+.header h3 {
+    margin-top: auto;
+    margin-bottom: auto;
+    color: white;
+}
+
+.body {
+    padding: 2%;
+    width: 100%;
+    margin: auto;
+}
+
+.table-header tr td {
+    font-weight: bold;
+}
+
+.pad {
+    padding: 2%;
+}
+
+.table-body:first-child tr {
+    margin-top: 5%;
+}
