@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 
-export default function NullRequestTable () {
+const NullRequestTable = () => {
     const [ nullList , setNullList ] = useState([]);
     
     useEffect(() => {
@@ -65,6 +65,7 @@ export default function NullRequestTable () {
             
            return (<tr key={a.request_id} className="table-contents-odd" >
             
+<<<<<<< HEAD
            <td>{a.request_id}</td>
            <td>{a.branch_add}</td>
            <td>{a.lastName}</td>
@@ -74,6 +75,27 @@ export default function NullRequestTable () {
 
            </tr> ) 
 
+=======
+                        <td>{a.request_id}</td>
+                        <td>{a.branch_add}</td>
+                        <td>{a.lastName}</td>
+                        <td>
+                            <button name = 'rowKey' onClick= {approveBtn} style={{marginRight:"10px"}} value = {a.request_id}> Approve </button>
+
+                        </td>
+                        <td>
+                            <button name = 'row_key' type="text" onClick={fetchRData} value={a.request_id} >View</button>
+                            <DisplayModal 
+                                openModal={openModal} 
+                                TableHeader={<TableHeader />} 
+                                header="View Request" 
+                                handleClose={handleClose} 
+                                Details={<Details />}  
+                            />
+                        </td> 
+                    </tr> 
+                ) 
+>>>>>>> ac0e4bd85c8b0ee9524eafd13b33b914891e6c3d
         })
 }
 
@@ -86,7 +108,8 @@ export default function NullRequestTable () {
                             <th>Request ID</th>
                             <th>Brand Address</th>
                             <th>Lastname</th>
-                            <th>Action</th>
+                            <th>Approve</th>
+                            <th>View</th>
                         </tr>
                     </thead>
                     <tbody className="table-contents">
@@ -97,3 +120,5 @@ export default function NullRequestTable () {
         
     );
 }
+
+export default NullRequestTable;

@@ -3,7 +3,7 @@ import api from "../api/api";
 import {useNavigate} from "react-router-dom"
 import { renderAList } from "../operations/renderAList";
 import NullRequestTable from "./NullRequestTable";
-import NullOrderTable from "./NullOrdersTable";
+import NullOrderTable from "./NullOrderTable";
 import NullConsultationTable from "./NullConsultationTable";
 
 export default function Admin(){
@@ -95,61 +95,13 @@ export default function Admin(){
                 </table>
             </div>
 
-            <br></br>
-
-            <div>
-                <h1> View details here  </h1>
-                <table className="table">
-                    <thead className="table-header">
-                        <tr>
-                            <th>Request ID</th>
-                            <th>Brand Address</th>
-                            <th>Lastname</th>
-                        </tr>
-                    </thead>
-                    <tbody className="table-contents">
-                   
-                    </tbody>
-                </table>
-
-                <br></br>
-
-                <table className="table">
-                    <thead className="table-header">
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Brand Address</th>
-                            <th>Lastname</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody className="table-contents">
-                       
-                    </tbody>
-                </table>
-
-                <br></br>
-
-                <table className="table">
-                    <thead className="table-header">
-                        <tr>
-                            <th>Consultation ID</th>
-                            <th>Branch Add</th>
-                            <th>Lastname</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody className="table-contents">
-                    
-                    </tbody>
-                </table>
-            </div>
+            <br></br>   
 
             <div>
                 <h1> NULL statuses </h1>
-                    {NullRequestTable()}
-                    {NullOrderTable()}
-                    {NullConsultationTable()}
+                    <NullRequestTable/>
+                    <NullOrderTable/>
+                    <NullConsultationTable/>
             </div>
 
             
