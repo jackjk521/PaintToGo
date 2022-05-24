@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { renderAList } from "../operations/Functions";
 
 export default function Admin(){

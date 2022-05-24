@@ -21,8 +21,10 @@
         </style>
     </head>
     <body class="antialiased">       
-        <div id = "main"> </div>
-            <script src = "{{asset('js/app.js')}}"></script>
+        <div id="main"></div>
 
+        <script defer type="text/javascript" src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>
+
+

@@ -9,15 +9,15 @@ export const renderAList = (query, approvedList) => {
     const [requestList, setRequestList] = useState([]);
 
     const approveBtn = () => {
-            console.log("approve btn pressed");
+        console.log("approve btn pressed");
     }
 
     const viewBtn  = async (e) =>{;
 
         try{
             const res = await api.viewRList({params : {row_key : e.target.value}});
-            setRequestList(res.data.viewRequest);    
-            console.log(requestList); 
+            setRequestList(res.data.viewRequest);
+            console.log(requestList);
 
             if(res.status === 200)
             {

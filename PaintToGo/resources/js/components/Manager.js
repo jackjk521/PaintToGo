@@ -1,4 +1,4 @@
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export default function Manager(){
     const user_id = sessionStorage.getItem('user_id');
