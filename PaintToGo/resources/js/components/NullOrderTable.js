@@ -5,6 +5,7 @@ import DisplayModal from "./DisplayModal";
 const NullOrderTable = () => {
 
     const branch_id = sessionStorage.getItem('branch_id');
+    const user_level = sessionStorage.getItem('level_name');
     const [ nullList , setNullList ] = useState([]);
     const [ orderList, setOrderList ] = useState([]);
     const [ openModal, setOpenModal ] = useState(false);
@@ -120,13 +121,16 @@ const NullOrderTable = () => {
         };
            
         return nullList.map((a, index) => {
-            if(a.branch_id == branch_id){
+            if(a.branch_id == branch_id || user_level === "Admin"){
                 return (<tr key={a.order_id} className={index % 2 !== 0 ? "table-contents-even" : "table-contents-odd"} >
                             <td>{a.order_id}</td>
                             <td>{a.branch_add}</td>
                             <td>{a.lastName}</td>
                             <td>
                                 <button name = 'rowKey' onClick= {approveBtn} style={{marginRight:"10px"}} value = {a.order_id}> Approve </button>
+                                
+                            </td> 
+                            <td>
                                 <button name = 'row_key' type="text" onClick={fetchOData} value = {a.order_id}>View</button>
                                 <DisplayModal 
                                     openModal={openModal} 
@@ -135,9 +139,9 @@ const NullOrderTable = () => {
                                     handleClose={handleClose} 
                                     Details={<Details />}  
                                 />
-                            </td> 
+                            </td>
                         </tr> 
-                ) 
+                )
             }
         })
 }
