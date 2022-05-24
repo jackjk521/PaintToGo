@@ -8,13 +8,10 @@ import OrderPage from './OrderPage';
 import RequestPage from './RequestPage';
 import LoginRegister from './LoginRegister'
 import Dashboard from './Dashboard'
-<<<<<<< HEAD
 import Profile from './Profile';
-=======
 import AdminNullTablesPage from './AdminNullTablesPage';
 import ManagerNullOrdersPage from './NullOrderTable';
 
->>>>>>> a16d0ef5eb2dc0c3135bab6cec3f7eaabc715d3d
 
 function Main() {
    
@@ -38,13 +35,10 @@ function Main() {
                         <Route path="/request" element = {<RequestPage/>}/>
                         <Route path="/" element = {<LoginRegister/>}/> 
                         <Route path="/dashboard" element = {<Dashboard/>}/>
-<<<<<<< HEAD
                         <Route path="/profile" element = {<Profile/>}/>
-=======
 
                         <Route path="/adminNullTables" element = {<AdminNullTablesPage/>}/>
                         <Route path="/managerNullTable" element = {<ManagerNullOrdersPage/>}/>
->>>>>>> a16d0ef5eb2dc0c3135bab6cec3f7eaabc715d3d
                     </Routes>
                 </div>
 
