@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 
-export default function NullOrderTable () {
+const NullOrderTable = () => {
     const [ nullList , setNullList ] = useState([]);
     
     useEffect(() => {
@@ -97,3 +97,4 @@ export default function NullOrderTable () {
         
     );
 }
+export default NullOrderTable;

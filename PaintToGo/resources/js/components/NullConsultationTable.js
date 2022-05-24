@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 
-export default function NullConsultationTable () {
+const NullConsultationTable = () =>{
     const [ nullList , setNullList ] = useState([]);
     
     useEffect(() => {
@@ -95,3 +95,5 @@ export default function NullConsultationTable () {
         
     );
 }
+
+export default NullConsultationTable;
