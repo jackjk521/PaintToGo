@@ -11,7 +11,7 @@ export default function Profile(){
     }
 
     return ( <div> 
-        <h1>User Profile {user_id}</h1> 
+        <h1>User Profileidk {user_id}</h1> 
         <button onClick = {logOut}> LogOut </button> 
         </div>
     )
