@@ -16,4 +16,4 @@ export default function Customer(){
         <Link to="/profile">Profile</Link>
         </div>
     )
-}
+} 
