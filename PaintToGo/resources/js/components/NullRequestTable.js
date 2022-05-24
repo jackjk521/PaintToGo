@@ -86,7 +86,8 @@ const NullRequestTable = () => {
                             <th>Request ID</th>
                             <th>Brand Address</th>
                             <th>Lastname</th>
-                            <th>Action</th>
+                            <th>Approve</th>
+                            <th>View</th>
                         </tr>
                     </thead>
                     <tbody className="table-contents">

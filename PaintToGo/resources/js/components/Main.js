@@ -8,6 +8,8 @@ import OrderPage from './OrderPage';
 import RequestPage from './RequestPage';
 import LoginRegister from './LoginRegister'
 import Dashboard from './Dashboard'
+import AdminNullTablesPage from './AdminNullTablesPage';
+import ManagerNullOrdersPage from './NullOrderTable';
 
 
 function Main() {
@@ -20,6 +22,9 @@ function Main() {
                     <span className='Menu'> <Link to="/consult"> Consultation </Link></span>
                     <span className='Menu'> <Link to="/order"> Orders </Link></span>
                     <span className='Menu'> <Link to ="/request"> Requests </Link></span>
+
+                    <span className='Menu'> <Link to="/adminNullTables"> Admin To Approve Tables </Link></span>
+                    <span className='Menu'> <Link to ="/managerNullTable"> Manager To Approve Orders</Link></span>
                 </div>
                 <div>
                     <Routes>
@@ -29,6 +34,9 @@ function Main() {
                         <Route path="/request" element = {<RequestPage/>}/>
                         <Route path="/" element = {<LoginRegister/>}/> 
                         <Route path="/dashboard" element = {<Dashboard/>}/>
+
+                        <Route path="/adminNullTables" element = {<AdminNullTablesPage/>}/>
+                        <Route path="/managerNullTable" element = {<ManagerNullOrdersPage/>}/>
                     </Routes>
                 </div>
 

@@ -55,7 +55,7 @@ const NullConsultationTable = () =>{
             return (
                 <tr>
                     <td colSpan="4">
-                        There are no requests available
+                        There are no consultations available
                     </td>
                 </tr>
             );
@@ -84,7 +84,8 @@ const NullConsultationTable = () =>{
                         <tr>
                             <th>Consultation ID</th>
                             <th>Lastname</th>
-                            <th>Action</th>
+                            <th>Approve</th>
+                            <th>View</th>
                         </tr>
                     </thead>
                     <tbody className="table-contents">

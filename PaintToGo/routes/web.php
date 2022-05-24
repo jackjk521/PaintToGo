@@ -31,6 +31,16 @@ Route::get('/consult', function () {
 Route::get('/request', function () {
     return view('welcome');
 });
+
+
+Route::get('/adminNullTables', function () {
+    return view('welcome');
+});
+
+Route::get('/managerNullTable', function () {
+    return view('welcome');
+});
+
 Route::get('/dashboard', function () {
     return view('welcome');
 });
