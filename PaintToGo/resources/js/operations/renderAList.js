@@ -95,7 +95,6 @@ export const renderAList = (query, approvedList) => {
     
     // For the actions, simply add another <td> with buttons or links towards an action
         if (approvedList === 1){
-            console.log(requestList);
 
             const handleClose = () => {
                 setOpenModal(false);
