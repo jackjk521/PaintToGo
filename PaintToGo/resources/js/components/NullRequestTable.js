@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
+import DisplayModal from "../components/DisplayModal";
 
 const NullRequestTable = () => {
     const [ nullList , setNullList ] = useState([]);
-    
+    const [ requestList, setRequestList ] = useState([]);
+    const [ openModal, setOpenModal ] = useState(false);
+
     useEffect(() => {
         fetchNullList();
      },[]);
@@ -38,54 +41,84 @@ const NullRequestTable = () => {
             return (err);
         }
     }
+    const fetchRData = async(e) => {
+        try{
+            const res = await api.viewRList({params : {row_key : e.target.value}});
+            setRequestList(res.data.viewRequest);
+            setOpenModal(true);
+            if(res.status === 200)
+            {
+                console.log(res.data);
 
-    
-    const renderList = () =>{
+                console.log("successful");
+            }
+            else{
+                console.log(res);
+            }  
+        }
+        catch(err){
+            return (err);
+        }
         
-        if (!nullList) {
-            return (
-                <tr>
-                    <td colSpan="4">
-                        Loading products...
-                    </td>
-                </tr>
-            );
-        };
-        if (nullList.length === 0) {
-            return (
-                <tr>
-                    <td colSpan="4">
-                        There are no requests available
-                    </td>
-                </tr>
-            );
-        };
+    }
+        const renderRequests = () => {
 
-        return nullList.map((a) => {
-            
-           return (<tr key={a.request_id} className="table-contents-odd" >
-            
-                        <td>{a.request_id}</td>
-                        <td>{a.branch_add}</td>
-                        <td>{a.lastName}</td>
-                        <td>
-                            <button name = 'rowKey' onClick= {approveBtn} style={{marginRight:"10px"}} value = {a.request_id}> Approve </button>
+            const handleClose = () => {
+                setOpenModal(false);
+            }
 
-                        </td>
-                        <td>
-                            <button name = 'row_key' type="text" onClick={fetchRData} value={a.request_id} >View</button>
-                            <DisplayModal 
-                                openModal={openModal} 
-                                TableHeader={<TableHeader />} 
-                                header="View Request" 
-                                handleClose={handleClose} 
-                                Details={<Details />}  
-                            />
-                        </td> 
-                    </tr> 
-                ) 
-        })
-}
+            const TableHeader = () => {
+                return (
+                    <thead className="table-header">
+                        <tr>
+                            <td>Product Name</td>
+                            <td>Quantity Requested</td>
+                            <td>Unit Sold At</td>
+                            <td>Price</td>
+                            <td>Retail Price</td>
+                        </tr>
+                    </thead>
+                )
+            }
+
+            const Details = () => {
+                return (requestList.map((request, index) => {
+                    return <tr key={index}>
+                        <td>{request.product_name}</td>
+                        <td>{request.req_quantity}</td>
+                        <td>{request.unit_sold_at}</td>
+                        <td>{request.price}</td>
+                        <td>{request.retail_price}</td>
+                    </tr>
+                })
+                    
+                )
+            }
+            
+            return nullList.map((a, index) => {
+                return (
+                        <tr key={a.request_id} className={index % 2 !== 0 ? "table-contents-even" : "table-contents-odd"} >
+                            <td>{a.request_id}</td>
+                            <td>{a.branch_add}</td>
+                            <td>{a.lastName}</td>
+                            <td>
+                                <button name = 'rowKey' onClick= {approveBtn} style={{marginRight:"10px"}} value = {a.order_id}> Approve </button>
+                            </td>
+                            <td>
+                                <button name = 'row_key' type="text" onClick={fetchRData} value={a.request_id} >View</button>
+                                <DisplayModal 
+                                    openModal={openModal} 
+                                    TableHeader={<TableHeader />} 
+                                    header="View Request" 
+                                    handleClose={handleClose} 
+                                    Details={<Details />}  
+                                />
+                            </td> 
+                            
+                        </tr> //edit here and test from here
+                );
+            });
+        }
 
     return (
         <div>
@@ -101,7 +134,7 @@ const NullRequestTable = () => {
                         </tr>
                     </thead>
                     <tbody className="table-contents">
-                        {renderList()}
+                        {renderRequests()}
                     </tbody>
                 </table>
         </div>

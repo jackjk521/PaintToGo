@@ -41,7 +41,8 @@ class UserController extends Controller
         if( $orderList ){
             return response()->json([
  
-                'orderList' => $orderList
+                'orderList' => $orderList,
+                'user_id'=> $uid
 
             ]);
             return $orderList;

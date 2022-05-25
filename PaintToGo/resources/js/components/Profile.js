@@ -7,9 +7,10 @@ import DisplayModal from "./DisplayModal"
 export default function Profile(){
     const user_id = sessionStorage.getItem('user_id');
 
-    const [ orderList , setOrderList ] = useState([]);
     const [ orderHistory , setOrderHistory ] = useState([]);
-    
+    const [ orderList, setOrderList ] = useState([]);
+    const [ openModal, setOpenModal ] = useState(false);
+
     const navigate = useNavigate();
     function logOut() {
         sessionStorage.clear();
@@ -28,14 +29,13 @@ export default function Profile(){
         try{
             const res = await api.userHistory({params : {toHistory : ex.target.value}});
             setOrderHistory(res.data.orderList);  
-            console.log(res.data.orderList); 
+            console.log(res); 
             }
         catch (err){
             console.log(err);
         }
     }
 
-    
     const fetchOData = async(e) => {
         try{
             const res = await api.viewOList({params : {row_key : e.target.value}});
@@ -114,7 +114,6 @@ export default function Profile(){
                 return (<tr key={a.order_id} className={index % 2 !== 0 ? "table-contents-even" : "table-contents-odd"} >
                             <td>{a.order_id}</td>
                             <td>{a.branch_add}</td>
-                            <td>{a.lastName}</td> 
                             <td>
                                 <button name = 'row_key' type="text" onClick={fetchOData} value = {a.order_id}>View</button>
                                 <DisplayModal 
@@ -150,7 +149,6 @@ export default function Profile(){
                         <tr>
                             <th>Order ID</th>
                             <th>Brand Address</th>
-                            <th>Lastname</th>
                             <th>View</th>
                         </tr>
                     </thead>
