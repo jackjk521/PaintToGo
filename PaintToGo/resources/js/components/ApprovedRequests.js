@@ -101,7 +101,6 @@ const ApprovedRequests = () => {
 
     return (
         <div>
-            <h1> APPROVED statuses </h1>
             <table className="table">
                 <thead className="table-header">
                     <tr>

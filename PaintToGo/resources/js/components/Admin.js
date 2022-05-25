@@ -51,6 +51,7 @@ export default function Admin(){
             <button onClick = {logOut}> LogOut </button>
 
             <div>
+                <h1> APPROVED statuses </h1>
                 <ApprovedRequests />
                 <ApprovedOrders />   
                 <ApprovedConsultations />
