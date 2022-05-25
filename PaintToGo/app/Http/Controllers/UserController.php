@@ -31,21 +31,21 @@ class UserController extends Controller
 
    public function getHistory(Request $req){
        $uid = $req->input('toHistory');
-       $nullList =  DB::table('orders')
+       $orderList =  DB::table('orders')
                     ->where('orders.user_id', $uid)
                     ->join('branch', 'branch.branch_id', '=', 'orders.branch_id')
                     ->get();
 
-        if( $nullList ){
+        if( $orderList ){
             return response()->json([
  
-                'nullOrders' => $nullList
+                'orderList' => $orderList
 
             ]);
-            return $nullList;
+            return $orderList;
         }  
         else{
-            return "No null transactions";
+            return "No transactions";
         }
    }
 }
