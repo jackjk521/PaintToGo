@@ -54,7 +54,12 @@ export default {
         return axios.get(`${BASE_API_URL}/approveCBtn`, params);
     },
 
-    profile: (params) => {
-        return axios.get(`${BASE_API_URL}/profile`, params);
+    userProfile: (params) => {
+        return axios.get(`${BASE_API_URL}/getUser`, params);
     },
+
+    userHistory: (params) => {
+        return axios.get(`${BASE_API_URL}/getHistory`, params);
+    },
+    
 }

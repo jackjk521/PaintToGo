@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react"
-import api from "../api/api";
+import React from "react";
+import Modal from "react-modal";
+import { GrFormClose } from "react-icons/gr";
+import "../../css/Modal.css";
 
 export const renderAList = (query, approvedList) => { 
 
@@ -71,7 +73,12 @@ export const renderAList = (query, approvedList) => {
     
     // For the actions, simply add another <td> with buttons or links towards an action
         if (approvedList === 1){
-            return query.map((a) => {
+
+            const handleClose = () => {
+                setOpenModal(false);
+            }
+
+            const TableHeader = () => {
                 return (
                         <tr key={a.request_id} className="table-contents-odd" >
                             <td>{a.request_id}</td>
@@ -83,7 +90,7 @@ export const renderAList = (query, approvedList) => {
                             
                         </tr> //edit here and test from here
                 );
-            });
+            }
         }
         else if(approvedList === 2){
             return query.map((a) => {

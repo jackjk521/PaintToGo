@@ -65,17 +65,6 @@ const NullRequestTable = () => {
             
            return (<tr key={a.request_id} className="table-contents-odd" >
             
-<<<<<<< HEAD
-           <td>{a.request_id}</td>
-           <td>{a.branch_add}</td>
-           <td>{a.lastName}</td>
-           <td>
-           <button name = 'rowKey' onClick= {approveBtn} value = {a.request_id}> Approve </button>
-           </td> 
-
-           </tr> ) 
-
-=======
                         <td>{a.request_id}</td>
                         <td>{a.branch_add}</td>
                         <td>{a.lastName}</td>
@@ -95,7 +84,6 @@ const NullRequestTable = () => {
                         </td> 
                     </tr> 
                 ) 
->>>>>>> ac0e4bd85c8b0ee9524eafd13b33b914891e6c3d
         })
 }
 
