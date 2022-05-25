@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react"
-import api from "../api/api";
+import React from "react";
+import Modal from "react-modal";
+import { GrFormClose } from "react-icons/gr";
+import "../../css/Modal.css";
 
 export const renderAList = (query, approvedList) => { 
 

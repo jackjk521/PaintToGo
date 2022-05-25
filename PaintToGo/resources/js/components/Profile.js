@@ -47,4 +47,4 @@ export default function Profile(){
             <button onClick = {logOut}> LogOut </button> 
         </div>
     )
-}
+} 
