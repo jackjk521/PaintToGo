@@ -62,26 +62,6 @@ const NullOrderTable = () => {
                 </tr>
             );
         };
-<<<<<<< HEAD
-
-        return nullList.map((a) => {
-
-            if(a.branch_id == branch_id){
-                return (<tr key={a.order_id} className="table-contents-odd" >
-                        
-                    <td>{a.order_id}</td>
-                    <td>{a.branch_add}</td>
-                    <td>{a.lastName}</td>
-                    <td>
-                    <button name = 'rowKey' onClick= {approveBtn} value = {a.order_id}> Approve </button>
-                    </td> 
-        
-                    </tr> ) 
-        
-                }
-            })
-           
-=======
            
         return nullList.map((a, index) => {
             if(a.branch_id == branch_id || user_level === "Admin"){
@@ -107,7 +87,6 @@ const NullOrderTable = () => {
                 )
             }
         })
->>>>>>> ac0e4bd85c8b0ee9524eafd13b33b914891e6c3d
 }
 
     return (

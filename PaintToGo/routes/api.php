@@ -12,6 +12,7 @@ use App\Http\Controllers\ConsultationsController;
 use App\Http\Controllers\RequestItemController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TransactionListController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -57,3 +58,7 @@ Route::post('/addRequestList', [RequestListController::class, 'store']);
 Route::post('/addOrders', [OrdersController::class, 'store']);
 Route::post('/addOrderList', [OrderListController::class, 'store']);
 Route::post('/addConsultations', [ConsultationsController::class, 'store']);
+
+Route::get('/getUser', [UserController::class, 'getUser']);
+Route::get('/getHistory', [UserController::class, 'getHistory']);
+
