@@ -12,6 +12,8 @@ use App\Http\Controllers\ConsultationsController;
 use App\Http\Controllers\RequestItemController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TransactionListController;
+use App\Http\Controllers\InventoryController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -44,6 +46,7 @@ Route::get('/getProducts', [ProductController::class, 'getProducts']);
 Route::get('/getBranches', [BranchController::class, 'getBranches']);
 Route::get('/getOrders', [OrdersController::class, 'getOrders']);
 Route::get('/getOrderLists', [OrderListController::class, 'getOrderLists']);
+Route::get('/getInventory', [InventoryController::class, 'getInventory']);
 
 Route::post('/addRequestItem', [RequestItemController::class, 'store']);
 Route::post('/addRequestList', [RequestListController::class, 'store']);

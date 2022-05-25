@@ -19,7 +19,7 @@ const Icon = styled.img`
 `;
 
 const NumberCounter = (props) => {
-    const {product, resetFields, addItem} = props;
+    const {product, resetFields, addItem, max} = props;
     const [qty, setQty] = useState(0);
     const { addMessage, removeMessage, messages } = useMessageQueue();
 
@@ -27,7 +27,7 @@ const NumberCounter = (props) => {
         const re = /^[0-9\b]+$/;
     
         if (e.target.value === '' || re.test(e.target.value)) {
-          setQty(e.target.value);
+          (parseInt(e.target.value) > max)? setQty(max) : setQty(parseInt(e.target.value));
         }    
       }
     
@@ -36,6 +36,8 @@ const NumberCounter = (props) => {
           setQty(0);   
         } else if(qty == '') {
           setQty(1);
+        } else if (qty >= max) {
+          setQty(max);
         } else {
           setQty(parseInt(qty) + 1);
         }
@@ -51,7 +53,7 @@ const NumberCounter = (props) => {
         if(qty == 0) {
           addMessage("Please choose quantity", "error");
         } else {
-          addItem(product, qty);
+          addItem(product, qty, max);
           resetFields();
           setQty(0);
         }

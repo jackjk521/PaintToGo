@@ -10,6 +10,7 @@ const RequestForm = (props) => {
   const[prodName, setProdName] = useState("");
   const[products, setProducts] = useState([]);
   const[currProd, setCurrProd] = useState([]);
+  const [inventory, setInventory] = useState([]);
 
   const nameHandler = (e) => {
       setProdName(e.target.value);
@@ -27,16 +28,24 @@ const RequestForm = (props) => {
 
   const openList = () => {
     setRenderComponent('requestlist');
-}
+  }
+
+  const filterStock = (product_id) => {
+    return inventory.filter(item => 
+      item.product_id === product_id).map(filtered => 
+      filtered.quantity)
+  }
 
   useEffect(() => {
     let isMounted = true;
     const fetchData = async () => {
       try {
         const res = await Axios.get('api/getProducts');
+        const inv = await Axios.get('api/getInventory');
         if (isMounted) {
           setProducts(res.data);
           setCurrProd(res.data);
+          setInventory(inv.data);
         }
       } catch {
         console.log(err);
@@ -81,6 +90,7 @@ const RequestForm = (props) => {
                     <th>Name</th>
                     <th>Price</th>
                     <th>Unit</th>
+                    <th>Stock</th>
                     <th>Quantity</th>
                 </tr>
             </thead>
@@ -92,11 +102,13 @@ const RequestForm = (props) => {
                       <td>{product.product_name}</td>
                       <td>{product.price}</td>
                       <td>{product.unit_sold_at}</td>
+                      <td>{filterStock(product.product_id)}</td>
                       <td><NumberCounter
                         product={product} 
                         resetFields={resetFields}
                         addItem = {addItem}
-                        removeItem = {removeItem} />
+                        removeItem = {removeItem}
+                        max = {filterStock(product.product_id)} />
                       </td>
                   </tr>
                   ))

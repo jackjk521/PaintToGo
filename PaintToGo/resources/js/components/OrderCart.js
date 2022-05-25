@@ -1,7 +1,5 @@
 import React , {useState, useEffect} from "react";
 import "../../css/OrderCart.css";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import Axios from 'axios';
 import MessageQueue, { useMessageQueue } from "./MessageQueue";
 import addIcon from "../assets/add.png";
@@ -24,10 +22,8 @@ const Icon = styled.img`
 
 const OrderCart = (props) => {
     const user_id = sessionStorage.getItem('user_id');
-    const {setRenderComponent, cart, setCart, addItem, removeItem} = props;
+    const {setRenderComponent, cart, setCart, addItem, removeItem, branchId, setBranchId, selectedBranch, setSelectedBranch} = props;
     const { addMessage, removeMessage, messages } = useMessageQueue();
-    const[branches, setBranches] = useState([]);
-    const [selectedBranch, setSelectedBranch] = useState('Select branch');
 
     const openForm = () => {
         setRenderComponent('form');
@@ -42,35 +38,32 @@ const OrderCart = (props) => {
         }
     }
 
-    const handleSelect = (e) => {
-        setSelectedBranch(e);
-    }
-
     const submitRequest = async () => {
-        if(selectedBranch !== 'Select branch') {
-            const branch = branches.filter(b => b.branch_name.includes(selectedBranch));
-            const branch_id = branch[0].branch_id;
+        if(selectedBranch !== "Select branch") {
             const newOrders = {
                 user_id : user_id,
-                branch_id : branch_id,
+                branch_id : branchId,
                 status : 3
             }
-
+            setBranchId(1);
+            setSelectedBranch('Select branch');
+    
             const newOrderId = await createOrder(newOrders);
-
+    
             const arr = cart.map((product) => {
                 delete product.product_name;
                 delete product.product_price;
                 product = {...product, order_id : newOrderId};
                 return product;
             });
-
+    
             setCart([]);
-
+    
+            
             arr.map((product) => {
                 Axios.post('../api/addOrderList', product)
                 .catch((err) => {
-                  addMessage(err.message, "error");
+                    addMessage(err.message, "error");
                 });
             });
     
@@ -80,24 +73,6 @@ const OrderCart = (props) => {
         }
     }
 
-    useEffect(() => {
-        let isMounted = true;
-        const fetchData = async () => {
-            try {
-                const getBranches = await Axios.get('../api/getBranches');
-    
-                if (isMounted) {
-                    setBranches(getBranches.data);
-                }
-            } catch {
-                console.log(err);
-            }
-        }
-
-        fetchData();
-        return () => { isMounted = false };
-    }, []);
-
     return (
         <div className ="orderCartBody">
             <MessageQueue messages={messages} removeMessage={removeMessage} />
@@ -105,19 +80,6 @@ const OrderCart = (props) => {
             <h1> Order Cart </h1>
 
             <div className="contents">
-                <div className="dropdown-input">
-                    <label htmlFor="branch"> Branch: </label>
-                    <DropdownButton className="dropdown" id="dropdown-item-button" title={selectedBranch} onSelect={handleSelect} disabled = {selectedBranch === 'Select branch' ? false : true}>
-                        { 
-                            (branches != null)
-                            ? branches.map((branch) => (
-                                <Dropdown.Item key = {branch.branch_id} eventKey = {branch.branch_name}> {branch.branch_name} </Dropdown.Item>
-                            ))
-                            : null
-                        } 
-                    </DropdownButton>
-                </div>
-
                 <div className = 'productTable'>
                 <table className="table table-bordered">
                     <thead>

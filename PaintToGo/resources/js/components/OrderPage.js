@@ -5,6 +5,10 @@ import OrderCart from './OrderCart';
 const OrderPage = () => {
     const [renderComponent, setRenderComponent] = useState('form');
     const [cart, setCart] = useState([]);
+    const [selectedBranch, setSelectedBranch] = useState('Select branch');
+    const [branchProducts, setBranchProducts] = useState([]);
+    const[currProd, setCurrProd] = useState([]);
+    const [branchId, setBranchId] = useState(1);
 
     const addItem = (prod, qty) => {
         qty = parseInt(qty);
@@ -47,6 +51,14 @@ const OrderPage = () => {
             { renderComponent === 'form' && 
                 <OrderForm setRenderComponent = {setRenderComponent} 
                             addItem = {addItem}
+                            selectedBranch = {selectedBranch}
+                            setSelectedBranch = {setSelectedBranch}
+                            branchProducts = {branchProducts}
+                            setBranchProducts = {setBranchProducts}
+                            currProd = {currProd}
+                            setCurrProd = {setCurrProd}
+                            branchId = {branchId}
+                            setBranchId = {setBranchId}
                 />
             } 
 
@@ -57,6 +69,10 @@ const OrderPage = () => {
                             setCart = {setCart}
                             addItem = {addItem}
                             removeItem = {removeItem}
+                            branchId = {branchId}
+                            setBranchId = {setBranchId}
+                            selectedBranch = {setSelectedBranch}
+                            setSelectedBranch = {setSelectedBranch}
                 />
             }
         </div>
