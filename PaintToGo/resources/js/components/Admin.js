@@ -5,6 +5,9 @@ import { renderAList } from "../operations/renderAList";
 import NullRequestTable from "./NullRequestTable";
 import NullOrderTable from "./NullOrderTable";
 import NullConsultationTable from "./NullConsultationTable";
+import ApprovedRequests from "./ApprovedRequests";
+import ApprovedConsultations from "./ApprovedConsultations";
+import ApprovedOrders from "./ApprovedOrders";
 
 export default function Admin(){
     const user_id = sessionStorage.getItem('user_id');
@@ -48,59 +51,15 @@ export default function Admin(){
 
             <div>
                 <h1> APPROVED statuses </h1>
-                <table className="table">
-                    <thead className="table-header">
-                        <tr>
-                            <th>Request ID</th>
-                            <th>Brand Address</th>
-                            <th>Lastname</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody className="table-contents">
-                        {renderAList(approvedR, 1)}
-                    </tbody>
-                </table>
-
-                <br></br>
-
-                <table className="table">
-                    <thead className="table-header">
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Brand Address</th>
-                            <th>Lastname</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody className="table-contents">
-                        {renderAList(approvedO, 2)}
-                    </tbody>
-                </table>
-
-                <br></br>
-
-                <table className="table">
-                    <thead className="table-header">
-                        <tr>
-                            <th>Consultation ID</th>
-                            <th>Branch Add</th>
-                            <th>Lastname</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody className="table-contents">
-                        {renderAList(approvedC, 3)}
-                    </tbody>
-                </table>
-            </div>
-
-            <br></br>   
+                <ApprovedRequests />
+                <ApprovedOrders />   
+                <ApprovedConsultations />
+                
+            </div>   
 
             <div>
                 <h1> NULL statuses </h1>
                     <NullRequestTable/>
-                    <NullOrderTable/>
                     <NullConsultationTable/>
             </div>
 
