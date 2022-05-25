@@ -108,7 +108,6 @@ export default function Admin(){
             <div>
                 <h1> NULL statuses </h1>
                     <NullRequestTable/>
-                    <NullOrderTable/>
                     <NullConsultationTable/>
             </div>
 
