@@ -30,7 +30,9 @@ class UserController extends Controller
    }
 
    public function getHistory(Request $req){
+
        $uid = $req->input('toHistory');
+
        $orderList =  DB::table('orders')
                     ->where('orders.user_id', $uid)
                     ->join('branch', 'branch.branch_id', '=', 'orders.branch_id')
@@ -46,6 +48,7 @@ class UserController extends Controller
         }  
         else{
             return "No transactions";
+            return $orderList;
         }
    }
 }

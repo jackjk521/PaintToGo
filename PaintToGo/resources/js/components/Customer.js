@@ -6,7 +6,6 @@ import Profile from "./Profile";
 
 export default function Customer(){
     const user_id = sessionStorage.getItem('user_id');
-    const branch_id = sessionStorage.getItem('branch_id');
 
     const navigate = useNavigate();
     function logOut() {
@@ -30,11 +29,13 @@ export default function Customer(){
                 return (err);
             }
     }
-    return ( <div> 
+    return ( 
+
+        <div> 
         <h1>Customer page {user_id}</h1> 
         
         <button onClick = {logOut}> LogOut </button>
-        <button onClick = {userP} name="toProfile" value={user_id}>PROFILE</button>    
+        <button onClick = {userP} name="toProfile" value={user_id}> PROFILE </button>    
         </div>
     )
 } 

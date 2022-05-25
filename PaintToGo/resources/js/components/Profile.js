@@ -6,25 +6,10 @@ import DisplayModal from "./DisplayModal"
 
 export default function Profile(){
     const user_id = sessionStorage.getItem('user_id');
-    const branch_id = sessionStorage.getItem('branch_id');
-    
+
     const [ orderList , setOrderList ] = useState([]);
+    const [ orderHistory , setOrderHistory ] = useState([]);
     
-    useEffect(() => {
-        fetchOrderList();
-     },[]);
-
-    const fetchOrderList = async (e) => {
-        try{
-            const res = await api.userHistory({params : {toHistory : e.target.value}});
-            setOrderList(res.data.orderList);  
-            console.log(res.data.orderList); 
-            }
-        catch (err){
-            console.log(err);
-        }
-    }
-
     const navigate = useNavigate();
     function logOut() {
         sessionStorage.clear();
@@ -35,6 +20,22 @@ export default function Profile(){
     console.log(storedUser.data);
 
 
+    useEffect(() => {
+        fetchOrderList();
+     },[]);
+
+    const fetchOrderList = async (ex) => {
+        try{
+            const res = await api.userHistory({params : {toHistory : ex.target.value}});
+            setOrderHistory(res.data.orderList);  
+            console.log(res.data.orderList); 
+            }
+        catch (err){
+            console.log(err);
+        }
+    }
+
+    
     const fetchOData = async(e) => {
         try{
             const res = await api.viewOList({params : {row_key : e.target.value}});
@@ -89,7 +90,7 @@ export default function Profile(){
             )
         }
 
-        if (!orderList) {
+        if (!orderHistory) {
             return (
                 <tr>
                     <td colSpan="4">
@@ -98,7 +99,7 @@ export default function Profile(){
                 </tr>
             );
         };
-        if (orderList.length === 0) {
+        if (orderHistory.length === 0) {
             return (
                 <tr>
                     <td colSpan="4">
@@ -108,7 +109,7 @@ export default function Profile(){
             );
         };
            
-        return orderList.map((a, index) => {
+        return orderHistory.map((a, index) => {
            
                 return (<tr key={a.order_id} className={index % 2 !== 0 ? "table-contents-even" : "table-contents-odd"} >
                             <td>{a.order_id}</td>
@@ -132,16 +133,18 @@ export default function Profile(){
 
     return (
         <div>
-            <h1>User Profile</h1> 
-                <h3>Name: {storedUser.data.user.firstName} {storedUser.data.user.lastName}</h3>
-                <h3>Email: {storedUser.data.user.email_add}</h3>
-                <h3>Contact Number: {storedUser.data.user.user_contact}</h3>
+            <div>
+                <h1>User Profile</h1> 
+                    <h3>Name: {storedUser.data.user.firstName} {storedUser.data.user.lastName}</h3>
+                    <h3>Email: {storedUser.data.user.email_add}</h3>
+                    <h3>Contact Number: {storedUser.data.user.user_contact}</h3>
 
-                <br></br>
-                
-                <button onClick={fetchOrderList} name="toHistory" value={user_id}>View History</button>
-                <br></br>
+                    <button onClick={fetchOrderList} name="toHistory" value={user_id}> View History </button>
+                </div>
+           
+            
             <h1> Orders History </h1>
+
                 <table className="table">
                     <thead className="table-header">
                         <tr>
