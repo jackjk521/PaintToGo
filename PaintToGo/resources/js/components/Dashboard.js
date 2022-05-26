@@ -9,7 +9,7 @@ export default function Dashboard() {
     const level_name = sessionStorage.getItem('level_name');
 
     return (
-        <div className="container">
+        <div>
 
             {level_name == "Admin" && <Admin />}
             {level_name == "Manager" && <Manager />}

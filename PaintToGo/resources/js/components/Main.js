@@ -16,7 +16,7 @@ import ManagerNullOrdersPage from './NullOrderTable';
 function Main() {
    
     return (
-        <div className="container">
+        <div>
             <BrowserRouter>
                 <div className = "Header">
                     <span className='Menu'> <Link to="/"> Home </Link></span>
@@ -29,7 +29,6 @@ function Main() {
                 </div>
                 <div>
                     <Routes>
-
                         <Route path="/consult" element = {<ConsultationForm/>}/> 
                         <Route path="/order" element = {<OrderPage/>} /> 
                         <Route path="/request" element = {<RequestPage/>}/>
