@@ -53,3 +53,6 @@ Route::post('/addRequestList', [RequestListController::class, 'store']);
 Route::post('/addOrders', [OrdersController::class, 'store']);
 Route::post('/addOrderList', [OrderListController::class, 'store']);
 Route::post('/addConsultations', [ConsultationsController::class, 'store']);
+
+//Admin CRUD and Branch Inventory Routes
+Route::get('/viewProducts', [ProductController::class, 'viewProducts']);

@@ -35,4 +35,9 @@ export default {
     viewRList: (params) => {
         return axios.get(`${BASE_API_URL}/viewRList`, params);
     },
+
+    //Admin CRUD and Branch Inventory
+    viewProducts: () => {
+        return axios.get(`${BASE_API_URL}/viewProducts`);
+    },
 }
