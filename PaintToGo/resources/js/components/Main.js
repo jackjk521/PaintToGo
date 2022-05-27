@@ -16,7 +16,6 @@ import ManagerNullOrdersPage from './NullOrderTable';
 function Main() {
    
     return (
-        <div>
             <BrowserRouter>
                 <div className = "Header">
                     <span className='Menu'> <Link to="/"> Home </Link></span>
@@ -41,7 +40,6 @@ function Main() {
 
             </BrowserRouter>
     
-        </div>
 
     );
 }
