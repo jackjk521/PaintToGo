@@ -23,13 +23,13 @@ export default function Manager(){
                 <div className="sidebar">
                     <h1 class="mt-4 px-2">Manager {user_id}</h1>
                     <hr/>
-                    <NavLink className="nav-link" to="/managerNullTable">
+                    <NavLink to="/managerNullTable">
                         Dashboard
                     </NavLink>
-                    <NavLink className="nav-link" to="/order">
+                    <NavLink to="/order">
                         Inventory
                     </NavLink>
-                    <NavLink className="nav-link" to="/request">
+                    <NavLink to="/request">
                         Requests
                     </NavLink>
                     <br/><br/><br/><br/><br/><br/>

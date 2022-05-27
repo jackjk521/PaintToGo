@@ -58,16 +58,16 @@ export default function Admin(){
             <div className="sidebar">
                 <h1 class="mt-4 px-2">Admin</h1>
                 <hr/>
-                <NavLink className="nav-link" to="/dashboard">
+                <NavLink to="/dashboard">
                     Dashboard
                 </NavLink>
-                <NavLink className="nav-link" to="/order">
+                <NavLink to="/order">
                     Inventory
                 </NavLink>
-                <NavLink className="nav-link" to="/dashboard">
+                <NavLink to="/dashboard">
                     Transactions
                 </NavLink>
-                <NavLink className="nav-link" to="/dashboard">
+                <NavLink to="/dashboard">
                     Admin CRUD
                 </NavLink>
                 <br/><br/><br/><br/><br/>
