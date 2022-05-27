@@ -50,7 +50,7 @@ export default function Admin(){
     return ( 
         <div className="page">
             <nav class="navbar fixed-top navbar-dark">
-                <a class="navbar-brand px-2" href="#">
+                <a class="navbar-brand px-2" href="dashboard">
                     Color City Paint Store
                 </a>
             </nav>
@@ -81,20 +81,20 @@ export default function Admin(){
 
 
                 <div>
+                    <h1> NULL statuses </h1>
+                        <NullRequestTable/>
+                        <NullConsultationTable/>
+                </div> 
+
+                <hr/>
+                
+                <div>
                     <h1> APPROVED statuses </h1>
                     <ApprovedRequests />
                     <ApprovedOrders />   
                     <ApprovedConsultations />
                     
                 </div>   
-
-                <hr/>
-
-                <div>
-                    <h1> NULL statuses </h1>
-                        <NullRequestTable/>
-                        <NullConsultationTable/>
-                </div>
             </div>
             
 

@@ -23,7 +23,6 @@ function Main() {
                     <span className='Menu'> <Link to="/consult"> Consultation </Link></span>
                     <span className='Menu'> <Link to="/order"> Orders </Link></span>
                     <span className='Menu'> <Link to ="/request"> Requests </Link></span>
-
                     <span className='Menu'> <Link to="/adminNullTables"> Admin To Approve Tables </Link></span>
                     <span className='Menu'> <Link to ="/managerNullTable"> Manager To Approve Orders</Link></span>
                 </div>
