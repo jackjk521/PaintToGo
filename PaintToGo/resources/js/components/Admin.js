@@ -9,8 +9,9 @@ import ApprovedRequests from "./ApprovedRequests";
 import ApprovedConsultations from "./ApprovedConsultations";
 import ApprovedOrders from "./ApprovedOrders";
 import "../../css/Dashboard.css";
-import {BsFillPersonFill} from 'react-icons/bs';
 import { NavLink } from "react-router-dom";
+import { HashLink } from 'react-router-hash-link';
+import OrderPage from "./OrderPage";
 
 
 export default function Admin(){
@@ -49,46 +50,36 @@ export default function Admin(){
 
     return ( 
         <div className="page">
-            <nav class="navbar fixed-top navbar-dark">
-                <a class="navbar-brand px-2" href="dashboard">
-                    Color City Paint Store
-                </a>
-            </nav>
-            
             <div className="sidebar">
                 <h1 class="mt-4 px-2">Admin</h1>
                 <hr/>
-                <NavLink to="/dashboard">
-                    Dashboard
-                </NavLink>
-                <NavLink to="/order">
-                    Inventory
-                </NavLink>
-                <NavLink to="/dashboard">
-                    Transactions
-                </NavLink>
+                <HashLink smooth to='#null'> Dashboard </HashLink>
+                <HashLink smooth to='#inventory'> Inventory </HashLink>
+                <HashLink smooth to='#approved'> Transactions </HashLink>
                 <NavLink to="/dashboard">
                     Admin CRUD
                 </NavLink>
-                <br/><br/><br/><br/><br/>
+                <br/><br/><br/>
                 <a class="logout" onClick = {logOut}> Log Out </a>
             </div>
 
             <div className="content">
-                <h1>Admin page {user_id} {branch_id} </h1>
-
-                <br/>
-
-
-                <div>
+                <div id="null">
                     <h1> NULL statuses </h1>
                         <NullRequestTable/>
                         <NullConsultationTable/>
                 </div> 
 
                 <hr/>
+
+                <div id="inventory">
+                    <h1> Products list </h1>
+                        <OrderPage/>
+                </div>
+
+                <hr/>
                 
-                <div>
+                <div id="approved">
                     <h1> APPROVED statuses </h1>
                     <ApprovedRequests />
                     <ApprovedOrders />   

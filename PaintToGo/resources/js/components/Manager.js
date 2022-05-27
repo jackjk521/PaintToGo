@@ -13,12 +13,6 @@ export default function Manager(){
 
     return (
         <div className="page">
-                <nav class="navbar fixed-top navbar-dark bg-dark">
-                <a class="navbar-brand px-2" href="dashboard">
-                    Color City Paint Store
-                </a>
-                </nav>
-
                 <div className="sidebar">
                     <h1 class="mt-4 px-2">Manager {user_id}</h1>
                     <hr/>

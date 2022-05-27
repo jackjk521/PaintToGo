@@ -11,20 +11,14 @@ import Dashboard from './Dashboard'
 import Profile from './Profile';
 import AdminNullTablesPage from './AdminNullTablesPage';
 import ManagerNullOrdersPage from './NullOrderTable';
+import Navbar from './Navbar';
 
 
 function Main() {
    
     return (
             <BrowserRouter>
-                <div className = "Header">
-                    <span className='Menu'> <Link to="/"> Home </Link></span>
-                    <span className='Menu'> <Link to="/consult"> Consultation </Link></span>
-                    <span className='Menu'> <Link to="/order"> Orders </Link></span>
-                    <span className='Menu'> <Link to ="/request"> Requests </Link></span>
-                    <span className='Menu'> <Link to="/adminNullTables"> Admin To Approve Tables </Link></span>
-                    <span className='Menu'> <Link to ="/managerNullTable"> Manager To Approve Orders</Link></span>
-                </div>
+                <Navbar/>
                 <div>
                     <Routes>
                         <Route path="/consult" element = {<ConsultationForm/>}/> 

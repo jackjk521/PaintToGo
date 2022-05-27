@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 import DisplayModal from "../components/DisplayModal";
+import "../../css/Dashboard.css";
 
 const NullOrderTable = () => {
 
@@ -142,22 +143,27 @@ const NullOrderTable = () => {
     }
 
     return (
-        <div>
-            <h1> NULL Orders Table </h1>
-                <table className="table">
-                    <thead className="table-header">
-                        <tr>
-                            <th>Order ID</th>
-                            <th>Brand Address</th>
-                            <th>Lastname</th>
-                            <th>Approve</th>
-                            <th>View</th>
-                        </tr>
-                    </thead>
-                    <tbody className="table-contents">
-                        {renderList()}
-                    </tbody>
-                </table>
+        <div className="page">
+            <div className="content-center">
+                <h1> NULL Orders Table </h1>
+                <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
+                    <br/><br/>
+                    <table className="table">
+                        <thead className="table-header">
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Brand Address</th>
+                                <th>Lastname</th>
+                                <th>Approve</th>
+                                <th>View</th>
+                            </tr>
+                        </thead>
+                        <tbody className="table-contents">
+                            {renderList()}
+                        </tbody>
+                    </table>
+            </div>
+            
         </div>
         
     );

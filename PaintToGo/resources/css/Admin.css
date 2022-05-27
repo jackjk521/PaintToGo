@@ -21,10 +21,6 @@
 }
 
 .table-contents-odd {
-    text-align: left;
+    text-align: center;
     background-color: lightgrey;
-}
-
-.table-contents-even {
-    text-align: left;
 }

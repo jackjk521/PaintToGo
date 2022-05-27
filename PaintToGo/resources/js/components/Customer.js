@@ -34,13 +34,7 @@ export default function Customer(){
     return ( 
 
         <div className="page">
-            <nav class="navbar fixed-top navbar-dark bg-dark">
-                <a class="navbar-brand px-2" href="dashboard">
-                    Color City Paint Store
-                </a>
-            </nav>
-
-            <div className="content">
+            <div className="content-center">
                 <h1>Customer page {user_id}</h1> 
                 
                 <button onClick = {logOut}> LogOut </button>

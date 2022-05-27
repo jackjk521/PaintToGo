@@ -37,6 +37,7 @@
         "react-icons": "^4.3.1",
         "react-modal": "^3.15.1",
         "react-router-dom": "^6.0.2",
+        "react-router-hash-link": "^2.4.3",
         "styled-components": "^5.3.5"
     }
 }
