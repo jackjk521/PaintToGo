@@ -9,9 +9,9 @@ nav {
 }
 
 .content {
-  margin-top: 64px;
   margin-left: 200px;
-  padding: 20px;
+  margin-right: 0px;
+  padding-top: 30px;
 }
 
 .sidebar {

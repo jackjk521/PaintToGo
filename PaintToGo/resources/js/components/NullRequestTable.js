@@ -122,7 +122,6 @@ const NullRequestTable = () => {
 
     return (
         <div>
-            <h1> NULL Request Table </h1>
                 <table className="table">
                     <thead className="table-header">
                         <tr>
@@ -137,6 +136,8 @@ const NullRequestTable = () => {
                         {renderRequests()}
                     </tbody>
                 </table>
+
+                <br></br>
         </div>
         
     );

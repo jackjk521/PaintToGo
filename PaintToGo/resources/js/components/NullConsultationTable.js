@@ -124,7 +124,6 @@ const NullConsultationTable = () =>{
     }
     return (
         <div>
-            <h1> NULL Consultations Table </h1>
                 <table className="table">
                     <thead className="table-header">
                         <tr>

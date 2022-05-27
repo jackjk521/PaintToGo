@@ -8,6 +8,10 @@ import NullConsultationTable from "./NullConsultationTable";
 import ApprovedRequests from "./ApprovedRequests";
 import ApprovedConsultations from "./ApprovedConsultations";
 import ApprovedOrders from "./ApprovedOrders";
+import "../../css/Dashboard.css";
+import {BsFillPersonFill} from 'react-icons/bs';
+import { NavLink } from "react-router-dom";
+
 
 export default function Admin(){
     const user_id = sessionStorage.getItem('user_id');
@@ -44,24 +48,55 @@ export default function Admin(){
     }
 
     return ( 
-        <div> 
-            <h1>Admin page {user_id} {branch_id} </h1> 
-
-            <button onClick = {logOut}> LogOut </button>
-
-            <div>
-                <h1> APPROVED statuses </h1>
-                <ApprovedRequests />
-                <ApprovedOrders />   
-                <ApprovedConsultations />
-                
-            </div>   
-
-            <div>
-                <h1> NULL statuses </h1>
-                    <NullRequestTable/>
-                    <NullConsultationTable/>
+        <div className="page">
+            <nav class="navbar fixed-top navbar-dark">
+                <a class="navbar-brand px-2" href="#">
+                    Color City Paint Store
+                </a>
+            </nav>
+            
+            <div className="sidebar">
+                <h1 class="mt-4 px-2">Admin</h1>
+                <hr/>
+                <NavLink className="nav-link" to="/dashboard">
+                    Dashboard
+                </NavLink>
+                <NavLink className="nav-link" to="/order">
+                    Inventory
+                </NavLink>
+                <NavLink className="nav-link" to="/dashboard">
+                    Transactions
+                </NavLink>
+                <NavLink className="nav-link" to="/dashboard">
+                    Admin CRUD
+                </NavLink>
+                <br/><br/><br/><br/><br/>
+                <a class="logout" onClick = {logOut}> Log Out </a>
             </div>
+
+            <div className="content">
+                <h1>Admin page {user_id} {branch_id} </h1>
+
+                <br/>
+
+
+                <div>
+                    <h1> APPROVED statuses </h1>
+                    <ApprovedRequests />
+                    <ApprovedOrders />   
+                    <ApprovedConsultations />
+                    
+                </div>   
+
+                <hr/>
+
+                <div>
+                    <h1> NULL statuses </h1>
+                        <NullRequestTable/>
+                        <NullConsultationTable/>
+                </div>
+            </div>
+            
 
             
 
