@@ -26,8 +26,8 @@
   
   button.loginRegbuttons {
     border-radius: 20px;
-    border: 1px solid #18608a;
-    background-color: #18608a;
+    border: 1px solid #4992a7;
+    background-color: #4992a7;
     color: #ffffff;
     font-size: 12px;
     font-weight: bold;
@@ -141,9 +141,9 @@
   }
   
   .overlay {
-    background: #222529;
-    background: -webkit-linear-gradient(to right, #222529, #222529);
-    background: linear-gradient(to right, #222529, #222529);
+    background: linear-gradient(to right, #ff7400, #ff9a00);
+    background: -webkit-linear-gradient(to right, #ff7400, #ff9a00);
+    background: linear-gradient(to right, #ff7400, #ff9a00);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
