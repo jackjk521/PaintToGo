@@ -34,7 +34,6 @@ function Main() {
                         <Route path="/" element = {<LoginRegister/>}/> 
                         <Route path="/dashboard" element = {<Dashboard/>}/>
                         <Route path="/profile" element = {<Profile/>}/>
-
                         <Route path="/adminNullTables" element = {<AdminNullTablesPage/>}/>
                         <Route path="/managerNullTable" element = {<ManagerNullOrdersPage/>}/>
                     </Routes>

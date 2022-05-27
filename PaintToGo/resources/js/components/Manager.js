@@ -1,6 +1,5 @@
 import {useNavigate} from "react-router-dom"
 import "../../css/Dashboard.css";
-import {BsFillPersonFill} from 'react-icons/bs';
 import { NavLink } from "react-router-dom";
 
 export default function Manager(){
@@ -37,7 +36,7 @@ export default function Manager(){
                 </div>
                 
                 <div className="content">
-                    <h1>This is Manager {user_id} Branch {branch_id}</h1>
+                    <h1>Welcome, Branch Manager {user_id} (Branch {branch_id})!</h1>
                 </div>
         </div>
     )

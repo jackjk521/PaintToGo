@@ -1,6 +1,8 @@
 import {Link, useNavigate} from "react-router-dom"
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
+import "../../css/Dashboard.css";
+import {BsFillPersonFill} from 'react-icons/bs';
 import { pullAt } from "lodash";
 import Profile from "./Profile";
 
@@ -31,11 +33,19 @@ export default function Customer(){
     }
     return ( 
 
-        <div> 
-        <h1>Customer page {user_id}</h1> 
-        
-        <button onClick = {logOut}> LogOut </button>
-        <button onClick = {userP} name="toProfile" value={user_id}> PROFILE </button>    
+        <div className="page">
+            <nav class="navbar fixed-top navbar-dark bg-dark">
+                <a class="navbar-brand px-2" href="dashboard">
+                    Color City Paint Store
+                </a>
+            </nav>
+
+            <div className="content">
+                <h1>Customer page {user_id}</h1> 
+                
+                <button onClick = {logOut}> LogOut </button>
+                <button onClick = {userP} name="toProfile" value={user_id}> PROFILE </button>    
+            </div>
         </div>
     )
 } 
