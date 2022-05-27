@@ -13,6 +13,7 @@ use App\Http\Controllers\RequestItemController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TransactionListController;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,7 @@ Route::post('/addConsultations', [ConsultationsController::class, 'store']);
 
 //Admin CRUD and Branch Inventory Routes
 Route::get('/viewProducts', [ProductController::class, 'viewProducts']);
+Route::get('/viewUsers', [UserController::class, 'viewUsers']);
+Route::get('/viewBrands', [BrandController::class, 'viewBrands']);
+Route::get('/viewBranches', [BranchController::class, 'viewBranches']);
+Route::get('/viewUtility', [Controller::class, 'viewUtility']);

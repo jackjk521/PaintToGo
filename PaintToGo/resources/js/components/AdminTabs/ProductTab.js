@@ -1,17 +1,13 @@
 import "antd/dist/antd.css";
-import Axios from 'axios';
 import React, { useEffect, useState } from "react";
-import {Table, Tabs, Modal, Input, Button} from "antd";
-import NewProductForm from "./forms/NewProductForm";
-import api from "../api/api";
+import {Table, Input, Button} from "antd";
+import NewProductForm from "../forms/NewProductForm";
+import api from "../../api/api";
 import { EditOutlined, DeleteOutlined, SearchOutlined  } from "@ant-design/icons";
 
-const { TabPane } = Tabs;
 
-export default function ProductTable(){
-    const [dataSource, setDataSource] = useState([])
+export default function ProductTab(res){
     const[products, setProducts] = useState([]);
-
 
     //Tab css over here
     const tabStyle = {
@@ -24,9 +20,9 @@ export default function ProductTable(){
         let isMounted = true; 
         const fetchData = async () => {
           try {
-            const res = await Axios.get('api/getProducts');
+            const res = await api.viewProducts();
             if (isMounted) {
-                setProducts(res.data);
+                setProducts(res.data.products);
             }
           } catch {
             console.log(res.data);
@@ -106,9 +102,9 @@ export default function ProductTable(){
         {
         key:"3",
         title: 'Brand',
-        dataIndex: 'brand_id',
+        dataIndex: 'brand_name',
         sorter: (a, b) => {
-                return a.brand_id > b.brand_id
+              return a.brand_name.localeCompare(b.brand_name)
             }
         },
         {
@@ -138,28 +134,17 @@ export default function ProductTable(){
         {
             key:"7",
             title: 'Utility',
-            dataIndex: 'utility_id',
-            render:(utility_id)=> {
-                if(utility_id==1){
-                    return  <p>Paint</p>
-                }
-                else{
-                    return <p>Other Stuff</p>
-                }
-                
-                },
+            dataIndex: 'utility_name',
             sorter: (a, b) => {
-                return a.utility_id > b.utility_id
-                },
+                return a.utility_name.localeCompare(b.utility_name)
+            },
             filters: [
-                {text:'Paint', value:'Paint'},
-                {text: 'Other Stuff', value:'Other Stuff'},
-                {text: '3', value:'3'},
-                {text: '4', value:'4'},
-                {text: '5', value:'5'},
+                {text:'Home', value:'Home'},
+                {text: 'Vehicles', value:'Vehicles'},
+                {text: 'Equipment', value:'Equipment'},
             ],
                 onFilter:(value, record)=> {
-                    return record.utility_id.indexOf(value) === 0
+                    return record.utility_name.indexOf(value) === 0
                 }
             },
         {
@@ -184,32 +169,18 @@ export default function ProductTable(){
     ]
 
     return(
-        <div className="App">
-             <Tabs defaultActiveKey="1" centered size="large" animated tabBarStyle={tabStyle}>
-                <TabPane tab="Products" key="1">
-                    <header className="App-header">
-                        <NewProductForm/>
-                        <Table striped bordered hover
-                            className="productTable"
-                            columns={productColumns}
-                            dataSource={products}>
-                            
-                        </Table>
-                    </header>
-                </TabPane>
-                <TabPane tab="Employees" key="2">
-                    Employees CRUD
-                </TabPane>
-                <TabPane tab="Branches" key="3">
-                    Branches CRUD
-                </TabPane>
-                <TabPane tab="Brands" key="4">
-                    Brands CRUD
-                </TabPane>
-                <TabPane tab="Utility" key="5">
-                    Utility CRUD
-                </TabPane>
-            </Tabs>
-        </div>
+        <>
+            <header className="App-header">
+                <NewProductForm/>
+                <Table striped bordered hover
+                    className="productTable"
+                    columns={productColumns}
+                    dataSource={products}>
+                        
+                </Table>
+            </header>
+        </>
+               
+
     )
 }

@@ -8,7 +8,7 @@ import OrderPage from './OrderPage';
 import RequestPage from './RequestPage';
 import LoginRegister from './LoginRegister'
 import Dashboard from './Dashboard'
-import Tables from './Tables'
+import Administration from './Administration'
 
 
 function Main() {
@@ -21,7 +21,7 @@ function Main() {
                     <span className='Menu'> <Link to="/consult"> Consultation </Link></span>
                     <span className='Menu'> <Link to="/order"> Orders </Link></span>
                     <span className='Menu'> <Link to ="/request"> Requests </Link></span>
-                    <span className='Menu'> <Link to ="/tables"> Tables </Link></span>
+                    <span className='Menu'> <Link to ="/administration"> Administration </Link></span>
                 </div>
                 <div>
                     <Routes>
@@ -30,7 +30,7 @@ function Main() {
                         <Route path="/request" element = {<RequestPage/>}/>
                         <Route path="/" element = {<LoginRegister/>}/> 
                         <Route path="/dashboard" element = {<Dashboard/>}/>
-                        <Route path="/tables" element = {<Tables/>}/>
+                        <Route path="/administration" element = {<Administration/>}/>
                     </Routes>
                 </div>
             </BrowserRouter>

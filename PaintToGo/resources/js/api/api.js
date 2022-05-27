@@ -40,4 +40,16 @@ export default {
     viewProducts: () => {
         return axios.get(`${BASE_API_URL}/viewProducts`);
     },
+    viewUsers: () => {
+        return axios.get(`${BASE_API_URL}/viewUsers`);
+    },
+    viewBrands: () => {
+        return axios.get(`${BASE_API_URL}/viewBrands`);
+    },
+    viewBranches: () => {
+        return axios.get(`${BASE_API_URL}/viewBranches`);
+    },
+    viewUtility: () => {
+        return axios.get(`${BASE_API_URL}/viewUtility`);
+    },
 }
