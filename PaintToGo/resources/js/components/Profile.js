@@ -16,6 +16,7 @@ export default function Profile(){
         sessionStorage.clear();
         navigate('/');
     }
+    
     const f = sessionStorage.getItem('user')
     var storedUser = JSON.parse(f);
     console.log(storedUser.data);
