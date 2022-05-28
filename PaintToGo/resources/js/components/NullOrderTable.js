@@ -143,11 +143,7 @@ const NullOrderTable = () => {
     }
 
     return (
-        <div className="page">
-            <div className="content-center">
-                <h1> NULL Orders Table </h1>
-                <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
-                    <br/><br/>
+        
                     <table className="table">
                         <thead className="table-header">
                             <tr>
@@ -162,9 +158,6 @@ const NullOrderTable = () => {
                             {renderList()}
                         </tbody>
                     </table>
-            </div>
-            
-        </div>
         
     );
 }
