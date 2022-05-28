@@ -12,6 +12,7 @@ import "../../css/Dashboard.css";
 import { NavLink } from "react-router-dom";
 import { HashLink } from 'react-router-hash-link';
 import OrderPage from "./OrderPage";
+import OrderForm from "./OrderForm";
 
 
 export default function Admin(){
@@ -65,7 +66,7 @@ export default function Admin(){
 
             <div className="content">
                 <div id="null">
-                    <h1> NULL statuses </h1>
+                    <h1> PENDING </h1>
                         <NullRequestTable/>
                         <NullConsultationTable/>
                 </div> 
@@ -73,14 +74,14 @@ export default function Admin(){
                 <hr/>
 
                 <div id="inventory">
-                    <h1> Products list </h1>
-                        <OrderPage/>
+                    <h1> PRODUCTS LIST</h1>
+                        <OrderForm/>
                 </div>
 
                 <hr/>
                 
                 <div id="approved">
-                    <h1> APPROVED statuses </h1>
+                    <h1> APPROVED </h1>
                     <ApprovedRequests />
                     <ApprovedOrders />   
                     <ApprovedConsultations />
