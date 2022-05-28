@@ -13,14 +13,10 @@ use App\Http\Controllers\ConsultationsController;
 use App\Http\Controllers\RequestItemController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TransactionListController;
-<<<<<<< HEAD
 use App\Http\Controllers\UserController;
-=======
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\UtilityController;
 
->>>>>>> master
 /*
 |--------------------------------------------------------------------------
 | API Routes
