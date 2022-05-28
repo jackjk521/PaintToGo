@@ -22,15 +22,21 @@ export default function Manager(){
                 <div className="sidebar">
                     <h1 class="mt-4 px-2">Manager {user_id}</h1>
                     <hr/>
-                    <NavLink to="/managerNullTable">
-                        Dashboard
-                    </NavLink>
-                    <NavLink to="/order">
-                        Inventory
-                    </NavLink>
-                    <NavLink to="/request">
-                        Requests
-                    </NavLink>
+                    <NavLink to="/dashboard">
+                    Dashboard
+                </NavLink>
+                <NavLink to="/order">
+                    Order
+                </NavLink>
+                <NavLink to="/inventory">
+                    Inventory
+                </NavLink>
+                <NavLink to="/dashboard">
+                    Transactions
+                </NavLink>
+                <NavLink to="/administration">
+                    Admin CRUD
+                </NavLink>
                     <br/><br/><br/><br/><br/><br/>
                     <a class="logout" onClick = {logOut}> Log Out </a>
                 </div>

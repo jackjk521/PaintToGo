@@ -13,6 +13,7 @@ import AdminNullTablesPage from './AdminNullTablesPage';
 import ManagerNullOrdersPage from './NullOrderTable';
 import Administration from './Administration'
 import AdminInventory from './AdminInventory'
+import Inventory from './Inventory'
 
 
 function Main() {
@@ -41,6 +42,7 @@ function Main() {
                         <Route path="/managerNullTable" element = {<ManagerNullOrdersPage/>}/>
                         <Route path="/AdminInventory" element = {<AdminInventory/>}/>
                         <Route path="/administration" element = {<Administration/>}/>
+                        <Route path="/inventory" element = {<Inventory/>}/>
                     </Routes>
                 </div>
             </BrowserRouter>

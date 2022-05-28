@@ -39,6 +39,9 @@ export default function ProductTable(){
                     Dashboard
                 </NavLink>
                 <NavLink to="/order">
+                    Order
+                </NavLink>
+                <NavLink to="/AdminInventory">
                     Inventory
                 </NavLink>
                 <NavLink to="/dashboard">
