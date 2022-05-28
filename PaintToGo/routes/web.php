@@ -3,6 +3,7 @@
 use App\Http\Controllers\Session;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +49,11 @@ Route::get('/dashboard', function () {
 Route::get('/profile', function () {
     return view('welcome');
 });
+Route::get('/administration', function () {
+    return view('welcome');
+});
+
+Route::get('/inventory', function () {
+    return view('welcome');
+});
+

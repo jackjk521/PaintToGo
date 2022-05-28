@@ -1,28 +1,70 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ */
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Branch
+ * 
+ * @property int $branch_id
+ * @property int $user_id
+ * @property string $branch_name
+ * @property string $branch_add
+ * @property string $branch_contact
+ * @property string $branch_type
+ * @property Carbon $created_at
+ * 
+ * @property User $user
+ * @property Collection|Inventory[] $inventories
+ * @property Collection|Order[] $orders
+ * @property Collection|Request[] $requests
+ *
+ * @package App\Models
+ */
 class Branch extends Model
 {
-    use HasFactory;
+	protected $table = 'branch';
+	protected $primaryKey = 'branch_id';
+	public $timestamps = false;
 
-    public $timestamps = ["created_at"];
-    const UPDATED_AT = null;
+	protected $casts = [
+		'user_id' => 'int',
+		'created_at' => 'datetime',
+	];
 
-    protected $table = 'branch';
+	protected $fillable = [
+		'user_id',
+		'branch_name',
+		'branch_add',
+		'branch_contact',
+		'branch_type',
+		'created_at'
+	];
 
-    protected $fillable = [
-        'user_id',
-        'branch_name',
-        'branch_add',
-        'branch_contact',
-        'branch_type',
-    ];
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
 
-    protected $casts = [
-        'created_at' => 'datetime',
-    ];
+	public function inventories()
+	{
+		return $this->hasMany(Inventory::class);
+	}
+
+	public function orders()
+	{
+		return $this->hasMany(Order::class);
+	}
+
+	public function requests()
+	{
+		return $this->hasMany(Request::class);
+	}
 }

@@ -40,7 +40,6 @@ export default {
     },
 
 
-
     //approvebtns here
     approveRBtn: (params) => {
         return axios.get(`${BASE_API_URL}/approveRBtn`, params);
@@ -62,4 +61,69 @@ export default {
         return axios.get(`${BASE_API_URL}/getHistory`, params);
     },
     
+
+    //Admin CRUD and Branch Inventory
+    viewProducts: () => {
+        return axios.get(`${BASE_API_URL}/viewProducts`);
+    },
+    viewUsers: () => {
+        return axios.get(`${BASE_API_URL}/viewUsers`);
+    },
+    viewEmployees: () => {
+        return axios.get(`${BASE_API_URL}/viewEmployees`);
+    },
+    viewBrands: () => {
+        return axios.get(`${BASE_API_URL}/viewBrands`);
+    },
+    viewBranches: () => {
+        return axios.get(`${BASE_API_URL}/viewBranches`);
+    },
+    viewUtility: () => {
+        return axios.get(`${BASE_API_URL}/viewUtility`);
+    },
+
+    newProduct: (newProduct) => {
+        return axios.post(`${BASE_API_URL}/newProduct`, newProduct);
+    },
+    editProduct: (updatedProduct) => {
+        return axios.post(`${BASE_API_URL}/editProduct`, updatedProduct);
+    },
+    deleteProduct: (deletedProduct) => {
+        return axios.post(`${BASE_API_URL}/deleteProduct`, deletedProduct);
+    },
+
+    newUser: (newUser) => {
+        return axios.post(`${BASE_API_URL}/newUser`, newUser);
+    },
+    editUser: (editedUser) => {
+        return axios.post(`${BASE_API_URL}/editUser`, editedUser);
+    },
+    deleteUser: (deletedUser) => {
+        return axios.post(`${BASE_API_URL}/deleteUser`, deletedUser);
+    },
+
+    newBranch: (newBranch) => {
+        return axios.post(`${BASE_API_URL}/newBranch`, newBranch);
+    },
+    editBranch: (editedBranch) => {
+        return axios.post(`${BASE_API_URL}/editBranch`, editedBranch);
+    },
+    deleteBranch: (deletedBranch) => {
+        return axios.post(`${BASE_API_URL}/deleteBranch`, deletedBranch);
+    },
+
+    newBrand: (newBrand) => {
+        return axios.post(`${BASE_API_URL}/newBrand`, newBrand);
+    },
+    editBrand: (editedBrand) => {
+        return axios.post(`${BASE_API_URL}/editBrand`, editedBrand);
+    },
+    deleteBrand: (deletedBrand) => {
+        return axios.post(`${BASE_API_URL}/deleteBrand`, deletedBrand);
+    },
+
+    viewBranchInventory: (branch_id) => {
+        return axios.get(`${BASE_API_URL}/viewBranchInventory`, branch_id);
+    },
+
 }
