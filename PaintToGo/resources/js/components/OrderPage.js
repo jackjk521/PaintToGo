@@ -43,23 +43,25 @@ const OrderPage = () => {
     }
 
     return (
-        <div className="order-page-body">
-            { renderComponent === 'form' && 
-                <OrderForm setRenderComponent = {setRenderComponent} 
-                            addItem = {addItem}
-                />
-            } 
+                <div className="order-page-body">
+                    
+                        { renderComponent === 'form' && 
+                            <OrderForm setRenderComponent = {setRenderComponent} 
+                                        addItem = {addItem}
+                            />
+                        } 
 
-            { renderComponent === 'cart' && 
-                <OrderCart renderComponent = {renderComponent} 
-                            setRenderComponent = {setRenderComponent} 
-                            cart = {cart}
-                            setCart = {setCart}
-                            addItem = {addItem}
-                            removeItem = {removeItem}
-                />
-            }
-        </div>
+                        { renderComponent === 'cart' && 
+                            <OrderCart renderComponent = {renderComponent} 
+                                        setRenderComponent = {setRenderComponent} 
+                                        cart = {cart}
+                                        setCart = {setCart}
+                                        addItem = {addItem}
+                                        removeItem = {removeItem}
+                            />
+                        }
+                    </div>
+       
     );
 }
 

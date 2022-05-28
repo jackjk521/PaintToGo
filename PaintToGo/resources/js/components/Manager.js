@@ -21,7 +21,9 @@ export default function Manager(){
                     <hr/>
                     <HashLink smooth to='#null'> Dashboard </HashLink>
                     <HashLink smooth to='#inventory'> Inventory </HashLink>
-                    <HashLink smooth to='#requests'> Requests </HashLink>
+                    <NavLink to="/request">
+                        Requests
+                    </NavLink>
                     <br/><br/><br/><br/><br/><br/>
                     <a class="logout" onClick = {logOut}> Log Out </a>
                 </div>

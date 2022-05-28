@@ -42,23 +42,29 @@ const RequestPage = () => {
     }
 
     return (
-        <div className="request-page-body">
-            { renderComponent === 'form' && 
-                <RequestForm setRenderComponent = {setRenderComponent} 
-                            addItem = {addItem}
-                            removeItem = {removeItem}
-                />
-            } 
+        <div className="page">
+            <div className="content-center">
+                <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
+                <div className="request-page-body">
+                { renderComponent === 'form' && 
+                    <RequestForm setRenderComponent = {setRenderComponent} 
+                                addItem = {addItem}
+                                removeItem = {removeItem}
+                    />
+                } 
 
-            { renderComponent === 'requestlist' && 
-                <RequestList setRenderComponent = {setRenderComponent} 
-                            requestlist = {requestlist}
-                            setRequestlist = {setRequestlist}
-                            addItem = {addItem}
-                            removeItem = {removeItem}
-                />
-            }
+                { renderComponent === 'requestlist' && 
+                    <RequestList setRenderComponent = {setRenderComponent} 
+                                requestlist = {requestlist}
+                                setRequestlist = {setRequestlist}
+                                addItem = {addItem}
+                                removeItem = {removeItem}
+                    />
+                }
+                </div>
+            </div>
         </div>
+        
     );
 }
 
