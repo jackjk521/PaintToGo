@@ -2,12 +2,18 @@ import "antd/dist/antd.css";
 import React, { useEffect, useState } from "react";
 import {Table, Input, Button} from "antd";
 import NewProductForm from "../forms/NewProductForm";
+import EditProductForm from "../forms/EditProductForm";
+import DeleteProductForm from "../forms/DeleteProductForm";
 import api from "../../api/api";
-import { EditOutlined, DeleteOutlined, SearchOutlined  } from "@ant-design/icons";
+
+import { SearchOutlined  } from "@ant-design/icons";
 
 
 export default function ProductTab(res){
     const[products, setProducts] = useState([]);
+    const[brands, setBrands] = useState([]);
+    const[utilities, setUtilities] = useState([]);
+  
 
     //Tab css over here
     const tabStyle = {
@@ -21,8 +27,13 @@ export default function ProductTab(res){
         const fetchData = async () => {
           try {
             const res = await api.viewProducts();
+            const brandFetch = await api.viewBrands();
+            const utilityFetch = await api.viewUtility();
             if (isMounted) {
                 setProducts(res.data.products);
+                setBrands(brandFetch.data.brands);
+                setUtilities(utilityFetch.data.utility);
+                
             }
           } catch {
             console.log(res.data);
@@ -40,7 +51,7 @@ export default function ProductTab(res){
         title: 'Product ID',
         dataIndex: 'product_id',
         sorter: (a, b) => {
-            return a.product_id > b.product_id
+            return a.product_id - b.product_id
             },
         },
         {
@@ -112,7 +123,7 @@ export default function ProductTab(res){
         title: 'Price',
         dataIndex: 'price',
         sorter: (a, b) => {
-                return a.price > b.price
+                return a.price - b.price
             }
         },
         {
@@ -120,7 +131,7 @@ export default function ProductTab(res){
         title: 'Retail Price',
         dataIndex: 'retail_price',
         sorter: (a, b) => {
-                return a.retail_price > b.retail_price
+                return a.retail_price - b.retail_price
             }
         },
         {
@@ -150,34 +161,26 @@ export default function ProductTab(res){
         {
         key:"8",
         title: 'Actions',
-        render: (record)=>{
-            <>
-                <EditOutlined
-                    onClick={() => {
-                    onEditStudent(record);
-                    }}
-                />
-                <DeleteOutlined
-                    onClick={() => {
-                    onDeleteStudent(record);
-                    }}
-                    style={{ color: "red", marginLeft: 12 }}
-                 />
-            </>
-        }
+        render: (record) => (
+          <>
+            <EditProductForm brands = {brands} utilities={utilities} Product={record} setProducts={setProducts}/>
+            <DeleteProductForm Product={record}  setProducts={setProducts}/>
+          </>
+        )
         },
     ]
 
     return(
         <>
             <header className="App-header">
-                <NewProductForm/>
+                <NewProductForm setProducts={setProducts} brands = {brands} utilities={utilities}/>
                 <Table striped bordered hover
                     className="productTable"
                     columns={productColumns}
                     dataSource={products}>
                         
                 </Table>
+                
             </header>
         </>
                

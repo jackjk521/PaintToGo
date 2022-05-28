@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequestListController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\OrderListController;
 use App\Http\Controllers\ConsultationsController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TransactionListController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UtilityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,4 +62,23 @@ Route::get('/viewProducts', [ProductController::class, 'viewProducts']);
 Route::get('/viewUsers', [UserController::class, 'viewUsers']);
 Route::get('/viewBrands', [BrandController::class, 'viewBrands']);
 Route::get('/viewBranches', [BranchController::class, 'viewBranches']);
-Route::get('/viewUtility', [Controller::class, 'viewUtility']);
+Route::get('/viewUtility', [UtilityController::class, 'viewUtility']);
+Route::get('/viewEmployees', [UserController::class, 'viewEmployees']);
+
+Route::post('/editProduct', [ProductController::class, 'editProduct']);
+Route::post('/newProduct', [ProductController::class, 'newProduct']);
+Route::post('/deleteProduct', [ProductController::class, 'deleteProduct']);
+
+Route::post('/newUser', [UserController::class, 'newUser']);
+Route::post('/editUser', [UserController::class, 'editUser']);
+Route::post('/deleteUser', [UserController::class, 'deleteUser']);
+
+Route::post('/newBranch', [BranchController::class, 'newBranch']);
+Route::post('/editBranch', [BranchController::class, 'editBranch']);
+Route::post('/deleteBranch', [BranchController::class, 'deleteBranch']);
+
+Route::post('/newBrand', [BrandController::class, 'newBrand']);
+Route::post('/editBrand', [BrandController::class, 'editBrand']);
+Route::post('/deleteBrand', [BrandController::class, 'deleteBrand']);
+
+Route::get('/viewBranchInventory', [BranchController::class, 'viewBranchInventory']);

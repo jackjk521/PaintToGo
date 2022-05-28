@@ -1,12 +1,14 @@
 import "antd/dist/antd.css";
 import React, { useEffect, useState } from "react";
 import {Table, Input, Button} from "antd";
-import NewProductForm from "../forms/NewProductForm";
 import api from "../../api/api";
 import { EditOutlined, DeleteOutlined, SearchOutlined  } from "@ant-design/icons";
+import NewUserForm from "../Forms/NewUserForm";
+import EditUserForm from "../Forms/EditUserForm";
+import DeleteUserForm from "../Forms/DeleteUserForm";
 
 
-export default function ProductTab(res){
+export default function EmployeeTab(res){
     const[employees, setEmployees] = useState([]);
 
     //Tab css over here
@@ -40,7 +42,7 @@ export default function ProductTab(res){
         title: 'User ID',
         dataIndex: 'user_id',
         sorter: (a, b) => {
-            return a.user_id > b.user_id
+            return a.user_id - b.user_id
             },
         },
         {
@@ -179,20 +181,28 @@ export default function ProductTab(res){
               return record.level_name.indexOf(value) === 0
           }
         },
+        {
+          key:"6",
+          title: 'Actions',
+          render: (record) => (
+            <>
+              <EditUserForm user={record} setEmployees={setEmployees}/>
+              <DeleteUserForm user={record} setEmployees={setEmployees}/>
+            </>
+          )
+          },
     ]
 
     return(
         <>
             <header className="App-header">
-                <NewProductForm/>
+                <NewUserForm setEmployees={setEmployees}/>
                 <Table striped bordered hover
                     className="userTable"
                     columns={userColumns}
                     dataSource={employees}>
                 </Table>
             </header>
-        </>
-               
-
+        </>       
     )
 }

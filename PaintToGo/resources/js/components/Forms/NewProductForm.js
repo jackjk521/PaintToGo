@@ -1,104 +1,107 @@
+import { globalConfig } from "antd/lib/config-provider";
 import React, { Component, useEffect, useState } from "react";
 import { Button, Modal, Form, InputGroup } from 'react-bootstrap';
-import axios from "axios";
+import api from "../../api/api";
 
- export default function NewProductForm() {
-    const [show, setShow] = useState(false);
+ export default function NewProductForm({setProducts, brands, utilities}) {
+  const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const defaultValue=1;
+  const [productName, setProductName] = useState('');
+  const [brand, setBrand] = useState(1);
+  const [utility, setUtility] = useState(1);
+  const [unitCount, setUnitCount] = useState('gallon');
+  const [price, setPrice] = useState('');
+  const [retailPrice, setRetailPrice] = useState('');
 
-    const [productName, setProductName] = useState('');
-    const [brand, setBrand] = useState('1');
-    const [utility, setUtility] = useState('1');
-    const [unitCount, setUnitCount] = useState('');
-    const [price, setPrice] = useState('');
-    const [retailPrice, setRetailPrice] = useState('');
+  const newProduct = {productName, brand, utility, unitCount, price, retailPrice}
 
-    const postData = async (e) => {
-      e.preventDefault();
+  const submitProduct = async (e) => {
+    e.preventDefault();
 
-      const res = await axios.post('http://127.0.0.1:8000/api/new_product', {
-        productName: productName,
-        brand_id: brand,
-        utility_id: utility,
-        price: price,
-        unit_sold_at: unitCount,
-        retail_price: retailPrice, 
-      });
-      
-      if(res.data.status === 1){
-        console.log(res.data.message)
-        setProductName('');
-        setBrand('1');
-        setUtility('1');
-        setUnitCount('');
-        setPrice('');
-        setRetailPrice('');
-      }
+    const res = await api.newProduct(newProduct);
+    const refreshProducts = await api.viewProducts();
+    if(res.data.response == 1){
+      handleClose();
+      const refreshProducts = await api.viewProducts();
+      setProducts(refreshProducts.data.products)
+    }
+}
 
-  }
+  return(
+      <>
+      <Button variant="primary" onClick={handleShow}>
+        New Product
+      </Button>
 
-    return(
-        <>
-        <Button variant="primary" onClick={handleShow}>
-          New Product
-        </Button>
-  
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>New Product</Modal.Title>
-          </Modal.Header>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>New Product</Modal.Title>
+        </Modal.Header>
 
-          <Modal.Body>
-            <Form >
-              <Form.Group className="mb-3" controlId="">
-                <Form.Label>Product Name</Form.Label>
-                <Form.Control type="text"  onChange={e => setProductName(e.target.value)}  placeholder="Enter new product name" />
-              </Form.Group>
+        <Modal.Body>
+          <Form >
+            <Form.Group className="mb-3" controlId="">
+              <Form.Label>Product Name</Form.Label>
+              <Form.Control type="text"  onChange={e => setProductName(e.target.value)}  placeholder="Enter new product name" />
+            </Form.Group>
 
-              <Form.Group className="mb-3" controlId="">
-                <Form.Label>Product Brand</Form.Label>
-                <Form.Select defaultValue="0" onChange={e => setBrand(e.target.value)} placeholder="Select new product brand" >
-                  <option value=""  disabled hidden>Select product brand</option>
-                  <option value="Brlkjdsa">Default select</option>
-                </Form.Select>
-              </Form.Group>
+            <Form.Group className="mb-3" controlId="">
+              <Form.Label>Product Brand</Form.Label>
+              <Form.Select defaultValue={'DEFAULT'} onChange={e => setBrand(e.target.value)} placeholder="Select new product brand" >
+              <option value="DEFAULT" disabled>Select Brand</option>
+                {brands.map((brand) => (
+                  <option value={brand.brand_id}>
+                      {brand.brand_name}
+                  </option>
+                ))}
+              </Form.Select>
+            </Form.Group>
 
-              <Form.Group className="mb-3" controlId="">
-                <Form.Label>Product Utility</Form.Label>
-                <Form.Select defaultValue="0" onChange={e => setUtility(e.target.value)}  placeholder="Select new product brand" >
-                  <option value=""  disabled hidden>Select product utility</option>
-                  <option value="1">Default select</option>
-                </Form.Select><br/>
-                <Form.Text className="text-muted">
-                 
-                </Form.Text>
-              </Form.Group>
+            <Form.Group className="mb-3" controlId="">
+              <Form.Label>Product Utility</Form.Label>
+              <Form.Select defaultValue={'DEFAULT'}  onChange={e => setUtility(e.target.value)}  placeholder="Select new product brand" >
+                <option value="DEFAULT" disabled>Select Utility</option>
+                {utilities.map((util) => (
+                  <option value={util.utility_id}>
+                      {util.utility_name}
+                  </option>
+                ))}
+              </Form.Select>
+              <Form.Text className="text-muted">
+               
+              </Form.Text>
+            </Form.Group>
 
-              <Form.Group className="mb-3" controlId="">
-                <Form.Label>Unit Count</Form.Label>
-                <Form.Control type="text" onChange={e => setUnitCount(e.target.value)}  placeholder="Enter unit count (gallon, kg, pc, etc.)" />
-              </Form.Group>
+            <Form.Group className="mb-3" controlId="">
+              <Form.Label>Unit Count</Form.Label>
+              <Form.Select  defaultValue={'DEFAULT'} onChange={e => setUnitCount(e.target.value)}  placeholder="Select new product brand" >
+                <option value="DEFAULT" disabled>Select Unit Count</option>
+                <option value="gallon">Gallon</option>
+                <option value="liters">Liters</option>
+                <option value="bundle">Bundle</option>
+              </Form.Select>
+            </Form.Group>
 
-              <Form.Group className="mb-3" controlId="">
-                <Form.Label>Product Price</Form.Label>
-                <Form.Control type="number" onChange={e => setPrice(e.target.value)} placeholder="Enter product price" />
-              </Form.Group>
+            <Form.Group className="mb-3" controlId="">
+              <Form.Label>Product Price</Form.Label>
+              <Form.Control type="number" onChange={e => setPrice(e.target.value)} placeholder="Enter product price" />
+            </Form.Group>
 
-              <Form.Group className="mb-3" controlId="">
-                <Form.Label>Retail Price</Form.Label>
-                <Form.Control type="number" onChange={e => setRetailPrice(e.target.value)} placeholder="Enter product retail price" />
-              </Form.Group>
+            <Form.Group className="mb-3" controlId="">
+              <Form.Label>Retail Price</Form.Label>
+              <Form.Control type="number"  onChange={e => setRetailPrice(e.target.value)} placeholder="Enter product retail price" />
+            </Form.Group>
 
-              <Button variant="primary" onClick={postData} type="submit">
-                Submit
-              </Button>
-            </Form>
-          </Modal.Body>
-    
-        </Modal>
-      </>
-    );
+            <Button variant="primary" onClick={submitProduct} type="submit">
+              Add new product
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    </>
+  );
     
 }

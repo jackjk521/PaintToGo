@@ -35,7 +35,8 @@ class Branch extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'user_id' => 'int'
+		'user_id' => 'int',
+		'created_at' => 'datetime',
 	];
 
 	protected $fillable = [
@@ -43,7 +44,8 @@ class Branch extends Model
 		'branch_name',
 		'branch_add',
 		'branch_contact',
-		'branch_type'
+		'branch_type',
+		'created_at'
 	];
 
 	public function user()

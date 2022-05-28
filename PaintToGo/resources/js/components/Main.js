@@ -9,6 +9,7 @@ import RequestPage from './RequestPage';
 import LoginRegister from './LoginRegister'
 import Dashboard from './Dashboard'
 import Administration from './Administration'
+import Inventory from './Inventory'
 
 
 function Main() {
@@ -21,6 +22,7 @@ function Main() {
                     <span className='Menu'> <Link to="/consult"> Consultation </Link></span>
                     <span className='Menu'> <Link to="/order"> Orders </Link></span>
                     <span className='Menu'> <Link to ="/request"> Requests </Link></span>
+                    <span className='Menu'> <Link to ="/inventory"> Branch Inventory </Link></span>
                     <span className='Menu'> <Link to ="/administration"> Administration </Link></span>
                 </div>
                 <div>
@@ -30,6 +32,7 @@ function Main() {
                         <Route path="/request" element = {<RequestPage/>}/>
                         <Route path="/" element = {<LoginRegister/>}/> 
                         <Route path="/dashboard" element = {<Dashboard/>}/>
+                        <Route path="/inventory" element = {<Inventory/>}/>
                         <Route path="/administration" element = {<Administration/>}/>
                     </Routes>
                 </div>
