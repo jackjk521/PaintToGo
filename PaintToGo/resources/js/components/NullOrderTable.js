@@ -143,7 +143,6 @@ const NullOrderTable = () => {
 
     return (
         <div>
-            <h1> NULL Orders Table </h1>
                 <table className="table">
                     <thead className="table-header">
                         <tr>

@@ -105,8 +105,8 @@ const OrderForm = (props) => {
           <form id = 'orderForm'>
               <div className = "order-inputs">
                   <div className="request-input">
-                    <label className = "content" htmlFor="product_name"> Product name </label>
-                    <input type="text" onChange={(e) => {nameHandler(e)}}  id = "nameTxt" className = "content" name="product_name" value={prodName}></input>
+                    <label htmlFor="product_name"> Product name </label>
+                    <input type="text" onChange={(e) => {nameHandler(e)}}  id = "nameTxt" name="product_name" value={prodName}></input>
                   </div>
               </div>
 

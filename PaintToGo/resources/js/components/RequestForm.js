@@ -72,8 +72,8 @@ const RequestForm = (props) => {
         <div className="request-fields">
           <form id = 'requestForm'>
             <div className="request-input">
-              <label className = "content" htmlFor="product_name"> Product name </label>
-              <input type="text" onChange={(e) => {nameHandler(e)}}  id = "nameTxt" className = "content" name="product_name"></input>
+              <label htmlFor="product_name"> Product name </label>
+              <input type="text" onChange={(e) => {nameHandler(e)}}  id = "nameTxt" name="product_name"></input>
             </div>
 
             <div className="create-request-btn">
