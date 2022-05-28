@@ -47,23 +47,21 @@ Route::get('/approveRBtn', [TransactionListController::class, 'approveRBtn']);
 Route::get('/approveOBtn', [TransactionListController::class, 'approveOBtn']);  
 Route::get('/approveCBtn', [TransactionListController::class, 'approveCBtn']);  
 
-Route::post('/profile', [LoginController::class, 'profile']);
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
+// orders and inventory
 Route::get('/getProducts', [ProductController::class, 'getProducts']);
 Route::get('/getBranches', [BranchController::class, 'getBranches']);
 Route::get('/getOrders', [OrdersController::class, 'getOrders']);
 Route::get('/getOrderLists', [OrderListController::class, 'getOrderLists']);
 Route::get('/getInventory', [InventoryController::class, 'getInventory']);
 
+//request item and list
 Route::post('/addRequestItem', [RequestItemController::class, 'store']);
 Route::post('/addRequestList', [RequestListController::class, 'store']);
 Route::post('/addOrders', [OrdersController::class, 'store']);
 Route::post('/addOrderList', [OrderListController::class, 'store']);
 Route::post('/addConsultations', [ConsultationsController::class, 'store']);
 
+//profile
 Route::get('/getUser', [UserController::class, 'getUser']);
 Route::get('/getHistory', [UserController::class, 'getHistory']);
 
@@ -92,3 +90,7 @@ Route::post('/editBrand', [BrandController::class, 'editBrand']);
 Route::post('/deleteBrand', [BrandController::class, 'deleteBrand']);
 
 Route::get('/viewBranchInventory', [BranchController::class, 'viewBranchInventory']);
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});

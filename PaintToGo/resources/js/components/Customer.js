@@ -1,4 +1,4 @@
-import {Link, useNavigate} from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 import "../../css/Dashboard.css";
@@ -31,19 +31,34 @@ export default function Customer(){
                 return (err);
             }
     }
-    return ( 
 
+    return ( 
         <div className="page">
-            <nav class="navbar fixed-top navbar-dark bg-dark">
+            <nav class="navbar fixed-top navbar-dark">
                 <a class="navbar-brand px-2" href="dashboard">
                     Color City Paint Store
                 </a>
             </nav>
+            
+            <div className="sidebar">
+                <h1 class="mt-4 px-2">Admin</h1>
+                <hr/>
+                <NavLink to="/dashboard">
+                    Dashboard
+                </NavLink>
+                <NavLink to="/order">
+                    Order
+                </NavLink>
+                <NavLink to="/consult">
+                    Consultations
+                </NavLink>
+                <br/><br/><br/><br/><br/>
+                <a class="logout" onClick = {logOut}> Log Out </a>
+            </div>
 
             <div className="content">
                 <h1>Customer page {user_id}</h1> 
-                
-                <button onClick = {logOut}> LogOut </button>
+            
                 <button onClick = {userP} name="toProfile" value={user_id}> PROFILE </button>    
             </div>
         </div>
