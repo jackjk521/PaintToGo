@@ -26,7 +26,7 @@ export default function AdminInventory(){
         <div className="page">
 
             <div className="content-center">
-                        
+            <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
             <Tabs defaultActiveKey="1" centered size="large" tabBarStyle={tabStyle}>
                 <TabPane tab="Branch Inventory" key="1">
                     

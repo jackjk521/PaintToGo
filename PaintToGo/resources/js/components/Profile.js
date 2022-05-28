@@ -3,6 +3,7 @@ import {Link, useNavigate} from "react-router-dom"
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 import DisplayModal from "./DisplayModal"
+import {BsFillPersonFill} from 'react-icons/bs';
 
 export default function Profile(){
     const user_id = sessionStorage.getItem('user_id');
@@ -132,16 +133,23 @@ export default function Profile(){
 }
 
     return (
-        <div>
-            <div>
-                <h1>User Profile</h1> 
-                    <h3>Name: {storedUser.data.user.firstName} {storedUser.data.user.lastName}</h3>
-                    <h3>Email: {storedUser.data.user.email_add}</h3>
-                    <h3>Contact Number: {storedUser.data.user.user_contact}</h3>
+<div className="page">
+            <div class="content-center">
+                <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
+                <br/><br/>
+                <div class="customer">
+                    <h1>User Profile</h1> 
+                    <div class="cusbox3"><p><BsFillPersonFill/></p> <h3>{storedUser.data.user.firstName} {storedUser.data.user.lastName}</h3></div>
+                    
+                    <h4>{storedUser.data.user.email_add}</h4>
+                    <h4>{storedUser.data.user.user_contact}</h4>
 
-                    <button onClick={fetchOrderList} name="toHistory" value={user_id}> View History </button>
+                    <br/>
+
+                    <button onClick={fetchOrderList} name="toHistory" value={user_id}> View History </button> | <button onClick = {logOut}> LogOut </button> 
                 </div>
-           
+
+                <hr/>
             
             <h1> Orders History </h1>
 
@@ -157,7 +165,10 @@ export default function Profile(){
                         {renderList()}
                     </tbody>
                 </table>
-                <button onClick = {logOut}> LogOut </button> 
+            </div>
+
+            <br/>
+
         </div> 
     );
 } 

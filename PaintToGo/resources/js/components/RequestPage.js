@@ -52,7 +52,10 @@ const RequestPage = () => {
     }
 
     return (
-        <div className="request-page-body">
+        <div className="page">
+            <div className="content-center">
+            <div className="request-page-body">
+            <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
             <MessageQueue messages={messages} removeMessage={removeMessage} />
             { renderComponent === 'form' && 
                 <RequestForm setRenderComponent = {setRenderComponent} 
@@ -70,6 +73,9 @@ const RequestPage = () => {
                 />
             }
         </div>
+            </div>
+        </div>
+        
     );
 }
 

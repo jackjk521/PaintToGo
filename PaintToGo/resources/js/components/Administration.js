@@ -28,7 +28,7 @@ export default function ProductTable(){
         <div className="page">
 
             <div className="content-center">
-                        
+            <a href="dashboard" class="btn btn-info" onClick="dashboard">Back to Dashboard</a>
              <Tabs defaultActiveKey="1" centered size="large" tabBarStyle={tabStyle}>
                 <TabPane tab="Products" key="1">
                     <ProductTab/>    

@@ -47,35 +47,41 @@ const OrderPage = () => {
     }
 
     return (
-        <div className="order-page-body">
-            { renderComponent === 'form' && 
-                <OrderForm setRenderComponent = {setRenderComponent} 
-                            addItem = {addItem}
-                            selectedBranch = {selectedBranch}
-                            setSelectedBranch = {setSelectedBranch}
-                            branchProducts = {branchProducts}
-                            setBranchProducts = {setBranchProducts}
-                            currProd = {currProd}
-                            setCurrProd = {setCurrProd}
-                            branchId = {branchId}
-                            setBranchId = {setBranchId}
-                />
-            } 
+        <div className="page">
+            <div className="content-center">
+                <div className="order-page-body">
+                <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
+                { renderComponent === 'form' && 
+                    <OrderForm setRenderComponent = {setRenderComponent} 
+                                addItem = {addItem}
+                                selectedBranch = {selectedBranch}
+                                setSelectedBranch = {setSelectedBranch}
+                                branchProducts = {branchProducts}
+                                setBranchProducts = {setBranchProducts}
+                                currProd = {currProd}
+                                setCurrProd = {setCurrProd}
+                                branchId = {branchId}
+                                setBranchId = {setBranchId}
+                    />
+                } 
 
-            { renderComponent === 'cart' && 
-                <OrderCart renderComponent = {renderComponent} 
-                            setRenderComponent = {setRenderComponent} 
-                            cart = {cart}
-                            setCart = {setCart}
-                            addItem = {addItem}
-                            removeItem = {removeItem}
-                            branchId = {branchId}
-                            setBranchId = {setBranchId}
-                            selectedBranch = {setSelectedBranch}
-                            setSelectedBranch = {setSelectedBranch}
-                />
-            }
+                { renderComponent === 'cart' && 
+                    <OrderCart renderComponent = {renderComponent} 
+                                setRenderComponent = {setRenderComponent} 
+                                cart = {cart}
+                                setCart = {setCart}
+                                addItem = {addItem}
+                                removeItem = {removeItem}
+                                branchId = {branchId}
+                                setBranchId = {setBranchId}
+                                selectedBranch = {setSelectedBranch}
+                                setSelectedBranch = {setSelectedBranch}
+                    />
+                }
+                </div>
+            </div>
         </div>
+
     );
 }
 
