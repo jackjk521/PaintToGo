@@ -40,7 +40,7 @@ export default function Customer(){
             <div className="content-center">
                 <h1>Welcome, dear customer!</h1> 
                 
-                <div class="customer"><button onClick = {userP} name="toProfile" value={user_id}> PROFILE </button> | <button> <a href="order">MY CART</a> </button></div>
+                <div class="customer"><button onClick = {userP} name="toProfile" value={user_id}> PROFILE </button> | <button> <a href="order">MY CART</a> </button> | <button> <a href="consult">CONSULT</a> </button> </div>
 
                 <div class="fillers">
                     <div class="cusbox"><p><AiFillHome/></p> <h3>Home</h3></div> <br/>  
