@@ -1,43 +1,123 @@
 .page {
-    background: rgb(255, 255, 255);
-    height: 100%;
-    width: 100%;
-  }
+  background: rgb(255, 255, 255);
+  height: 100%;
+  width: 100%;
+}
 
 nav {
-    background: linear-gradient(to right, #4992a7, #6aaec8);
+  background: linear-gradient(to right, #4992a7, #6aaec8);
 }
 
 .content {
-  margin-left: 200px;
-  margin-right: 0px;
-  padding-top: 30px;
+margin-top: 56px;
+margin-left: 200px;
+margin-right: 0px;
+padding-top: 30px;
+}
+
+.content-center{
+margin-top: 100px;
+text-align: center;
 }
 
 .sidebar {
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  height: 100%;
-  position: fixed;
-  background-color: #f1f1f1;
-  overflow: auto;
-  text-align: center;
+margin: 0;
+padding: 0;
+width: 200px;
+height: 100%;
+position: fixed;
+background-color: #f1f1f1;
+overflow: auto;
+text-align: center;
 }
 
 .sidebar a {
-  display: block;
-  color: black;
-  padding: 16px;
-  text-decoration: none;
+display: block;
+color: black;
+padding: 16px;
+text-decoration: none;
 }
 
 .sidebar a.logout {
-  background-color: #7e7e7e;
-  color: white;
+background-color: #7e7e7e;
+color: white;
 }
 
 .sidebar a:hover:not(.logout) {
-  background-color: #ff9a00;
-  color: white;
+background-color: #ff9a00;
+color: white;
+}
+
+.customer button{
+border-radius: 20px;
+  background-color: transparent;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.customer button:hover{
+color: #ff9a00;
+}
+
+.customer a{
+text-decoration: none;
+color: black;
+}
+
+.customer a:hover{
+color: #ff9a00;
+}
+
+.fillers{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: row;
+}
+
+.cusbox{
+height: 250px;
+width: 250px;
+margin: 20px;
+background-color: #ff9a00;
+border-radius: 20%;
+color: white;
+}
+
+.cusbox p{
+font-size: 100px;
+display: inline-block;
+margin: 50px 50px 30px;
+}
+
+.cusbox:hover{
+background-color:#4992a7;
+color: white;
+}
+
+.cusbox2{
+background-color: rgb(175, 175, 175);
+height: 40px;
+width: 250px;
+margin: 10px;
+border-radius: 5%;
+}
+
+.cusbox3{
+display: inline-block;
+height: 250px;
+width: 250px;
+margin: 20px;
+background-color: #ff9a00;
+border-radius: 20%;
+color: white;
+}
+
+.cusbox3 p{
+font-size: 100px;
+display: inline-block;
+margin: 50px 50px 30px;
 }

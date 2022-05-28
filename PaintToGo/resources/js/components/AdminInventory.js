@@ -24,35 +24,8 @@ export default function AdminInventory(){
 
     return(
         <div className="page">
-            <nav class="navbar fixed-top navbar-dark">
-                <a class="navbar-brand px-2" href="dashboard">
-                    Color City Paint Store
-                </a>
-            </nav>
-            
-            <div className="sidebar">
-                <h1 class="mt-4 px-2">Admin</h1>
-                <hr/>
-                <NavLink to="/dashboard">
-                    Dashboard
-                </NavLink>
-                <NavLink to="/order">
-                    Order
-                </NavLink>
-                <NavLink to="/AdminInventory">
-                    Inventory
-                </NavLink>
-                <NavLink to="/dashboard">
-                    Transactions
-                </NavLink>
-                <NavLink to="/administration">
-                    Admin CRUD
-                </NavLink>
-                <br/><br/><br/><br/><br/>
-                <a class="logout" onClick = {logOut}> Log Out </a>
-            </div>
 
-            <div className="content">
+            <div className="content-center">
                         
             <Tabs defaultActiveKey="1" centered size="large" tabBarStyle={tabStyle}>
                 <TabPane tab="Branch Inventory" key="1">

@@ -1,6 +1,8 @@
 import {useNavigate} from "react-router-dom"
 import "../../css/Dashboard.css";
 import { NavLink } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
+import ManagerNullOrdersPage from './NullOrderTable';
 
 export default function Manager(){
     const user_id = sessionStorage.getItem('user_id');
@@ -13,36 +15,28 @@ export default function Manager(){
 
     return (
         <div className="page">
-                <nav class="navbar fixed-top navbar-dark bg-dark">
-                <a class="navbar-brand px-2" href="dashboard">
-                    Color City Paint Store
-                </a>
-                </nav>
-
-                <div className="sidebar">
-                    <h1 class="mt-4 px-2">Manager {user_id}</h1>
+               <div className="sidebar">
+               <h1 class="mt-4 px-2">Manager</h1>
                     <hr/>
-                    <NavLink to="/dashboard">
-                    Dashboard
-                </NavLink>
-                <NavLink to="/order">
-                    Order
-                </NavLink>
-                <NavLink to="/inventory">
-                    Inventory
-                </NavLink>
-                <NavLink to="/dashboard">
-                    Transactions
-                </NavLink>
-                <NavLink to="/administration">
-                    Admin CRUD
-                </NavLink>
+                    <HashLink smooth to='#null'> Dashboard </HashLink>
+                    <NavLink to="/inventory">
+                        Inventory
+                    </NavLink>
+                    <NavLink to="/request">
+                        Requests
+                    </NavLink>
+                
                     <br/><br/><br/><br/><br/><br/>
                     <a class="logout" onClick = {logOut}> Log Out </a>
                 </div>
                 
                 <div className="content">
                     <h1>Welcome, Branch Manager {user_id} (Branch {branch_id})!</h1>
+                    
+                    <div id="null">
+                    <h1> NULL statuses </h1>
+                        <ManagerNullOrdersPage/>
+                    </div> 
                 </div>
         </div>
     )

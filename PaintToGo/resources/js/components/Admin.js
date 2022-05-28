@@ -11,6 +11,7 @@ import ApprovedOrders from "./ApprovedOrders";
 import "../../css/Dashboard.css";
 import {BsFillPersonFill} from 'react-icons/bs';
 import { NavLink } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 
 export default function Admin(){
@@ -52,47 +53,32 @@ export default function Admin(){
             <div className="sidebar">
                 <h1 class="mt-4 px-2">Admin</h1>
                 <hr/>
-                <NavLink to="/dashboard">
-                    Dashboard
-                </NavLink>
-                <NavLink to="/order">
-                    Orders
-                </NavLink>
-                <NavLink to="/adminInventory">
-                    Inventory
-                </NavLink>
-                <NavLink to="/dashboard">
-                    Transactions
-                </NavLink>
-                <NavLink to="/administration">
-                    Admin CRUD
-                </NavLink>
-                <br/><br/><br/><br/><br/>
+                <HashLink smooth to='#null'> Dashboard </HashLink>
+                <NavLink to="/adminInventory">Inventory</NavLink>
+                <HashLink smooth to='#approved'> Transactions </HashLink>
+                <NavLink to="/administration">Admin CRUD</NavLink>                
+                <br/><br/><br/>
                 <a class="logout" onClick = {logOut}> Log Out </a>
             </div>
 
             <div className="content">
-                <h1>Admin page {user_id} {branch_id} </h1>
-
-                <br/>
-
-
-                <div>
-                    <h1> NULL statuses </h1>
+                <div id="null">
+                    <h1> PENDING </h1>
                         <NullRequestTable/>
                         <NullConsultationTable/>
                 </div> 
 
                 <hr/>
-                
-                <div>
-                    <h1> APPROVED statuses </h1>
+
+                <div id="approved">
+                    <h1> APPROVED </h1>
                     <ApprovedRequests />
                     <ApprovedOrders />   
                     <ApprovedConsultations />
                     
                 </div>   
             </div>
+
             
 
             
