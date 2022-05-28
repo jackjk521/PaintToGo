@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 import {useNavigate} from "react-router-dom"
-import { renderAList } from "../operations/renderAList";
 import NullRequestTable from "./NullRequestTable";
-import NullOrderTable from "./NullOrderTable";
 import NullConsultationTable from "./NullConsultationTable";
 import ApprovedRequests from "./ApprovedRequests";
 import ApprovedConsultations from "./ApprovedConsultations";
@@ -54,7 +52,6 @@ export default function Admin(){
             <div className="sidebar">
                 <h1 class="mt-4 px-2">Admin</h1>
                 <hr/>
-<<<<<<< HEAD
                 <NavLink to="/dashboard">
                     Dashboard
                 </NavLink>
@@ -68,12 +65,6 @@ export default function Admin(){
                     Transactions
                 </NavLink>
                 <NavLink to="/administration">
-=======
-                <HashLink smooth to='#null'> Dashboard </HashLink>
-                <HashLink smooth to='#inventory'> Inventory </HashLink>
-                <HashLink smooth to='#approved'> Transactions </HashLink>
-                <NavLink to="/dashboard">
->>>>>>> 9b2ce85788743d47f830e7220291e12b502112a8
                     Admin CRUD
                 </NavLink>
                 <br/><br/><br/>

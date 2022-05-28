@@ -19,7 +19,6 @@ export default function Manager(){
                 <div className="sidebar">
                     <h1 class="mt-4 px-2">Manager</h1>
                     <hr/>
-<<<<<<< HEAD
                     <NavLink to="/dashboard">
                     Dashboard
                 </NavLink>
@@ -35,13 +34,6 @@ export default function Manager(){
                 <NavLink to="/administration">
                     Admin CRUD
                 </NavLink>
-=======
-                    <HashLink smooth to='#null'> Dashboard </HashLink>
-                    <HashLink smooth to='#inventory'> Inventory </HashLink>
-                    <NavLink to="/request">
-                        Requests
-                    </NavLink>
->>>>>>> 9b2ce85788743d47f830e7220291e12b502112a8
                     <br/><br/><br/><br/><br/><br/>
                     <a class="logout" onClick = {logOut}> Log Out </a>
                 </div>

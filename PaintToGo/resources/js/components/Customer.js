@@ -37,7 +37,6 @@ export default function Customer(){
 
     return ( 
         <div className="page">
-<<<<<<< HEAD
             <nav class="navbar fixed-top navbar-dark">
                 <a class="navbar-brand px-2" href="dashboard">
                     Color City Paint Store
@@ -67,21 +66,6 @@ export default function Customer(){
                 <h1>Customer page {user_id}</h1> 
             
                 <button onClick = {userP} name="toProfile" value={user_id}> PROFILE </button>    
-=======
-            <div className="content-center">
-                <h1>Welcome, dear customer!</h1> 
-                
-                <div class="customer"><button onClick = {userP} name="toProfile" value={user_id}> PROFILE </button> | <button> <a href="order">MY CART</a> </button></div>
-
-                <div class="fillers">
-                    <div class="cusbox"><p><AiFillHome/></p> <h3>Home</h3></div> <br/>  
-                    <div class="cusbox"><p><AiFillCar/></p> <h3>Car</h3></div> <br/>
-                    <div class="cusbox"><p><AiFillTool/></p> <h3>Equipment</h3></div> 
-                </div>
-
-                <div class="fillers"><div class="cusbox2"></div><button class="btn btn-primary">Enter</button></div>
-                <OrderForm/>
->>>>>>> 9b2ce85788743d47f830e7220291e12b502112a8
             </div>
         </div>
     )

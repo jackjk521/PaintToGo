@@ -52,7 +52,6 @@ const RequestPage = () => {
     }
 
     return (
-<<<<<<< HEAD
         <div className="request-page-body">
             <MessageQueue messages={messages} removeMessage={removeMessage} />
             { renderComponent === 'form' && 
@@ -61,18 +60,6 @@ const RequestPage = () => {
                             removeItem = {removeItem}
                 />
             } 
-=======
-        <div className="page">
-            <div className="content-center">
-                <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
-                <div className="request-page-body">
-                { renderComponent === 'form' && 
-                    <RequestForm setRenderComponent = {setRenderComponent} 
-                                addItem = {addItem}
-                                removeItem = {removeItem}
-                    />
-                } 
->>>>>>> 9b2ce85788743d47f830e7220291e12b502112a8
 
                 { renderComponent === 'requestlist' && 
                     <RequestList setRenderComponent = {setRenderComponent} 
@@ -83,8 +70,6 @@ const RequestPage = () => {
                     />
                 }
                 </div>
-            </div>
-        </div>
         
     );
 }
