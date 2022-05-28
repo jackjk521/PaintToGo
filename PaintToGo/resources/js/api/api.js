@@ -126,4 +126,8 @@ export default {
         return axios.get(`${BASE_API_URL}/viewBranchInventory`, params);
     },
 
+    viewBranchInventoryOverview: (params) => {
+        return axios.get(`${BASE_API_URL}/viewBranchInventoryOverview`, params);
+    },
+
 }

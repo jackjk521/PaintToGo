@@ -96,4 +96,24 @@ class BranchController extends Controller
             return("SQL Error");
         }    
     }
+
+    public function viewBranchInventoryOverview(){
+        $branches = DB::table('branches')
+            ->select('branch_id')
+            ->get();
+
+        $inventory = DB::table('inventory')
+            ->get();
+
+        if( $inventory ){
+            return response()->json([
+                'branches' => $branches,
+                'inventory' => $inventory,
+                'response' => $request
+            ]);
+        }  
+        else{
+            return("SQL Error");
+        }    
+    }
 }

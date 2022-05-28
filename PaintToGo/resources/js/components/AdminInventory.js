@@ -1,6 +1,7 @@
 import "antd/dist/antd.css";
 import React, { useEffect, useState } from "react";
 import InventoryTab from "./BranchInventoryTabs/InventoryTab";
+import InventoryOverviewTab from "./BranchInventoryTabs/InventoryOverviewTab";
 import {Table, Tabs, Modal, Input, Button} from "antd";
 import "../../css/Dashboard.css";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -56,7 +57,7 @@ export default function AdminInventory(){
                     <InventoryTab/>
                 </TabPane>
                 <TabPane tab="Branch Inventory Overview" key="2">
-
+                    <InventoryOverviewTab/>
                 </TabPane>
 
             </Tabs>
