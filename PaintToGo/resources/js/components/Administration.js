@@ -39,6 +39,9 @@ export default function ProductTable(){
                     Dashboard
                 </NavLink>
                 <NavLink to="/order">
+                    Order
+                </NavLink>
+                <NavLink to="/AdminInventory">
                     Inventory
                 </NavLink>
                 <NavLink to="/dashboard">
@@ -53,7 +56,7 @@ export default function ProductTable(){
 
             <div className="content">
                         
-             <Tabs defaultActiveKey="1" centered size="large" animated tabBarStyle={tabStyle}>
+             <Tabs defaultActiveKey="1" centered size="large" tabBarStyle={tabStyle}>
                 <TabPane tab="Products" key="1">
                     <ProductTab/>    
                 </TabPane>
@@ -69,10 +72,6 @@ export default function ProductTable(){
 
             </Tabs> 
             </div>
-            
-
-            
-
         </div>
 
 

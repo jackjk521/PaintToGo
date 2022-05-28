@@ -4,10 +4,68 @@ import {Table, Input, Button} from "antd";
 import api from "../../api/api";
 import { EditOutlined, DeleteOutlined, SearchOutlined  } from "@ant-design/icons";
 
-export default function InventoryTab(res){
-    const[inventory, setInventory] = useState([]);
-    sessionStorage.getItem('branch_id')
-    const branch = sessionStorage.getItem('branch_id');
+export default function InventoryOverviewTab(res){
+    const[inventory, setInventory] = useState([
+      {
+        product: "Hudson Thinners",
+        Branch1: 100,
+        Branch2: 17,
+        Branch3: 39,
+        Branch4: 10,
+        Utility: "Vehicle"
+      },  {
+        product: "McGill Red Oxide",
+        Branch1: 100,
+        Branch2: 91,
+        Branch3: 10,
+        Branch4: 24,
+        Utility: "Vehicle"
+      },  {
+        product: "Weber Urethane Thinner",
+        Branch1: 100,
+        Branch2: 6,
+        Branch3: 32,
+        Branch4: 10,
+        Utility: "Vehicle"
+      },  {
+        product: "Crocodile 1-inch Sandpaper",
+        Branch1: 100,
+        Branch2: 62,
+        Branch3: 41,
+        Branch4: 2,
+        Utility: "Equipment"
+      },  {
+        product: "Powered Air Purifying Respirator Painters Kit",
+        Branch1: 50,
+        Branch2: 10,
+        Branch3: 30,
+        Branch4: 2,
+        Utility: "Equipment"
+      },  {
+        product: "Magnum 257025 Project Painter Plus Paint Sprayer",
+        Branch1: 25,
+        Branch2: 2,
+        Branch3: 0,
+        Branch4: 11,
+        Utility: "Equipment"
+      },  {
+        product: "Assorted Masking Paper",
+        Branch1: 100,
+        Branch2: 16,
+        Branch3: 2,
+        Branch4: 17,
+        Utility: "Home"
+      },  {
+        product: "Linen White Chalked Ultra Matte Paint",
+        Branch1: 100,
+        Branch2: 13,
+        Branch3: 3,
+        Branch4: 28,
+        Utility: "Home"
+      },
+
+    ]);
+
 
     //Tab css over here
     const tabStyle = {
@@ -16,39 +74,13 @@ export default function InventoryTab(res){
         
     }
 
-
-    useEffect(() => {
-        let isMounted = true; 
-        const fetchData = async () => {
-          try {
-            const res = await api.viewBranchInventory({
-              params: { branch }});
-            if (isMounted) {
-                setInventory(res.data.inventory);
-            }
-          } catch {
-            console.log();
-          }
-        }
-        fetchData();
-        return () => { isMounted = false };
-      }, []);
-
     const inventoryColumn = [
         {
           key:"1",
-          title: 'Product ID',
-          dataIndex: 'product_id',
-          sorter: (a, b) => {
-              return a.product_id - b.product_id
-              },
-        },
-        {
-          key:"2",
           title: 'Product Name',
-          dataIndex: 'product_name',
+          dataIndex: 'product',
           sorter: (a, b) => {
-            return a.product_name.localeCompare(b.product_name)
+              return a.product.localeCompare(b.product)
           },filterDropdown: ({
             setSelectedKeys,
             selectedKeys,
@@ -95,33 +127,48 @@ export default function InventoryTab(res){
             return <SearchOutlined />;
           },
           onFilter: (value, record) => {
-            return record.product_name.toLowerCase().includes(value.toLowerCase());
+            return record.product.toLowerCase().includes(value.toLowerCase());
           },
         },
         {
-          key:"3",
-          title: 'Inventory Quantity',
-          dataIndex: 'quantity', 
+          key:"2",
+          title: 'Main Branch',
+          dataIndex: 'Branch1',
           sorter: (a, b) => {
-            return a.quantity - b.quantity
+            return a.Branch1 - b.Branch1
+          }
         },
+        {
+          key:"3",
+          title: 'Color City Paint Trade Center',
+          dataIndex: 'Branch2', 
+          sorter: (a, b) => {
+            return a.Branch2 - b.Branch2
+          },
         },
         {
           key:"4",
-          title: 'Retail Price',
-          dataIndex: 'retail_price', 
+          title: 'Color City Paint Trade',
+          dataIndex: 'Branch3', 
           sorter: (a, b) => {
-            return a.retail_price - b.retail_price
+            return a.Branch3 - b.Branch3
           },
         },
         {
           key:"5",
-          title: 'Price',
-          dataIndex: 'price', 
+          title: 'Kwikmix',
+          dataIndex: 'Branch4', 
           sorter: (a, b) => {
-            return a.price - b.price
+            return a.Branch4 - b.Branch4
           },
-        },
+        },{
+          key:"6",
+          title: 'Utility',
+          dataIndex: 'Utility',
+          sorter: (a, b) => {
+              return a.Utility.localeCompare(b.Utility)
+          },
+          },
     ]
 
     return(

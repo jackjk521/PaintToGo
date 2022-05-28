@@ -43,14 +43,17 @@ export default function Customer(){
             <div className="sidebar">
                 <h1 class="mt-4 px-2">Admin</h1>
                 <hr/>
-                <NavLink to="/dashboard">
-                    Dashboard
-                </NavLink>
                 <NavLink to="/order">
                     Order
                 </NavLink>
-                <NavLink to="/consult">
-                    Consultations
+                <NavLink to="/inventory">
+                    Inventory
+                </NavLink>
+                <NavLink to="/dashboard">
+                    Transactions
+                </NavLink>
+                <NavLink to="/administration">
+                    Admin CRUD
                 </NavLink>
                 <br/><br/><br/><br/><br/>
                 <a class="logout" onClick = {logOut}> Log Out </a>

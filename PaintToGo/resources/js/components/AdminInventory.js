@@ -1,6 +1,7 @@
 import "antd/dist/antd.css";
 import React, { useEffect, useState } from "react";
 import InventoryTab from "./BranchInventoryTabs/InventoryTab";
+import InventoryOverviewTab from "./BranchInventoryTabs/InventoryOverviewTab";
 import {Table, Tabs, Modal, Input, Button} from "antd";
 import "../../css/Dashboard.css";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -8,7 +9,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 const { TabPane } = Tabs;
 
-export default function Inventory(){
+export default function AdminInventory(){
     const navigate = useNavigate();
     function logOut() {
         sessionStorage.clear();
@@ -30,7 +31,7 @@ export default function Inventory(){
             </nav>
             
             <div className="sidebar">
-                <h1 class="mt-4 px-2"></h1>
+                <h1 class="mt-4 px-2">Admin</h1>
                 <hr/>
                 <NavLink to="/dashboard">
                     Dashboard
@@ -38,11 +39,14 @@ export default function Inventory(){
                 <NavLink to="/order">
                     Order
                 </NavLink>
-                <NavLink to="/inventory">
+                <NavLink to="/AdminInventory">
                     Inventory
                 </NavLink>
                 <NavLink to="/dashboard">
                     Transactions
+                </NavLink>
+                <NavLink to="/administration">
+                    Admin CRUD
                 </NavLink>
                 <br/><br/><br/><br/><br/>
                 <a class="logout" onClick = {logOut}> Log Out </a>
@@ -54,6 +58,9 @@ export default function Inventory(){
                 <TabPane tab="Branch Inventory" key="1">
                     
                     <InventoryTab/>
+                </TabPane>
+                <TabPane tab="Branch Inventory Overview" key="2">
+                    <InventoryOverviewTab/>
                 </TabPane>
 
             </Tabs>

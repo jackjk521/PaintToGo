@@ -17,4 +17,5 @@ class Inventory extends Model
         'product_id',
         'quantity'
     ];
+
 }
