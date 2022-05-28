@@ -67,7 +67,7 @@ export default function Admin(){
                 <NavLink to="/dashboard">
                     Transactions
                 </NavLink>
-                <NavLink to="/dashboard">
+                <NavLink to="/administration">
                     Admin CRUD
                 </NavLink>
                 <br/><br/><br/><br/><br/>
