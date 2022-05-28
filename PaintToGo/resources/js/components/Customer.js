@@ -2,9 +2,12 @@ import {Link, useNavigate} from "react-router-dom"
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 import "../../css/Dashboard.css";
-import {BsFillPersonFill} from 'react-icons/bs';
+import {AiFillHome} from 'react-icons/ai';
+import {AiFillCar} from 'react-icons/ai';
+import {AiFillTool} from 'react-icons/ai';
 import { pullAt } from "lodash";
 import Profile from "./Profile";
+import OrderForm from "./OrderForm";
 
 export default function Customer(){
     const user_id = sessionStorage.getItem('user_id');
@@ -35,10 +38,18 @@ export default function Customer(){
 
         <div className="page">
             <div className="content-center">
-                <h1>Customer page {user_id}</h1> 
+                <h1>Welcome, dear customer!</h1> 
                 
-                <button onClick = {logOut}> LogOut </button>
-                <button onClick = {userP} name="toProfile" value={user_id}> PROFILE </button>    
+                <div class="customer"><button onClick = {userP} name="toProfile" value={user_id}> PROFILE </button> | <button> <a href="order">MY CART</a> </button></div>
+
+                <div class="fillers">
+                    <div class="cusbox"><p><AiFillHome/></p> <h3>Home</h3></div> <br/>  
+                    <div class="cusbox"><p><AiFillCar/></p> <h3>Car</h3></div> <br/>
+                    <div class="cusbox"><p><AiFillTool/></p> <h3>Equipment</h3></div> 
+                </div>
+
+                <div class="fillers"><div class="cusbox2"></div><button class="btn btn-primary">Enter</button></div>
+                <OrderForm/>
             </div>
         </div>
     )

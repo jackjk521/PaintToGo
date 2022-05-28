@@ -2,7 +2,7 @@ import {useNavigate} from "react-router-dom"
 import "../../css/Dashboard.css";
 import { NavLink } from "react-router-dom";
 import ManagerNullOrdersPage from './NullOrderTable';
-import OrderPage from "./OrderPage";
+import OrderForm from "./OrderForm";
 import { HashLink } from "react-router-hash-link";
 
 export default function Manager(){
@@ -40,7 +40,7 @@ export default function Manager(){
 
                     <div id="inventory">
                         <h1> Products list </h1>
-                            <OrderPage/>
+                            <OrderForm/>
                     </div>
                 </div>
         </div>

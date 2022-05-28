@@ -43,8 +43,10 @@ const OrderPage = () => {
     }
 
     return (
+        <div className="page">
+            <div className="content-center">
                 <div className="order-page-body">
-                    
+                    <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
                         { renderComponent === 'form' && 
                             <OrderForm setRenderComponent = {setRenderComponent} 
                                         addItem = {addItem}
@@ -61,6 +63,9 @@ const OrderPage = () => {
                             />
                         }
                     </div>
+            </div>
+            
+        </div>
        
     );
 }
