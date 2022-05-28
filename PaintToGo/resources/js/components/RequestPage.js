@@ -61,15 +61,16 @@ const RequestPage = () => {
                 />
             } 
 
-            { renderComponent === 'requestlist' && 
-                <RequestList setRenderComponent = {setRenderComponent} 
-                            requestlist = {requestlist}
-                            setRequestlist = {setRequestlist}
-                            addItem = {addItem}
-                            removeItem = {removeItem}
-                />
-            }
-        </div>
+                { renderComponent === 'requestlist' && 
+                    <RequestList setRenderComponent = {setRenderComponent} 
+                                requestlist = {requestlist}
+                                setRequestlist = {setRequestlist}
+                                addItem = {addItem}
+                                removeItem = {removeItem}
+                    />
+                }
+                </div>
+        
     );
 }
 

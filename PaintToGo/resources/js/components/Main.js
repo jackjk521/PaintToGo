@@ -12,6 +12,7 @@ import Profile from './Profile';
 import AdminNullTablesPage from './AdminNullTablesPage';
 import ManagerNullOrdersPage from './NullOrderTable';
 import Administration from './Administration'
+import AdminInventory from './AdminInventory'
 import Inventory from './Inventory'
 
 
@@ -26,7 +27,7 @@ function Main() {
                     <span className='Menu'> <Link to ="/request"> Requests </Link></span>
                     <span className='Menu'> <Link to="/adminNullTables"> Admin To Approve Tables </Link></span>
                     <span className='Menu'> <Link to ="/managerNullTable"> Manager To Approve Orders</Link></span>
-                    <span className='Menu'> <Link to ="/inventory"> Branch Inventory </Link></span>
+                    <span className='Menu'> <Link to ="/AdminInventory"> Admin Inventory </Link></span>
                     <span className='Menu'> <Link to ="/administration"> Administration </Link></span>
                 </div>
                 <div>
@@ -39,8 +40,9 @@ function Main() {
                         <Route path="/profile" element = {<Profile/>}/>
                         <Route path="/adminNullTables" element = {<AdminNullTablesPage/>}/>
                         <Route path="/managerNullTable" element = {<ManagerNullOrdersPage/>}/>
-                        <Route path="/inventory" element = {<Inventory/>}/>
+                        <Route path="/AdminInventory" element = {<AdminInventory/>}/>
                         <Route path="/administration" element = {<Administration/>}/>
+                        <Route path="/inventory" element = {<Inventory/>}/>
                     </Routes>
                 </div>
             </BrowserRouter>

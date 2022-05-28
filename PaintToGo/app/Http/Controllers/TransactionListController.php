@@ -7,7 +7,7 @@ use Redirect, Response, File;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
-
+use Carbon\Carbon;
 
 class TransactionListController extends Controller
 {
@@ -210,12 +210,59 @@ class TransactionListController extends Controller
                     ->where('request_id',$id)
                     ->update(['status' => 'Approved']);
 
-            
+        $reqList = DB :: table("requestlist")
+                    ->where('request_id', $id)
+                    ->get();
+
+        $branchId = DB :: table("request")
+                    ->where('request_id', $id)
+                    ->join('branch', 'branch.branch_id', '=', 'request.branch_id')
+                    ->first();
+    
+            foreach($reqList as $row){
+                    //works until here
+
+                    $getBranch =  DB :: table ("inventory")
+                                    ->where('branch_id',$branchId->branch_id )
+                                    ->where('product_id', $row->product_id)
+                                    ->first();
+                    
+                    if(!$getBranch){
+                        $newRow = DB::table('inventory')->insert(
+                            array('branch_id' => $branchId->branch_id, 'product_id' => $row->product_id, 'quantity' => $row->req_quantity, 'created_at' => Carbon::now(), 'updated_at' =>Carbon ::now())
+                        );
+                    }
+                    else{
+    
+                        $updateBranch = DB :: table ("inventory")
+                                ->where('branch_id',$branchId->branch_id)
+                                ->where('product_id',$row->product_id)
+                                ->update(['quantity' => $getBranch->quantity + $row->req_quantity]);
+                    }
+
+
+                    // updating quantity in main
+                    $getMain =  DB :: table ("inventory")
+                            ->where('branch_id', 1)
+                            ->where('product_id', $row->product_id)
+                            ->first();
+
+                    $updateMain = DB :: table ("inventory")
+                            ->where('branch_id', 1)
+                            ->where('product_id',$row->product_id)
+                            ->update(['quantity' => $getMain->quantity - $row->req_quantity]);
+
+            }
+           
+
         if($upStatus){
             return response()->json([
                 'message' => "Sucessfully Approved Request",
                 'r_id' => $id,
-            ]);    
+                'b_id' => $branchId->branch_id,
+                'requestList' => $reqList,
+            ]);
+            return $reqList;    
         }
         else{
             return response()->json([
@@ -231,6 +278,38 @@ class TransactionListController extends Controller
         $upStatus = DB :: table("orders")
                     ->where('order_id',$id)
                     ->update(['status' => 'Approved']);
+
+        $orderList = DB :: table("orderlist")
+                    ->where('order_id', $id)
+                    ->get();
+
+        $branchId = DB :: table("orders")
+                    ->where('order_id', $id)
+                    ->join('branch', 'branch.branch_id', '=', 'orders.branch_id')
+                    ->first();
+                    
+        
+            foreach($orderList as $row){
+    
+                $getBranch =  DB :: table ("inventory")
+                                ->where('branch_id',$branchId->branch_id )
+                                ->where('product_id', $row->product_id)
+                                ->first();
+                
+                if(!$getBranch){
+                    $newRow = DB::table('inventory')->insert(
+                        array('branch_id' => $branchId->branch_id, 'product_id' => $row->product_id, 'quantity' => $row->order_quantity, 'created_at' => Carbon::now(), 'updated_at' =>Carbon ::now())
+                    );
+                }
+                else{
+
+                    $updateBranch = DB :: table ("inventory")
+                            ->where('branch_id',$branchId->branch_id)
+                            ->where('product_id',$row->product_id)
+                            ->update(['quantity' => $getBranch->quantity - $row->order_quantity]);
+                }
+            }
+                    
 
         if($upStatus){
             return response()->json([

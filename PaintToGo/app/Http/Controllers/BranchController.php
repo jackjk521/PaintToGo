@@ -81,16 +81,35 @@ class BranchController extends Controller
 
     public function viewBranchInventory(Request $request){
         // sessionStorage.getItem('branch_id');
-        console.log($request->input('branch_id'));
         $inventory = DB::table('inventory')
-            ->where('branch_id', $request->input('branch_id'))
+            ->where('branch_id', $request->input('branch'))
             ->join('product', 'inventory.product_id','=','product.product_id')
             ->get();
 
         if( $inventory ){
             return response()->json([
                 'inventory' => $inventory,
-                'response' => 1
+                'response' => $request
+            ]);
+        }  
+        else{
+            return("SQL Error");
+        }    
+    }
+
+    public function viewBranchInventoryOverview(){
+        $branches = DB::table('branches')
+            ->select('branch_id')
+            ->get();
+
+        $inventory = DB::table('inventory')
+            ->get();
+
+        if( $inventory ){
+            return response()->json([
+                'branches' => $branches,
+                'inventory' => $inventory,
+                'response' => $request
             ]);
         }  
         else{

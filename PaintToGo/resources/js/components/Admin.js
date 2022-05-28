@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 import {useNavigate} from "react-router-dom"
-import { renderAList } from "../operations/renderAList";
 import NullRequestTable from "./NullRequestTable";
-import NullOrderTable from "./NullOrderTable";
 import NullConsultationTable from "./NullConsultationTable";
 import ApprovedRequests from "./ApprovedRequests";
 import ApprovedConsultations from "./ApprovedConsultations";
 import ApprovedOrders from "./ApprovedOrders";
 import "../../css/Dashboard.css";
-import {BsFillPersonFill} from 'react-icons/bs';
 import { NavLink } from "react-router-dom";
+import { HashLink } from 'react-router-hash-link';
+import OrderPage from "./OrderPage";
+import OrderForm from "./OrderForm";
 
 
 export default function Admin(){
@@ -49,12 +49,6 @@ export default function Admin(){
 
     return ( 
         <div className="page">
-            <nav class="navbar fixed-top navbar-dark">
-                <a class="navbar-brand px-2" href="dashboard">
-                    Color City Paint Store
-                </a>
-            </nav>
-            
             <div className="sidebar">
                 <h1 class="mt-4 px-2">Admin</h1>
                 <hr/>
@@ -62,34 +56,39 @@ export default function Admin(){
                     Dashboard
                 </NavLink>
                 <NavLink to="/order">
+                    Orders
+                </NavLink>
+                <NavLink to="/adminInventory">
                     Inventory
                 </NavLink>
                 <NavLink to="/dashboard">
                     Transactions
                 </NavLink>
-                <NavLink to="/dashboard">
+                <NavLink to="/administration">
                     Admin CRUD
                 </NavLink>
-                <br/><br/><br/><br/><br/>
+                <br/><br/><br/>
                 <a class="logout" onClick = {logOut}> Log Out </a>
             </div>
 
             <div className="content">
-                <h1>Admin page {user_id} {branch_id} </h1>
-
-                <br/>
-
-
-                <div>
-                    <h1> NULL statuses </h1>
+                <div id="null">
+                    <h1> PENDING </h1>
                         <NullRequestTable/>
                         <NullConsultationTable/>
                 </div> 
 
                 <hr/>
+
+                <div id="inventory">
+                    <h1> PRODUCTS LIST</h1>
+                        <OrderForm/>
+                </div>
+
+                <hr/>
                 
-                <div>
-                    <h1> APPROVED statuses </h1>
+                <div id="approved">
+                    <h1> APPROVED </h1>
                     <ApprovedRequests />
                     <ApprovedOrders />   
                     <ApprovedConsultations />

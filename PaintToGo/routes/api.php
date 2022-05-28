@@ -90,6 +90,7 @@ Route::post('/editBrand', [BrandController::class, 'editBrand']);
 Route::post('/deleteBrand', [BrandController::class, 'deleteBrand']);
 
 Route::get('/viewBranchInventory', [BranchController::class, 'viewBranchInventory']);
+Route::get('/viewBranchInventoryOverview', [BranchController::class, 'viewBranchInventoryOverview']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

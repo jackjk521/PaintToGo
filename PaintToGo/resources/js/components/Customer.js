@@ -2,9 +2,12 @@ import {NavLink, useNavigate} from "react-router-dom"
 import React, { useEffect, useState } from "react"
 import api from "../api/api";
 import "../../css/Dashboard.css";
-import {BsFillPersonFill} from 'react-icons/bs';
+import {AiFillHome} from 'react-icons/ai';
+import {AiFillCar} from 'react-icons/ai';
+import {AiFillTool} from 'react-icons/ai';
 import { pullAt } from "lodash";
 import Profile from "./Profile";
+import OrderForm from "./OrderForm";
 
 export default function Customer(){
     const user_id = sessionStorage.getItem('user_id');
@@ -43,14 +46,17 @@ export default function Customer(){
             <div className="sidebar">
                 <h1 class="mt-4 px-2">Admin</h1>
                 <hr/>
-                <NavLink to="/dashboard">
-                    Dashboard
-                </NavLink>
                 <NavLink to="/order">
                     Order
                 </NavLink>
-                <NavLink to="/consult">
-                    Consultations
+                <NavLink to="/inventory">
+                    Inventory
+                </NavLink>
+                <NavLink to="/dashboard">
+                    Transactions
+                </NavLink>
+                <NavLink to="/administration">
+                    Admin CRUD
                 </NavLink>
                 <br/><br/><br/><br/><br/>
                 <a class="logout" onClick = {logOut}> Log Out </a>

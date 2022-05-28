@@ -2,6 +2,7 @@
 	width: 90%;
     margin: auto;
 	border: 1px solid;
+    text-align: center;
 }
 
 .table td {
@@ -21,10 +22,6 @@
 }
 
 .table-contents-odd {
-    text-align: left;
+    text-align: center;
     background-color: lightgrey;
-}
-
-.table-contents-even {
-    text-align: left;
 }
