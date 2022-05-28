@@ -102,7 +102,7 @@ const NullRequestTable = () => {
                             <td>{a.branch_add}</td>
                             <td>{a.lastName}</td>
                             <td>
-                                <button name = 'rowKey' onClick= {approveBtn} style={{marginRight:"10px"}} value = {a.order_id}> Approve </button>
+                                <button name = 'rowKey' onClick= {approveBtn} style={{marginRight:"10px"}} value = {a.request_id}> Approve </button>
                             </td>
                             <td>
                                 <button name = 'row_key' type="text" onClick={fetchRData} value={a.request_id} >View</button>
