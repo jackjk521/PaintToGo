@@ -62,6 +62,9 @@ export default function Admin(){
                     Dashboard
                 </NavLink>
                 <NavLink to="/order">
+                    Orders
+                </NavLink>
+                <NavLink to="/adminInventory">
                     Inventory
                 </NavLink>
                 <NavLink to="/dashboard">

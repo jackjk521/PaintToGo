@@ -6,7 +6,8 @@ import { EditOutlined, DeleteOutlined, SearchOutlined  } from "@ant-design/icons
 
 export default function InventoryTab(res){
     const[inventory, setInventory] = useState([]);
-    const branch_id = sessionStorage.getItem('branch_id');
+    sessionStorage.getItem('branch_id')
+    const branch = sessionStorage.getItem('branch_id');
 
     //Tab css over here
     const tabStyle = {
@@ -15,23 +16,23 @@ export default function InventoryTab(res){
         
     }
 
+
     useEffect(() => {
         let isMounted = true; 
         const fetchData = async () => {
           try {
-            const res1 = await api.viewBranchInventory(branch_id);
+            const res = await api.viewBranchInventory({
+              params: { branch }});
             if (isMounted) {
-                setInventory(res1.data.inventory);
+                setInventory(res.data.inventory);
             }
           } catch {
             console.log();
           }
         }
-    
         fetchData();
         return () => { isMounted = false };
       }, []);
-
 
     const inventoryColumn = [
         {
@@ -48,7 +49,54 @@ export default function InventoryTab(res){
           dataIndex: 'product_name',
           sorter: (a, b) => {
             return a.product_name.localeCompare(b.product_name)
-          }
+          },filterDropdown: ({
+            setSelectedKeys,
+            selectedKeys,
+            confirm,
+            clearFilters,
+          }) => {
+            return (
+              <>
+                <Input
+                  autoFocus
+                  placeholder="Type product name here"
+                  value={selectedKeys[0]}
+                  onChange={(e) => {
+                    setSelectedKeys(e.target.value ? [e.target.value] : []);
+                    confirm({ closeDropdown: false });
+                  }}
+                  onPressEnter={() => {
+                    confirm();
+                  }}
+                  onBlur={() => {
+                    confirm();
+                  }}
+                ></Input>
+                <Button
+                  onClick={() => {
+                    confirm();
+                  }}
+                  type="primary"
+                >
+                  Search
+                </Button>
+                <Button
+                  onClick={() => {
+                    clearFilters();
+                  }}
+                  type="danger"
+                >
+                  Reset
+                </Button>
+              </>
+            );
+          },
+          filterIcon: () => {
+            return <SearchOutlined />;
+          },
+          onFilter: (value, record) => {
+            return record.product_name.toLowerCase().includes(value.toLowerCase());
+          },
         },
         {
           key:"3",
@@ -60,11 +108,19 @@ export default function InventoryTab(res){
         },
         {
           key:"4",
-          title: 'Actions',
-          render: (record) => (
-            <>
-            </>
-          )
+          title: 'Retail Price',
+          dataIndex: 'retail_price', 
+          sorter: (a, b) => {
+            return a.retail_price - b.retail_price
+          },
+        },
+        {
+          key:"5",
+          title: 'Price',
+          dataIndex: 'price', 
+          sorter: (a, b) => {
+            return a.price - b.price
+          },
         },
     ]
 

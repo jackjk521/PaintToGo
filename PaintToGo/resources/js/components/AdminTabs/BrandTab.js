@@ -50,7 +50,54 @@ export default function BrandTab(res){
           dataIndex: 'brand_name',
           sorter: (a, b) => {
             return a.brand_name.localeCompare(b.brand_name)
-          }
+          },filterDropdown: ({
+            setSelectedKeys,
+            selectedKeys,
+            confirm,
+            clearFilters,
+          }) => {
+            return (
+              <>
+                <Input
+                  autoFocus
+                  placeholder="Type product name here"
+                  value={selectedKeys[0]}
+                  onChange={(e) => {
+                    setSelectedKeys(e.target.value ? [e.target.value] : []);
+                    confirm({ closeDropdown: false });
+                  }}
+                  onPressEnter={() => {
+                    confirm();
+                  }}
+                  onBlur={() => {
+                    confirm();
+                  }}
+                ></Input>
+                <Button
+                  onClick={() => {
+                    confirm();
+                  }}
+                  type="primary"
+                >
+                  Search
+                </Button>
+                <Button
+                  onClick={() => {
+                    clearFilters();
+                  }}
+                  type="danger"
+                >
+                  Reset
+                </Button>
+              </>
+            );
+          },
+          filterIcon: () => {
+            return <SearchOutlined />;
+          },
+          onFilter: (value, record) => {
+            return record.brand_name.toLowerCase().includes(value.toLowerCase());
+          },
         },
         {
           key:"3",

@@ -56,4 +56,6 @@ Route::get('/administration', function () {
 Route::get('/inventory', function () {
     return view('welcome');
 });
-
+Route::get('/adminInventory', function () {
+    return view('welcome');
+});

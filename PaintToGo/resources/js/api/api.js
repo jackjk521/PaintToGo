@@ -122,8 +122,8 @@ export default {
         return axios.post(`${BASE_API_URL}/deleteBrand`, deletedBrand);
     },
 
-    viewBranchInventory: (branch_id) => {
-        return axios.get(`${BASE_API_URL}/viewBranchInventory`, branch_id);
+    viewBranchInventory: (params) => {
+        return axios.get(`${BASE_API_URL}/viewBranchInventory`, params);
     },
 
 }
