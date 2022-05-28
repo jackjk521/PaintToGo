@@ -11,6 +11,7 @@ export default function Dashboard() {
     return (
         <div>
 
+            
             {level_name == "Admin" && <Admin />}
             {level_name == "Manager" && <Manager />}
             {level_name == "Customer" && <Customer />}

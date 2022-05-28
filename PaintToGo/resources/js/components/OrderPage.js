@@ -47,6 +47,7 @@ const OrderPage = () => {
     }
 
     return (
+<<<<<<< HEAD
         <div className="order-page-body">
             { renderComponent === 'form' && 
                 <OrderForm setRenderComponent = {setRenderComponent} 
@@ -75,7 +76,32 @@ const OrderPage = () => {
                             setSelectedBranch = {setSelectedBranch}
                 />
             }
+=======
+        <div className="page">
+            <div className="content-center">
+                <div className="order-page-body">
+                    <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
+                        { renderComponent === 'form' && 
+                            <OrderForm setRenderComponent = {setRenderComponent} 
+                                        addItem = {addItem}
+                            />
+                        } 
+
+                        { renderComponent === 'cart' && 
+                            <OrderCart renderComponent = {renderComponent} 
+                                        setRenderComponent = {setRenderComponent} 
+                                        cart = {cart}
+                                        setCart = {setCart}
+                                        addItem = {addItem}
+                                        removeItem = {removeItem}
+                            />
+                        }
+                    </div>
+            </div>
+            
+>>>>>>> 9b2ce85788743d47f830e7220291e12b502112a8
         </div>
+       
     );
 }
 

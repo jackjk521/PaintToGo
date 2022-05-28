@@ -11,15 +11,20 @@ import Dashboard from './Dashboard'
 import Profile from './Profile';
 import AdminNullTablesPage from './AdminNullTablesPage';
 import ManagerNullOrdersPage from './NullOrderTable';
+<<<<<<< HEAD
 import Administration from './Administration'
 import AdminInventory from './AdminInventory'
 import Inventory from './Inventory'
+=======
+import Navbar from './Navbar';
+>>>>>>> 9b2ce85788743d47f830e7220291e12b502112a8
 
 
 function Main() {
    
     return (
             <BrowserRouter>
+<<<<<<< HEAD
                 <div className = "Header">
                     <span className='Menu'> <Link to="/"> Home </Link></span>
                     <span className='Menu'> <Link to="/consult"> Consultation </Link></span>
@@ -30,6 +35,9 @@ function Main() {
                     <span className='Menu'> <Link to ="/AdminInventory"> Admin Inventory </Link></span>
                     <span className='Menu'> <Link to ="/administration"> Administration </Link></span>
                 </div>
+=======
+                <Navbar/>
+>>>>>>> 9b2ce85788743d47f830e7220291e12b502112a8
                 <div>
                     <Routes>
                         <Route path="/consult" element = {<ConsultationForm/>}/> 
