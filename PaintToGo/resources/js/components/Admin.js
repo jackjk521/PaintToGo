@@ -48,13 +48,7 @@ export default function Admin(){
     }
 
     return ( 
-        <div className="page">
-            <nav class="navbar fixed-top navbar-dark">
-                <a class="navbar-brand px-2" href="dashboard">
-                    Color City Paint Store
-                </a>
-            </nav>
-            
+        <div className="page">            
             <div className="sidebar">
                 <h1 class="mt-4 px-2">Admin</h1>
                 <hr/>
