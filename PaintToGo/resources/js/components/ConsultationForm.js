@@ -38,26 +38,32 @@ const ConsultationForm = () => {
     }
 
     return(
-    <div className= "consultation-form-body">
-        <MessageQueue messages={messages} removeMessage={removeMessage} />
-        <h1> Book consultation </h1>
+        <div className='page'>
+            <div className='content-center'>
+            <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
+            <div className= "consultation-form-body">
+                    <MessageQueue messages={messages} removeMessage={removeMessage} />
+                    <h1> Book consultation </h1>
 
-        <div className="consultation-contents">
-          <form id = 'consultation-form'>
-              <div className = "consultation-inputs">
-                  <div className="desc-input">
-                    <label htmlFor="consultation-desc" className = "consultation-label"> Description: </label>
-                    <textarea type="text" onChange={inputHandler}  rows="8" name="consultation-desc"></textarea>
-                  </div>
-              </div>
-            
-            <div className="book-consultation-btn">
-                <button type='button' onClick={submitConsultation} className="buttons" id="buttonSend"> Book consultation </button>
+                    <div className="consultation-contents">
+                    <form id = 'consultation-form'>
+                        <div className = "consultation-inputs">
+                            <div className="desc-input">
+                                <label htmlFor="consultation-desc" className = "consultation-label"> Description: </label>
+                                <textarea type="text" onChange={inputHandler}  rows="8" name="consultation-desc"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div className="book-consultation-btn">
+                            <button type='button' onClick={submitConsultation} className="buttons" id="buttonSend"> Book consultation </button>
+                        </div>
+                        
+                    </form>
+                    </div>
+                </div>
             </div>
-            
-          </form>
         </div>
-    </div>
+    
     );
 }  
 
