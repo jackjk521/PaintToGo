@@ -83,7 +83,7 @@ const ApprovedConsultations = () => {
                         <td>{a.consultation_id}</td>
                         <td>{a.lastName}</td>
                         <td>
-                            <button name = 'row_key' type="text" onClick={fetchCData} value = {a.consultation_id}>View</button>
+                            <button name = 'row_key' class="view" type="text" onClick={fetchCData} value = {a.consultation_id}>View</button>
                             <DisplayModal 
                                 openModal={openModal} 
                                 TableHeader={<TableHeader />} 

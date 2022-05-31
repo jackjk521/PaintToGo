@@ -84,7 +84,7 @@ const ApprovedRequests = () => {
                         <td>{a.branch_add}</td>
                         <td>{a.lastName}</td>
                         <td>
-                            <button name = 'row_key' type="text" onClick={fetchRData} value={a.request_id} >View</button>
+                            <button name = 'row_key' type="text" class="view" onClick={fetchRData} value={a.request_id} >View</button>
                             <DisplayModal 
                                 openModal={openModal} 
                                 TableHeader={<TableHeader />} 

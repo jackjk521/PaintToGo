@@ -29,21 +29,23 @@ export default function ProductTable(){
 
             <div className="content-center">
             <a href="dashboard" class="btn btn-info" onClick="dashboard">Back to Dashboard</a>
-             <Tabs defaultActiveKey="1" centered size="large" tabBarStyle={tabStyle}>
-                <TabPane tab="Products" key="1">
-                    <ProductTab/>    
-                </TabPane>
-                <TabPane tab="Employees" key="2">
-                    <EmployeeTab/>    
-                </TabPane>
-                <TabPane tab="Branches" key="3">
-                    <BranchTab/>
-                </TabPane>
-                <TabPane tab="Brands" key="4">
-                    <BrandTab/>
-                </TabPane>
+            <div className="inventories">
+                <Tabs defaultActiveKey="1" centered size="large" tabBarStyle={tabStyle}>
+                    <TabPane tab="Products" key="1">
+                        <ProductTab/>    
+                    </TabPane>
+                    <TabPane tab="Employees" key="2">
+                        <EmployeeTab/>    
+                    </TabPane>
+                    <TabPane tab="Branches" key="3">
+                        <BranchTab/>
+                    </TabPane>
+                    <TabPane tab="Brands" key="4">
+                        <BrandTab/>
+                    </TabPane>
 
-            </Tabs> 
+                </Tabs> 
+            </div>
             </div>
         </div>
 

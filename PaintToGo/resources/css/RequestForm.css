@@ -1,8 +1,8 @@
 .requestFormBody {
-    width: 50%;
+    width: 80%;
     margin: 20px auto;
-    border-width: 1px;
-    border-color: black;
+    margin-bottom: 10px;
+    padding: 10px;
     display: block;
 }
 
@@ -24,11 +24,12 @@ input {
     border-width: 1px;
     height: 35px;
     border-color: black;
-    width: 100%;
+    width: 60%;
 }
 
 label {
     font-weight: bold;
+    margin-right: 10px;
 }
 
 h1 {
@@ -49,9 +50,9 @@ h1 {
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-    background-color: white; 
-    color: black; 
-    border: 2px solid #4CAF50;
+    background-color: #ff9a00; 
+    color: white; 
+    border-radius: 20px;
 }
 
 .productTable {
@@ -62,3 +63,4 @@ h1 {
     text-align: center;
     margin-right: 15px;
 }
+

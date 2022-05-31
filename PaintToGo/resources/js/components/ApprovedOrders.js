@@ -83,7 +83,7 @@ const ApprovedOrders = () => {
                         <td>{a.branch_add}</td>
                         <td>{a.lastName}</td>
                         <td>
-                            <button name = 'row_key' type="text" onClick={fetchOData} value = {a.order_id}>View</button>
+                            <button name = 'row_key' class="view" type="text" onClick={fetchOData} value = {a.order_id}>View</button>
                             <DisplayModal 
                                 openModal={openModal} 
                                 TableHeader={<TableHeader />} 

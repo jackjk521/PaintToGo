@@ -72,7 +72,7 @@ const RequestForm = (props) => {
         <div className="request-fields">
           <form id = 'requestForm'>
             <div className="request-input">
-              <label htmlFor="product_name"> Product name </label>
+              <label htmlFor="product_name"> Product name: </label>
               <input type="text" onChange={(e) => {nameHandler(e)}}  id = "nameTxt" name="product_name"></input>
             </div>
 
@@ -83,7 +83,7 @@ const RequestForm = (props) => {
         </div>
 
         <div className = 'productTable'>
-          <table className="table table-bordered">
+          <table className="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>

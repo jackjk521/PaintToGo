@@ -33,3 +33,15 @@
 .table-body:first-child tr {
     margin-top: 5%;
 }
+
+.approve {
+    background-color: #ff9a00;
+    color: white;
+    border-radius: 10px;
+}
+
+.view {
+    background-color: #4992a7;
+    color: white;
+    border-radius: 10px;
+}

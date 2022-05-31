@@ -27,16 +27,18 @@ export default function AdminInventory(){
 
             <div className="content-center">
             <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
-            <Tabs defaultActiveKey="1" centered size="large" tabBarStyle={tabStyle}>
-                <TabPane tab="Branch Inventory" key="1">
-                    
-                    <InventoryTab/>
-                </TabPane>
-                <TabPane tab="Branch Inventory Overview" key="2">
-                    <InventoryOverviewTab/>
-                </TabPane>
+            <div className="inventories">
+                <Tabs defaultActiveKey="1" centered size="large" tabBarStyle={tabStyle}>
+                    <TabPane tab="Branch Inventory" key="1">
+                        
+                        <InventoryTab/>
+                    </TabPane>
+                    <TabPane tab="Branch Inventory Overview" key="2">
+                        <InventoryOverviewTab/>
+                    </TabPane>
 
-            </Tabs>
+                </Tabs>
+            </div>
             </div>
         </div>
 

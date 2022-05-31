@@ -18,20 +18,22 @@ export default function Inventory(){
     //Tab css over here
     const tabStyle = {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'column'
     }    
 
     return(
         <div className="page">
             <div className="content-center">
-            <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>           
-            <Tabs defaultActiveKey="1" centered size="large" tabBarStyle={tabStyle}>
-                <TabPane tab="Branch Inventory" key="1">
-                    
-                    <InventoryTab/>
-                </TabPane>
+            <a href="dashboard" class="btn btn-primary" onClick="dashboard">Back to Dashboard</a>
+            <div className="inventories">
+                <Tabs defaultActiveKey="1" centered size="large" tabBarStyle={tabStyle}>
+                    <TabPane tab="Branch Inventory" key="1">
+                        
+                        <InventoryTab/>
+                    </TabPane>
 
-            </Tabs>
+                </Tabs>
+            </div>           
             </div>
         </div>
 
